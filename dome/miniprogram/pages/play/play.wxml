@@ -1,0 +1,7 @@
+<!--pages/play/play.wxml-->
+<!-- 视频播放 -->
+<view class="play">
+	<video oster-for-crawler="{{item.cover}}" bindended="ended" src="{{src}}" style="width:100%"></video>
+	<view class="price">{{price}}￥</view>
+	<view class="introduction">简介：{{introduction}}</view>
+</view>

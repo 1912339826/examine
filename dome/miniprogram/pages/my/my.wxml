@@ -1,0 +1,52 @@
+<!--pages/my/my.wxml-->
+<!-- 我的 -->
+<view class="my">
+	<view class="top">
+		<view class="balance">
+			<view  wx:if="{{!!apply}}">我的余额</view>
+			<view  wx:if="{{!!apply}}">9 <text>元</text></view>
+		</view>
+		<view class="my_top">
+			
+			<view class="head_sculpture">
+			  <image src="../../images/head_sculpture_border.png" class="head_sculpture_border"></image>
+				<image src="{{head_sculpture}}" class="head_img" />
+			</view>
+			<view class="name_gender">
+				<view>{{name}}</view>
+				<image src="../../images/gender_masculinity_03.png" class="gender_masculinity_03" wx:if="{{gender=='男'}}"/>
+				<image src="../../images/woman.png" class="gender_masculinity_03" wx:else/>
+			</view>
+			<view class="signature">(编辑个性签名)</view>
+		</view>
+		<view></view>
+	</view>
+	<view class="lists">
+		<view class="list to_apply_for_withdrawal" data-name="to_apply_for_withdrawal" bindtap="fun_click"  wx:if="{{!!apply}}">
+			<view class="tex">申请提款</view>
+			<image src="../../images/arrows_03.png" class="arrows_03" />
+		</view>
+		<view class="list withdrawal_record" data-name="withdrawal_record" bindtap="fun_click" wx:if="{{!!apply}}">
+			<view class="tex">提现记录</view>
+			<image src="../../images/arrows_03.png" class="arrows_03" />
+		</view>
+		<view class="list basic_information_modification" data-name="basic_information_modification" bindtap="fun_click">
+			<view class="tex">基本信息修改</view>
+			<image src="../../images/arrows_03.png" class="arrows_03" />
+		</view>
+		<view class="list my_dynamic" data-name="friend_circle" bindtap="fun_click"  wx:if="{{!!apply}}">
+			<view class="tex">我的动态</view>
+			<image src="../../images/arrows_03.png" class="arrows_03" />
+		</view>
+		<view class="list my_store_management" data-name="store" bindtap="fun_click"  wx:if="{{!!apply}}">
+			<view class="tex">我的商场管理</view>
+			<image src="../../images/arrows_03.png" class="arrows_03" />
+		</view>
+		<view class="list headquarters_of_the_message" data-name="headquarters_of_the_message" bindtap="fun_click">
+			<view class="tex">总部留言</view>
+			<image src="../../images/arrows_03.png" class="arrows_03" />
+		</view>
+	</view>
+</view>
+
+<tab active_index="3" />

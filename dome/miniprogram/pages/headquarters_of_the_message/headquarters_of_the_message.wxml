@@ -1,0 +1,17 @@
+<!--pages/headquarters_of_the_message/headquarters_of_the_message.wxml-->
+<!-- 总部留言 -->
+<view class="headquarters_of_the_message">
+	<view class="top"></view>
+	<view class="box">
+		<van-field bind:change="change_value" type="number" placeholder="手机号码" border="{{ false }}" />
+		<view class="content">
+			<view>留言反馈</view>
+			<textarea bindinput="bindTextAreaBlur" maxlength="-1" placeholder="请在此留下您的宝贵建议" />
+			</view>
+      <view class="button_">
+         <view bindtap="add">提交</view>
+      </view>
+	</view>
+</view>
+<tab active_index="3" />
+<van-toast id="van-toast" />

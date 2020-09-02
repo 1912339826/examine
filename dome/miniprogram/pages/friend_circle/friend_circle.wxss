@@ -1,0 +1,245 @@
+/* pages/friend_circle/friend_circle.wxss */
+.friend_circle {
+  margin-bottom: 80rpx;
+}
+
+.img_back {
+  height: 480rpx;
+  position: relative;
+}
+
+.box {
+  overflow: scroll;
+  /* height: calc(100vh - 480rpx); */
+}
+
+.img_back image {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.back {
+  position: absolute;
+  z-index: 2;
+  top: 73rpx;
+  left: 18rpx;
+  color: #ffffff;
+  font-size: 50rpx;
+}
+
+.img_back .title {
+  position: absolute;
+  z-index: 2;
+  top: 130rpx;
+  left: 99rpx;
+  color: #ffffff;
+  font-size: 40rpx;
+}
+
+.heard_img {
+  position: absolute;
+  z-index: 2;
+  bottom: 60rpx;
+  right: 150rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+
+.heard_img image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.heard_img_delete {
+  position: absolute;
+  height: 25rpx;
+  line-height: 25rpx;
+  z-index: 2;
+  right: 0;
+  bottom: 60rpx;
+  border-radius: 20rpx;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 15rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+
+
+.lists {
+  margin-top: 100rpx;
+}
+
+.lists .isday {
+  height: 170rpx;
+  border-top: 1rpx solid #f0eff0;
+  border-bottom: 1rpx solid #f0eff0;
+  display: flex;
+  align-items: center;
+  padding-left: 40rpx;
+}
+
+.lists .isday .date {
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.lists .isday  .date_el{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 40rpx;
+  font-weight: 600;
+  height: 100rpx;
+}
+
+.date_el .top{
+  display: flex;
+  align-items: center;
+}
+
+.date_el .top .day{
+  font-size: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.date_el .top .month{
+  font-size: 20rpx;
+}
+
+.date_el .bottom{
+  font-size: 20rpx;
+}
+
+
+.lists .isday image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 20rpx;
+}
+
+.circles {
+  margin-top: 100rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  padding-bottom: 40rpx;
+  border-bottom: 1rpx solid #f0eff0;
+}
+
+.son {
+  display: flex;
+  justify-content: space-between;
+}
+
+.circles_heard {
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.dynamic_content {
+  width: 500rpx;
+}
+
+.dynamic_content .title {
+  font-size: 25rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 20rpx;
+}
+
+.figure_set {
+  width: 450rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.figure_set::after {
+  content: "";
+  width: 30%;
+}
+
+.figure_set image {
+  width: 30%;
+  margin-bottom: 20rpx;
+}
+
+.movement {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 80rpx;
+}
+
+.movement .circles_button_ {
+  width: 40rpx;
+}
+
+.movement .PL {
+  position: absolute;
+  width: 100rpx;
+  height: 50rpx;
+  right: 50rpx;
+}
+
+.dynamic {
+  width: 82%;
+}
+
+.Dynamic_comments {
+  background-color: #e9e9e9;
+  width: 100%;
+  padding: 20rpx;
+  font-size: 20rpx;
+  box-sizing: border-box;
+}
+
+.Dynamic_comments_son {
+  margin-top: 40rpx;
+  width: 100%;
+}
+
+.Dynamic_comments_son:nth-child(1) {
+  margin-top: 0;
+}
+
+.Dynamic_comments text {
+  color: #152041;
+}
+
+.circles .textarea_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #BABABA;
+}
+
+.circles textarea {
+  background-color: #ffffff;
+  width: 70%;
+  height: 75rpx;
+  color: #000000;
+  font-size: 30rpx;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+  border-top-right-radius: 10%;
+}
+.textarea_button{
+  height: 35rpx;
+  line-height: 35rpx;
+  font-size: 35rpx;
+  border: 1rpx solid #BABABA;
+  padding: 10rpx;
+}

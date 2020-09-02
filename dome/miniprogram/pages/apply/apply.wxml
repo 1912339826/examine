@@ -1,0 +1,96 @@
+<!--pages/apply/apply.wxml-->
+<!-- 申请品鉴官 -->
+<view class="apply">
+	<image src="../../images/apply_back_03.jpg" class="apply_back" />
+	<view class="apply_son">
+		<view class="son">
+			<view class="text">
+				<view>姓</view>
+				<view>名</view>
+			</view>
+			<view class="gap">
+				<input placeholder-class="placeholder_class" class="weui-input" bindinput="bind_input_name" placeholder="请输入姓名" />
+			</view>
+		</view>
+		<view class="son">
+			<view class="text">联系方式</view>
+			<view class="gap">
+				<input placeholder-class="placeholder_class" class="weui-input" bindinput="bind_input_phone" placeholder="请输入手机号码" />
+			</view>
+		</view>
+
+		<view class="son">
+			<view class="text">
+				<view>城</view>
+				<view>市</view>
+			</view>
+			<view class="gap" bindtap="city">
+				<view class="city">--{{changecity[0].text}}--
+					<van-icon name="arrow-down" />
+				</view>
+				<view class="city">--{{changecity[1].text}}--
+					<van-icon name="arrow-down" />
+				</view>
+				<view class="city">--{{changecity[2].text}}--
+					<van-icon name="arrow-down" />
+				</view>
+			</view>
+		</view>
+
+		<view class="son">
+			<view class="text">个人介绍</view>
+			<view class="gap">
+				<textarea bindblur="bindTextAreaBlur_individual" placeholder="" />
+				</view>
+		</view>
+
+		<view class="son">
+			<view class="text">团队介绍</view>
+				<view class="gap">
+			 <textarea bindblur="bindTextAreaBlur_teams" placeholder="" />
+			</view>
+		</view>
+
+		<view class="son informed_consent" >
+		<view> <text>阅读</text>  <text>“品鉴官须知”</text></view>
+		<view class="checkbox_group">
+		  <view data-checked="yes" bindtap="checked_">
+				<view class="img">
+				 <image src="../../images/pane.png" mode='widthFix' class="pane"/>
+				 <image src="../../images/right.png" class="pane_" wx:if="{{radio_change_list}}"/>
+				</view>
+				 <view>选中</view>
+			</view>
+			<view data-checked="no" bindtap="checked_">
+			  <view class="img">
+					<image src="../../images/pane.png" mode='widthFix' class="pane"/>
+					<image src="../../images/right.png"  class="pane_" wx:if="{{!radio_change_list}}"/>
+			  </view>
+				 <view>未选中</view>
+			</view>
+		</view>
+		<!-- <checkbox-group bindchange="radio_change">
+		 <label class="checkbox" bindchange="radio_change_yes">
+        <checkbox value="yes" class="checkbox_son" />选中
+      </label>
+      <label class="checkbox" bindchange="radio_change_no">
+        <checkbox value="no" checked="true"/>未选中
+      </label>
+		</checkbox-group> -->
+		</view>
+
+		<view class="son">
+		  	<van-button block type="danger" size="small" bindtap="go_be_reviewing">提交</van-button>
+		</view>
+		<view class="son hint">
+      提交品鉴官相关信息，等待审核，通过后成为品鉴官		
+			<!-- <button class='authBtn' type='primary' open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo'>授权登录</button> -->
+		</view>
+	</view>
+</view>
+ 
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose">
+	<van-picker columns="{{ columns }}" show-toolbar title="请选择" bind:change="onChange" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
+<tab active_index="1" />
+<van-toast id="van-toast" />

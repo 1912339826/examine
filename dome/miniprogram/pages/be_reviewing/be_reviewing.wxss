@@ -1,0 +1,38 @@
+/* pages/be_reviewing/be_reviewing.wxss */
+.be_reviewing{
+  padding-bottom: 120rpx;
+  background-color: #ffffff;
+  height: calc(100vh - 120rpx);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+image{
+  width: 90%;
+}
+
+.success{
+  font-weight: 700;
+  margin-top: 20rpx;
+  font-size: 45rpx;
+}
+
+.start{
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  color: #7a7a7a;
+  font-size: 35rpx;
+}
+
+.button_{
+  font-size: 35rpx;
+  height: 65rpx;
+  width: 280rpx;
+  text-align: center;
+  line-height: 65rpx;
+  background-color: #395996;
+  border-radius: 20rpx;
+  color: #ffffff;
+}

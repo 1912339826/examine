@@ -1,0 +1,61 @@
+/* pages/withdrawal_record/withdrawal_record.wxss */
+.withdrawal_record{
+  background-color: #ffffff;
+  padding-bottom: 5vw;
+  height: 100vh;
+  overflow: scroll;
+  padding-top: 20rpx;
+}
+
+.lists{
+  width: 100%;
+}
+
+.list{
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  background-color: #e6e6e6;
+  padding:20rpx
+}
+
+.left{
+  display: flex;
+  align-items: center;
+}
+.massage{
+  color: #666666;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.right{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+image{
+  width: 60rpx;
+  margin-right: 20rpx;
+}
+
+.state_root_in{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.state{
+  font-size: 30rpx;
+}
+.root_in{
+  font-size: 30rpx;
+  color: #666666;
+  height: 100%;
+}
+.day{
+  font-size: 25rpx;
+}

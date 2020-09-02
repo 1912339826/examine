@@ -1,0 +1,28 @@
+<!--pages/basic_information_modification/basic_information_modification.wxml-->
+<!-- 基本信息修改 -->
+<view class="basic_information_modification">
+<view class="top">
+  
+</view>
+	<view class="head_portrait box">
+		<view class="left">头像</view>
+		<view class="right">
+			<image src="../../images/material1_03.jpg"></image>
+			<van-icon name="arrow" size="80rpx" color="#666666" />
+		</view>
+	</view>
+	<view class="nickname box">
+		<view class="left">昵称</view>
+		<view class="right">
+			<view>XXXXXXX</view>
+			<van-icon name="arrow" size="80rpx" color="#666666" />
+		</view>
+	</view>
+	<view class="ones_strong_suit box">
+		<view class="left">特长</view>
+		<view class="right">
+			<view>看书</view>
+			<van-icon name="arrow" size="80rpx" color="#666666" />
+		</view>
+	</view>
+</view>

@@ -1,0 +1,167 @@
+/* pages/apply/apply.wxss */
+.apply {
+  position: relative;
+  height: calc(100vh - 120rpx);
+  padding-bottom: 120rpx;
+}
+
+.apply_back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.apply_son {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  /* padding-top: 500rpx; */
+  padding-top: 42vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.apply_son>.son {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  font-size: 30rpx;
+  width: 70%;
+  margin-bottom: 15rpx;
+}
+
+.apply_son>.son>.gap {
+  width: 70%;
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+}
+
+.apply_son>.son .weui-input {
+  width: 100%;
+  padding-left: 20rpx;
+  background-color: #ffffff;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+  border-top-right-radius: 10%;
+}
+
+.placeholder_class {
+  color: #686666;
+  font-weight: 700;
+}
+
+.apply_son>.son>.text {
+  width: 23%;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.apply_son>.son .city {
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+  border-top-right-radius: 10%;
+  height: 40rpx;
+  line-height: 40rpx;
+  background-color: #ffffff;
+  font-size: 20rpx;
+}
+
+.apply_son>.son>.gap textarea {
+  background-color: #ffffff;
+  width: 100%;
+  height: 100rpx;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+  border-top-right-radius: 10%;
+}
+
+.apply_son>.informed_consent {
+  font-size: 25rpx;
+  display: flex;
+  align-items: center;
+}
+
+.apply_son>.informed_consent view {
+  height: 25rpx;
+  line-height: 25rpx;
+  display: flex;
+  align-content: center;
+}
+
+.apply_son>.informed_consent checkbox-group {
+  width: 52%;
+  display: flex;
+  justify-content: space-around;
+  background: none;
+}
+
+.apply_son>.informed_consent checkbox-group .checkbox_son {}
+
+.checkbox_group {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkbox_group image {
+  position: absolute;
+}
+
+.checkbox_group .img {
+  position: relative;
+  width: 30rpx;
+}
+
+.pane {
+  z-index: 1;
+  width: 30rpx;
+  top: 0;
+  left: 0;
+}
+
+.pane_ {
+  width: 25rpx;
+  height: 19rpx;
+  z-index: 2;
+  top: 28%;
+  left: 0;
+}
+
+
+
+van-button {
+  width: 100%;
+  border-radius: 20%;
+}
+
+.apply_son>.hint {
+  font-size: 22rpx;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}
+
+/*复选框外框样式*/
+checkbox .wx-checkbox-input {
+  width: 40rpx;
+  height: 40rpx;
+  border: 1rpx solid #000000;
+  /* border-radius: 100%; */
+}
+
+/*复选框选中后内部样式*/
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  color: #000000;
+  background: #3cbcee00;
+  /* content: '✔'; */
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}

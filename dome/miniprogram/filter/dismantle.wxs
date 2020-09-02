@@ -1,0 +1,22 @@
+var dateFr = {
+  // 2020827 =>2020年8月27号
+  dismantle: function (time) {
+    var j = "";
+    var arr = [];
+    var year = "";
+    var month = "";
+    var day = ""
+    arr = time.split("");
+    year = arr.slice(0, 4).join("")
+    month = arr.slice(4, 6).join("")
+    day = arr.slice(6).join("")
+    return {
+      year,
+      month,
+      day
+    }
+  }
+}
+module.exports = {
+  dismantle: dateFr.dismantle
+}

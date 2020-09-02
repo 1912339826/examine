@@ -1,0 +1,25 @@
+<!--pages/to_apply_for_withdrawal/to_apply_for_withdrawal.wxml-->
+<!-- 申请提现 -->
+<view class="to_apply_for_withdrawal">
+	<view class="top">
+		<view>申<text>请提</text>现</view>
+		<view bindtap="go_withdrawal_record">提现记录</view>
+	</view>
+	<view class="box">
+		<view class="son son_title">提现到微信钱包</view>
+		<view class="son son_title">
+			<view>提现金额</view>
+			<view>
+				<van-field model:value="{{ value }}" placeholder="" border="{{ false }}" label="￥" />
+			</view>
+			<view>
+				当前余额剩余5元，<text class="all">全部提现</text>
+			</view>
+		</view>
+
+		<view class="son">
+			<view class="button_">提现</view>
+		</view>
+	</view>
+</view>
+<tab active_index="3" />

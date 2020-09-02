@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/store/store",
+    "pages/tasting_tube/tasting_tube",
+    "pages/my/my",
+    "pages/Authorized/Authorized",
+    "pages/friend_circle/friend_circle",
+    "pages/headquarters_of_the_message/headquarters_of_the_message",
+   
+    
+    "pages/homepage/homepage",
+    "pages/tasting_tube_shoppingmall/tasting_tube_shoppingmall",
+    "pages/play/play",
+    "pages/apply/apply",
+    "pages/information/information",
+    "pages/be_reviewing/be_reviewing",
+    "pages/to_apply_for_withdrawal/to_apply_for_withdrawal",
+    "pages/basic_information_modification/basic_information_modification",
+    "pages/withdrawal_record/withdrawal_record",
+    "pages/shopping_trolley/shopping_trolley"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

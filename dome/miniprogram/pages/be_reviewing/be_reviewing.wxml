@@ -1,0 +1,10 @@
+<!--pages/be_reviewing/be_reviewing.wxml-->
+<!-- 正在审核状态 -->
+<view class="be_reviewing">
+  <image src="../../images/audit_status_03.jpg"/>
+  <view class="success">您的材料已经提交</view>
+  <view class="start">正在审核中...</view>
+  <view class="button_" bindtap="back_tasting_tube"> 我知道了</view>
+</view>
+
+<tab active_index="1" />

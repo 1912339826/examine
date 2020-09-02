@@ -1,0 +1,88 @@
+/* pages/to_apply_for_withdrawal/to_apply_for_withdrawal.wxss */
+
+.to_apply_for_withdrawal{
+  padding-bottom: 120rpx;
+  background-color: #ffffff;
+  height: calc(100vh - 120rpx);
+}
+
+.top{
+  background-color: #395996;
+  border-bottom-right-radius: 40rpx;
+  border-bottom-left-radius: 40rpx;
+  padding-bottom: 20rpx;
+  height: 140rpx;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 80rpx;
+  padding-left: 80rpx;
+  padding-top: 40rpx;
+}
+
+.top>view{
+  font-size: 30rpx;
+  color: #ffffff;
+  height: 40rpx;
+}
+
+.top>view:nth-child(1)>text{
+  padding-bottom: 5rpx;
+  border-bottom: 5rpx solid #ffffff;
+}
+
+.box{
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  height: 35vh;
+  border-radius: 40rpx;
+  background-color: #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box>.son{
+  width: 80%;
+}
+
+.field-index--van-field.van-cell.van-cell--borderless{
+  background-color: #e6e6e6;
+  border-bottom: 1rpx solid #808080;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  font-weight: 600;
+}
+
+.field-index--van-field.van-cell.van-cell--borderless input{
+  font-size: 70rpx;
+  height: 70rpx;
+}
+
+.van-field__label{
+  width: 5%;
+  font-size: 80rpx;
+}
+
+.all{
+  color: #7a8eb4;
+}
+
+.son_title{
+  font-size: 30rpx;
+  color: #000000;
+}
+
+.button_{
+  background-color: #22b573;
+  width: 70%;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 40rpx;
+  color: #ffffff;
+  border-radius: 20rpx;
+  margin: 0 auto;
+}

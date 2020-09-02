@@ -1,0 +1,133 @@
+/* pages/tasting_tube/tasting_tube.wxss */
+.tasting_tube {
+  padding-bottom: 140rpx;
+}
+
+.top {
+  background-color: #395996;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.top>.test {
+  height: 38rpx;
+}
+
+.search {
+  padding-bottom: 20rpx;
+  margin-top: 20rpx;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.search .left {
+  background-color: #dfdfdf;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  height: 50rpx;
+  width: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search .weui-input {
+  color: #395996;
+  width: 40%;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #dfdfdf;
+}
+
+.search .right {
+  background-color: #dfdfdf;
+  height: 50rpx;
+  width: 40rpx;
+  line-height: 50rpx;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.search .button {
+  height: 50rpx;
+  line-height: 50rpx;
+  display: flex;
+  background-color: #dfdfdf;
+  color: #395996;
+  padding: 0;
+  margin: 0;
+}
+
+.search .select {
+  margin-left: 20rpx;
+  padding-left: 5rpx;
+  padding-right: 5rpx;
+  color: #395996;
+  background-color: #ffffff;
+  border-radius: 30%;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.apply {
+  font-size: 20rpx;
+  margin-left: 20rpx;
+}
+
+.apply image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.content {
+  padding-top: 160rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  text-align: center;
+}
+
+.content .big_img {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  width: calc(100% - 60rpx);
+  height: 200rpx;
+  border-radius: 8.5%;
+}
+
+.content .lists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.content .lists::after {
+  content: "";
+  width: 210rpx;
+}
+
+.content .lists .list {
+  margin-bottom: 36rpx;
+}
+
+.content .lists .list image {
+  width: 210rpx;
+  height: 288rpx;
+}
+
+.content .lists .list .bottom {
+  color: #c1272d;
+}
+
+.content .lists .list .bottom .son {
+  display: flex;
+  font-size: 20rpx;
+  align-items: center;
+  justify-content: space-between;
+  height: 50rpx;
+  line-height: 50rpx;
+}

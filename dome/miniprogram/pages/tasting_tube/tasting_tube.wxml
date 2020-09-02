@@ -1,0 +1,51 @@
+<!--pages/tasting_tube/tasting_tube.wxml-->
+<view class="tasting_tube">
+	<view class="top">
+		<view class="test">
+			城市品鉴官
+		</view>
+		<view class="search">
+			<view class="left">
+				<van-icon name="search" />
+			</view>
+			<input class="weui-input" bindinput="bind_input" placeholder="请输入品鉴官姓名" />
+			<view class="button" bindtap="select_city">
+				<van-icon name="arrow-down" />
+				<text>{{changecity.text}}</text>
+			</view>
+			<view class="right">
+			</view>
+			<view bindtap="select" class="select">搜索</view>
+			<view class="apply" wx:if="{{!apply}}" bindtap="goapply">
+				<image src="../../images/apply_03.png" />
+				<view>申请品鉴馆</view>
+			</view>
+		</view>
+	</view>
+	<view class="content">
+		<image src="../../images/information_big_03.jpg" class="big_img" />
+		<view class="lists">
+
+			<view class="list" bindtap="go_homepage" data-id="{{item.id}}" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
+				<image src="{{item.pic}}" />
+				<view class="bottom">
+					<view class="son">
+						<view>姓名: <text>{{item.name}}</text></view>
+						<view>城市: <text>{{item.town}}</text></view>
+					</view>
+					<view class="son">
+						<view>特长: <text>{{item.specialty}}</text></view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose">
+	<van-picker columns="{{ columns }}" show-toolbar title="请选择" bind:change="onChange" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
+
+<tab active_index="1"/>
+
+<van-toast id="van-toast" />

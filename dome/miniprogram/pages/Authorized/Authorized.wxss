@@ -1,0 +1,37 @@
+/* pages/Authorized/Authorized.wxss */
+.Authorized {
+  height: 66vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+button{
+  line-height: 10vw;
+  height: 12vw;
+}
+
+.fix {
+  background-color: #09ba07;
+  color: #ffffff;
+}
+
+.massage {
+  color: #9a9a9a;
+  height: 70rpx;
+  line-height: 70rpx;
+  margin-bottom: 80rpx;
+  font-size: 30rpx;
+}
+
+image{
+  margin-top: 50rpx;
+  width: 40vw;
+  margin-bottom: 50rpx;
+}
+
+.name{
+  font-size: 50rpx;
+
+}

@@ -1,0 +1,11 @@
+<!--pages/Authorized/Authorized.wxml-->
+
+<view class="Authorized">
+	<!-- <image class="logo" src="../../images/logo_03 (2).png" mode='widthFix'></image> -->
+	<image class="logo" src="../../images/logo_03 (2).png" mode='widthFix'></image>
+	<view class="name">品鉴官 </view>
+	<view class="massage">
+		允许微信授权后，可体验更多功能。
+	</view>
+	<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="fix">授权登录</button>
+</view>

@@ -1,0 +1,63 @@
+/* pages/headquarters_of_the_message/headquarters_of_the_message.wxss */
+.headquarters_of_the_message{
+  padding-bottom: 120rpx;
+  background-color: #ffffff;
+  height: calc(100vh - 120rpx);
+}
+.top{
+  background-color: #395996;
+  border-bottom-right-radius: 40rpx;
+  border-bottom-left-radius: 40rpx;
+  padding-bottom: 20rpx;
+  height: 140rpx;
+}
+
+.box{
+  margin-top: 20rpx;
+}
+
+.field-index--van-field.van-cell.van-cell--borderless{
+  background-color: #e6e6e6;
+}
+
+.content{
+  margin-top: 20rpx;
+  background-color: #e6e6e6;
+  border-radius: 60rpx;
+  overflow: hidden;
+}
+
+.content>view{
+  text-align: center;
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+textarea{
+  padding: 40rpx;
+  background-color: #e6e6e6;
+  height: 40vh;
+  width: 100%;
+  font-size: 25rpx;
+}
+
+.button_{
+  display: flex;
+  justify-content: center;
+}
+
+.button_>view{
+  background-color: #22b573;
+  color: #ffffff;
+  text-align: center;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  width: 100rpx;
+  margin-top: 30rpx;
+}

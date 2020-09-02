@@ -1,0 +1,47 @@
+<!--pages/tasting_tube_shoppingmall/tasting_tube_shoppingmall.wxml-->
+<!-- 品鉴官商城 -->
+<view class="tasting_tube_shoppingmall">
+	<view class="top">
+		<view class="box">
+			<view class="name">{{name}}</view>
+			<image src="{{pic}}"></image>
+		</view>
+	</view>
+	<view class="big_img">
+		<image src="../../images/information_big_03.jpg" />
+	</view>
+
+	<view class="lists">
+
+
+		<view class="list" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
+			<view class="box">
+				<view class="img">
+					<image class="play_img" src="../../images/play.png" bindtap="play" data-title="{{item.title}}" data-introduction="{{item.introduction}}"  data-price="{{item.price}}" data-id="{{item.videoId}}"></image>
+					<image src="{{item.cover}}" class="show" />
+					<view class="praise">
+						<text>{{item.likes}}</text>
+						<image wx:if="{{!!item.isLikes}}" src="../../images/star.png"></image>
+						<image src="../../images/star_no.png" wx:else />
+					</view>
+				</view>
+				<view class="content">
+					<view class="price_button">
+						<view class="price">{{item.price}} ￥</view>
+						<image src="../../images/bravo_03.png" class="button" wx:if="{{item.isLikes==true}}" bindtap="cancelLikes" data-videoId="{{item.id}}" data-index="{{index}}" />
+						<image src="../../images/bravo_03.png" class="button" wx:else bindtap="addLikes" data-videoId="{{item.id}}" data-index="{{index}}" />
+					</view>
+					<view class="introductory van-multi-ellipsis--l2">{{item.introduction}}
+					</view>
+				</view>
+			</view>
+			<view class="button_buy">
+				<view class="button_" data-id="{{item.id}}" data-videoId="{{item.videoId}}">购买</view>
+			</view>
+		</view>
+
+	</view>
+</view>
+
+<tab active_index="1" />
+<van-toast id="van-toast" />

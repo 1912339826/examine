@@ -1,0 +1,22 @@
+/* components/tab/tab.wxss */
+.tab{
+  height: 120rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #ffffff;
+  display: flex;
+  z-index: 9999;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.tab image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.son{
+  color: "#4d4d4d";
+  text-align: center;
+}

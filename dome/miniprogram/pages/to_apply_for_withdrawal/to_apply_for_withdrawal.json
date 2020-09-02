@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tab": "../../components/tab/tab",
+    "van-field": "@vant/weapp/field/index"
+  }
+}

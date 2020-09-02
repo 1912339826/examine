@@ -1,0 +1,74 @@
+<!--pages/friend_circle/friend_circle.wxml-->
+<!-- 朋友圈 -->
+<wxs module="dateFr" src="../../filter/dismantle.wxs"></wxs>
+<view class="friend_circle" id="box" bindtap="ancestral_B" bindtouchstart="handletouchtart" bindtouchmove="handletouchmove" bindtouchend="handletouchend">
+	<view class="top">
+		<view class="img_back">
+			<view class="back" bindtap="back">
+				<van-icon name="arrow-left" color="#ffffff" />
+			</view>
+			<image src="../../images/friend_circle_top_back_03.png" />
+			<view class="title">
+				品鉴官朋友圈
+			</view>
+			<view class="heard_img">
+				<image src="{{pic}}" />
+			</view>
+			<view class="heard_img_delete">删除</view>
+		</view>
+	</view>
+	<view class="box">
+		<view class="lists" wx:for="{{figure_set}}" wx:key="ids" wx:for-index="indexs" wx:for-item="items">
+			<view class="isday">
+				<view class="date" wx:if="{{items.string_time==Todays_date}}">今天</view>
+				<view class="date_el" wx:else>
+					<view class="top">
+						<view class="day">{{dateFr.dismantle(items.string_time).day}}</view>
+						<view class="month">{{dateFr.dismantle(items.string_time).month}}月</view>
+					</view>
+					<view class="bottom">
+						{{dateFr.dismantle(items.string_time).year}}年
+					</view>
+				</view>
+				<view class="">
+					<image src="../../images/friend_circle_day_03.png" />
+				</view>
+			</view>
+
+			<view class="circles" wx:for="{{items.children}}" wx:key="id" wx:for-index="index" wx:for-item="item">
+				<view class="son">
+					<image class="circles_heard" src="{{item.avatarPic}}" />
+					<view class="dynamic">
+						<view class="dynamic_content">
+							<view class="title">
+								{{item.content}}
+							</view>
+							<view class="figure_set" wx:if="{{!!item.pics}}">
+								<!-- <image mode='widthFix' wx:for="{{figure_set}}" src="../../images/friend_circle_img_03.png" /> -->
+								<image src="{{item.pics}}" mode='widthFix'></image>
+							</view>
+						</view>
+						<view class="movement">
+							<image mode='widthFix' class="circles_button_" src="../../images/circles_button_03.png" catchtap="circles_" data-id="{{item.id}}" />
+							<image src="../../images/PL_02.png" class="PL" bindtap="PL_img" data-id="{{item.id}}" wx:if="{{item.id==circles_img_id}}"></image>
+						</view>
+						<view class="Dynamic_comments" wx:if="{{!item.circleFriendsComments.length==0}}">
+							<view class="Dynamic_comments_son" wx:for="{{item.circleFriendsComments}}" wx:key="commentsid" wx:for-index="commentsindex" wx:for-item="commentsitem">
+								<text>{{commentsitem.name}}：</text>
+								{{commentsitem.content}}
+							</view>
+						</view>
+						<view class="textarea_box" wx:if="{{textarea_==item.id}}">
+							<textarea wx:if="{{textarea_==item.id}}" focus="{{textarea_==item.id}}" class="textarea_input" bindinput="textarea_input" bindconfirm="confirm" value="{{textarea_value}}" class="weui-input" type="text" maxlength="-1" placeholder="请输入" />
+							<view class="textarea_button" bindtap="add_comment" data-index="{{index}}" data-indexs="{{indexs}}" data-id="{{item.id}}">评论</view>
+							</view>
+						</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<van-toast id="van-toast" />
+<!-- <input class="weui-input" focus="{{focus}}" wx:if="{{focus}}" type="text" confirm-type="send" placeholder="将会获取焦点" /> -->
+<!-- <input class="weui-input" focus="{{focus}}"  type="text" confirm-type="send" placeholder="将会获取焦点" /> -->

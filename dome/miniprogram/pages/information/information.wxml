@@ -1,0 +1,35 @@
+<view class="information">
+	<view class="top">
+		资讯
+	</view>
+	<view class="tab">
+		<view class="{{tab_son_list[0]}}" data-index="0" bindtap="tab_son">
+			推荐资讯
+		</view>
+		<view class="{{tab_son_list[1]}}" data-index="1" bindtap="tab_son">
+			热点资讯
+		</view>
+		<view class="{{tab_son_list[2]}}" data-index="2" bindtap="tab_son">
+			最新资讯
+		</view>
+	</view>
+
+	<view class="big_list">
+		<image src="../../images/information_big_03.jpg"></image>
+		<view class="big_list_text">是非成败转头空,青山依旧在</view>
+	</view>
+	<view class="lists">
+		<view class="list" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
+			<view class="left">
+				<view class="title">
+				{{item.title}}
+				</view>
+				<view class="isday">{{item.time.getFullYear}}年{{item.time.getMonth+1}}月{{item.time.getDate}}日</view>
+			</view>
+			<image src="{{item.pic}}"></image>
+		</view>
+	</view>
+</view>
+
+<tab active_index="0"/>
+<van-toast id="van-toast" />

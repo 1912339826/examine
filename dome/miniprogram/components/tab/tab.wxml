@@ -1,0 +1,19 @@
+<!--components/tab/tab.wxml-->
+<view class="tab">
+	<view class="son" data-index="0"  bindtap="change">
+		<image src="{{tab[0]}}" />
+		<view>资讯</view>
+	</view>
+	<view class="son" data-index="1"  bindtap="change">
+		<image src="{{tab[1]}}" />
+		<view>品鉴官</view>
+	</view>
+	<view class="son" data-index="2"  bindtap="change">
+		<image src="{{tab[2]}}" />
+		<view>商城</view>
+	</view>
+	<view class="son" data-index="3"  bindtap="change">
+		<image src="{{tab[3]}}" />
+		<view>我的</view>
+	</view>
+</view>
