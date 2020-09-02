@@ -38,7 +38,7 @@ Page({
     fun_ref.get(fun_config.play_video_vod.url, {
       videoId: videoId
     }, res => {
-      console.log(res.data.result)
+      console.log(res)
       this.setData({
         src: res.data.result
       })

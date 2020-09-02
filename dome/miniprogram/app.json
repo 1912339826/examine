@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/Authorized/Authorized",
     "pages/store/store",
     "pages/tasting_tube/tasting_tube",
     "pages/my/my",
-    "pages/Authorized/Authorized",
+    
     "pages/friend_circle/friend_circle",
     "pages/headquarters_of_the_message/headquarters_of_the_message",
    
