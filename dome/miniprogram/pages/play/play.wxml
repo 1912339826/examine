@@ -2,6 +2,18 @@
 <!-- 视频播放 -->
 <view class="play">
 	<video oster-for-crawler="{{item.cover}}" bindended="ended" src="{{src}}" style="width:100%"></video>
-	<view class="price">{{price}}￥</view>
+	<view class="price">￥{{price}}</view>
 	<view class="introduction">简介：{{introduction}}</view>
+	<view class="bottom_">
+		<view wx:if="{{!!taster}}" class="botton_box">
+			<view class="button_no" wx:if="{{owned}}">已拥有</view>
+			<view class="button_yes" wx:else bindtap="pay">申请</view>
+		</view>
+		<view wx:else class="botton_box">
+			<view class="button_no" wx:if="{{owned}}">已拥有</view>
+			<view class="button_yes" wx:else bindtap="pay">购买</view>
+		</view>
+	</view>
 </view>
+
+<van-toast id="van-toast" />

@@ -1,0 +1,41 @@
+/* pages/order_list/order_list.wxss */
+.order_list {
+  padding-bottom: 120rpx;
+  padding-right: 2vw;
+  padding-left: 2vw;
+  padding-top: 4vw;
+}
+
+.list {
+  background-color: #ffffff;
+  margin-bottom: 2vw;
+  border-radius: 20rpx;
+  padding: 2vw;
+}
+.nav{
+  display: flex;
+  align-items: center;
+  height: 10vw;
+  line-height: 10vw;
+}
+
+.nav .day{
+  font-size: 30rpx;
+}
+
+.nav .orderNo{
+  font-size: 25rpx;
+  margin-left: 2vw;
+}
+
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+}

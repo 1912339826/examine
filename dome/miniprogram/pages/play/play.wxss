@@ -1,15 +1,54 @@
 /* pages/play/play.wxss */
-.play{
+.play {
   font-size: 30rpx;
-  padding: 40rpx;
 }
-.price{
+
+.price {
   color: red;
   height: 50rpx;
   line-height: 50rpx;
   font-size: 40rpx;
+  padding: 40rpx;
 }
 
-.introduction{
-  margin-top: 40rpx;
+.introduction {
+  padding: 40rpx;
+}
+
+.bottom_ {
+  text-align: center;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0px -1px 7px #BDBDBD;
+  display: flex;
+  align-items: center;
+}
+
+.bottom_ .botton_box {
+  display: flex;
+  height: 100rpx;
+  width: 100%;
+}
+
+.bottom_ .botton_box view {
+  width: 100%;
+  text-align: right;
+ 
+  padding-right: 80rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+
+}
+
+.button_yes{
+  color: #ffffff;
+  background-image: linear-gradient(to right, #ffffff, #FF0808);
+}
+
+.button_no{
+  color: #ebebeb;
+  background-image: linear-gradient(to right, #ffffff, #A2A6A5);
 }

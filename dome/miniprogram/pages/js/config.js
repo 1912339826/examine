@@ -98,4 +98,9 @@ export default {
     type: "POST",
     url: `${BASE_URLA}/leaveMessage/add`
   },
+  // 支付
+  wxPay_pay: {
+    type: "POST",
+    url: `${BASE_URLA}/pay/wxPay`
+  },
 };

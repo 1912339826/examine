@@ -5,7 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    lists: [{
+      "id": "1",
+      "userId": "c72e7f22219d4864998316af08dba02c",
+      "tasterId": null,
+      "videoId": "e7e4cd18842249ed9febeb2de32b0fba",
+      "orderNo": "1111111",
+      "createTime": 1599041637000,
+      "cover": "https://jason-blog.oss-cn-hangzhou.aliyuncs.com/imgs/4.jpg",
+      "title": "短视频制作服务",
+      "price": 0.02,
+      "video": "fbc24a9ce71c41c18ae69e177f34680a"
+    }]
   },
 
   /**
@@ -17,7 +28,7 @@ Page({
       backgroundColor: '#395996'
     })
     wx.setNavigationBarTitle({
-      title: '我的购物车'
+      title: '全部订单'
     })
   },
 
