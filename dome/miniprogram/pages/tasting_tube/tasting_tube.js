@@ -80,7 +80,7 @@ Page({
   tasterList() {
     fun_ref.get(fun_config.tasterList.url, {
       pageNo: this.data.pageNo, //页码
-      pageSize: 9, //每页记录条数,
+      pageSize: 6, //每页记录条数,
       name: this.data.value,
       cityId: this.data.changecity.id
     }, res => {

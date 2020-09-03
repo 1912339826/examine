@@ -16,7 +16,8 @@ Page({
     owned: false,
     taster: wx.getStorageSync('user').taster,
     tasterId: wx.getStorageSync('user').tasterId,
-    videoId: ""
+    videoId: "",
+    id: ""
   },
 
   /**
@@ -34,7 +35,8 @@ Page({
       title: options.title,
       introduction: options.introduction,
       price: options.price,
-      videoId: options.videoId
+      videoId: options.videoId,
+      id: options.id
     })
     this.play_video_vod(options.videoId)
   },
@@ -70,14 +72,25 @@ Page({
     console.log("111")
   },
   // 点击购买或者申请按钮
-  pay() {
-    if (!!taster) {
+  pay(e) {
+    if (e.currentTarget.dataset.taster) {
       // 申请
-      this.wxPay_pay(this.data.tasterId)
+      this.bindVideo_taster()
     } else {
       // 购买
-      this.wxPay_pay("")
     }
+  },
+  bindVideo_taster() {
+    fun_ref.post(fun_config.bindVideo_taster.url, {
+      videoId: this.data.id
+    }, res => {
+      console.log(res.data.message)
+      if (res.data.message == "") {
+        Toast.success('申请成功！');
+      } else {
+        Toast.fail(res.data.message);
+      }
+    })
   },
   wxPay_pay(tasterId) {
     fun_ref.get(fun_config.wxPay_pay.url, {

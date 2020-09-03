@@ -1,12 +1,14 @@
 {
   "pages": [
+    
+    "pages/my/my",
+    "pages/friend_circle/friend_circle",
+    "pages/store/store",
     "pages/order_list/order_list",
     "pages/Authorized/Authorized",
     "pages/play/play",
-    "pages/store/store",
     "pages/tasting_tube/tasting_tube",
-    "pages/my/my",
-    "pages/friend_circle/friend_circle",
+    
     "pages/headquarters_of_the_message/headquarters_of_the_message",
     "pages/homepage/homepage",
     "pages/tasting_tube_shoppingmall/tasting_tube_shoppingmall",
@@ -16,7 +18,7 @@
     "pages/to_apply_for_withdrawal/to_apply_for_withdrawal",
     "pages/basic_information_modification/basic_information_modification",
     "pages/withdrawal_record/withdrawal_record"
-    
+
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -103,4 +103,19 @@ export default {
     type: "POST",
     url: `${BASE_URLA}/pay/wxPay`
   },
+  // 购买记录
+  list_order: {
+    type: "GET",
+    url: `${BASE_URLA}/order/list`
+  },
+  // 品鉴官申请
+  bindVideo_taster: {
+    type: "POST",
+    url: `${BASE_URLA}/taster/bindVideo`
+  },
+  // 用户朋友圈
+  getList_circleFriends: {
+    type: "GET",
+    url: `${BASE_URLA}/circleFriends/getList`
+  },
 };

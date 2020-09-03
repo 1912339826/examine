@@ -17,7 +17,7 @@
 		<view class="list" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
 			<view class="box">
 				<view class="img">
-					<image class="play_img" src="../../images/play.png" bindtap="play" data-title="{{item.title}}" data-introduction="{{item.introduction}}"  data-price="{{item.price}}" data-id="{{item.videoId}}"></image>
+					<image class="play_img" src="../../images/play.png" bindtap="play" data-title="{{item.title}}" data-isid="{{item.id}}" data-introduction="{{item.introduction}}" data-price="{{item.price}}" data-id="{{item.videoId}}"></image>
 					<image src="{{item.cover}}" class="show" />
 					<view class="praise">
 						<text>{{item.likes}}</text>
@@ -36,7 +36,8 @@
 				</view>
 			</view>
 			<view class="button_buy">
-				<view class="button_" data-id="{{item.id}}" data-videoId="{{item.videoId}}">购买</view>
+				<view class="button_" data-id="{{item.id}}" data-videoId="{{item.videoId}}" wx:if="{{!!taster}}" data-taster="{{true}}" bindtap="purchase">申请</view>
+				<view class="button_" data-id="{{item.id}}" data-videoId="{{item.videoId}}" wx:else data-taster="{{false}}" bindtap="purchase">购买</view>
 			</view>
 		</view>
 

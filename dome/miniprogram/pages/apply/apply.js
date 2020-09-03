@@ -75,26 +75,25 @@ Page({
   },
   // 提交按钮
   go_be_reviewing() {
-    
-    // Toast.loading({
-    //   message: '加载中...',
-    //   forbidClick: true,
-    // })
-    // fun_ref.post(fun_config.tasterSubmit.url, {
-    //   name: this.data.input_name,
-    //   phone: this.data.input_phone,
-    //   cityId: this.data.changecity[2].id,
-    //   introduction: this.data.text_individual,
-    //   teamIntroduction: this.data.text_teams
-    // }, res => {
-    //   Toast.clear();
-    //   console.log(res)
-    // },File=>{
-    //   console.log(File)
-    // })
-    wx.navigateTo({
-      url: "../be_reviewing/be_reviewing"
-    });
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+    })
+    fun_ref.post(fun_config.tasterSubmit.url, {
+      name: this.data.input_name,
+      phone: this.data.input_phone,
+      cityId: this.data.changecity[2].id,
+      introduction: this.data.text_individual,
+      teamIntroduction: this.data.text_teams
+    }, res => {
+      Toast.clear();
+      console.log(res)
+      wx.navigateTo({
+        url: "../be_reviewing/be_reviewing"
+      });
+    }, File => {
+      console.log(File)
+    })
   },
   city() {
     this.setData({

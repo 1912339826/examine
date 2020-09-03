@@ -38,7 +38,16 @@ Page({
       name,
       pic
     }, function () {
-      this.circleFriends_list()
+      if (!!this.data.id) {
+        this.circleFriends_list()
+      } else {
+        this.getList_circleFriends()
+        this.setData({
+          name: wx.getStorageSync('user').name,
+          pic: wx.getStorageSync('user').avatarPic
+        })
+      }
+
     })
     var timestamp = Date.parse(new Date());
     this.setData({
@@ -76,11 +85,41 @@ Page({
       message: '加载中...',
       forbidClick: true,
     })
+
     fun_ref.get(fun_config.circleFriends_list.url, {
       pageNo: this.data.pageNo,
       pageSize: 8,
       userId: this.data.id
       // userId: "eb0fc0b43d6447f4b77702309f642293"
+    }, res => {
+      console.log(res.data.result.data)
+      let arr = this.data.lists;
+      let newarr = arr.concat(res.data.result.data)
+      this.setData({
+        lists: newarr,
+        totalPage: res.data.result.totalPage
+      }, function () {
+        for (let index = 0; index < res.data.result.data.length; index++) {
+          const element = res.data.result.data[index];
+          element.string_time = this.disconnecting_time(element.createTime);
+        }
+        this.setData({
+          figure_set: this.sort_pro(res.data.result.data, ['string_time'])
+        }, function () {
+          Toast.clear();
+          console.log(this.data.figure_set)
+        })
+      })
+    })
+  },
+  getList_circleFriends() {
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+    })
+    fun_ref.get(fun_config.getList_circleFriends.url, {
+      pageNo: this.data.pageNo,
+      pageSize: 8,
     }, res => {
       console.log(res.data.result.data)
       let arr = this.data.lists;
@@ -257,7 +296,13 @@ Page({
       this.setData({
         pageNo: pageNo
       }, function () {
-        this.circleFriends_list()
+        if (!!this.data.id) {
+          this.circleFriends_list()
+        } else {
+          this.getList_circleFriends()
+        }
+
+
       })
     }
   },

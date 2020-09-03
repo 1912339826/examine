@@ -3,26 +3,33 @@
 <view class="my">
 	<view class="top">
 		<view class="balance">
-			<view  wx:if="{{!!apply}}">我的余额</view>
-			<view  wx:if="{{!!apply}}">9 <text>元</text></view>
+			<view wx:if="{{!!apply}}">我的余额</view>
+			<view wx:if="{{!!apply}}">9 <text>元</text></view>
 		</view>
 		<view class="my_top">
-			
 			<view class="head_sculpture">
-			  <image src="../../images/head_sculpture_border.png" class="head_sculpture_border"></image>
-				<image src="{{head_sculpture}}" class="head_img" />
+				<image src="../../images/head_sculpture_border.png" class="head_sculpture_border"></image>
+				<image src="{{head_sculpture}}" class="head_img" wx:if="{{authorization}}"/>
+				<image src="../../images/head_sculpture_03_03.png" class="head_img" wx:if="{{!authorization}}"></image>
 			</view>
-			<view class="name_gender">
+			<view class="name_gender" wx:if="{{authorization}}">
 				<view>{{name}}</view>
-				<image src="../../images/gender_masculinity_03.png" class="gender_masculinity_03" wx:if="{{gender=='男'}}"/>
-				<image src="../../images/woman.png" class="gender_masculinity_03" wx:else/>
+				<image src="../../images/gender_masculinity_03.png" class="gender_masculinity_03" wx:if="{{gender=='男'}}" />
+				<image src="../../images/woman.png" class="gender_masculinity_03" wx:else />
 			</view>
-			<view class="signature">(编辑个性签名)</view>
+			<view class="name_gender_button" wx:if="{{!authorization}}">
+				<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="log" class="fix">登录</button>
+			</view>
+			<!-- <view class="signature">(编辑个性签名)</view> -->
 		</view>
 		<view></view>
 	</view>
-	<view class="lists">
-		<view class="list to_apply_for_withdrawal" data-name="to_apply_for_withdrawal" bindtap="fun_click"  wx:if="{{!!apply}}">
+	<view class="lists" wx:if="{{authorization}}">
+		<view class="list order_list" data-name="order_list" bindtap="fun_click">
+			<view class="tex">我的购买记录</view>
+			<image src="../../images/arrows_03.png" class="arrows_03" />
+		</view>
+		<view class="list to_apply_for_withdrawal" data-name="to_apply_for_withdrawal" bindtap="fun_click" wx:if="{{!!apply}}">
 			<view class="tex">申请提款</view>
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>
@@ -31,14 +38,14 @@
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>
 		<view class="list basic_information_modification" data-name="basic_information_modification" bindtap="fun_click">
-			<view class="tex">基本信息修改</view>
+			<view class="tex">基本信息</view>
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>
-		<view class="list my_dynamic" data-name="friend_circle" bindtap="fun_click"  wx:if="{{!!apply}}">
+		<view class="list my_dynamic" data-name="friend_circle" bindtap="fun_click" wx:if="{{!!apply}}">
 			<view class="tex">我的动态</view>
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>
-		<view class="list my_store_management" data-name="store" bindtap="fun_click"  wx:if="{{!!apply}}">
+		<view class="list my_store_management" data-name="store" bindtap="fun_click" wx:if="{{!!apply}}">
 			<view class="tex">我的商场管理</view>
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>

@@ -21,8 +21,8 @@ Page({
     })
   },
   back_tasting_tube(){
-    wx.navigateBack({
-      url: 1,
+    wx.redirectTo({
+      url: '../tasting_tube/tasting_tube',
     })
   },
   /**

@@ -9,7 +9,7 @@
 			</view>
 			<image src="../../images/friend_circle_top_back_03.png" />
 			<view class="title">
-				品鉴官朋友圈
+				{{name}}的朋友圈
 			</view>
 			<view class="heard_img">
 				<image src="{{pic}}" />

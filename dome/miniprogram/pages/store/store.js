@@ -22,7 +22,8 @@ Page({
       title: "测试11111",
       videoId: "2c6fc60198ed4c41a2464cd9eb7bd54a"
     }],
-    totalPage: 1
+    totalPage: 1,
+    taster: wx.getStorageSync('user').taster
   },
 
   /**
@@ -101,7 +102,28 @@ Page({
   play(e) {
     console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price,
+      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" +e.currentTarget.dataset.isid,
+    })
+  },
+  purchase(e) {
+    console.log(e.currentTarget.dataset.taster)
+    if (e.currentTarget.dataset.taster) {
+      // 申请
+      this.bindVideo_taster(e.currentTarget.dataset.id)
+    } else {
+      // 购买
+    }
+  },
+  bindVideo_taster(id) {
+    fun_ref.post(fun_config.bindVideo_taster.url, {
+      videoId: id
+    }, res => {
+      console.log(res.data.message)
+      if (res.data.message == "") {
+        Toast.success('申请成功！');
+      } else {
+        Toast.fail(res.data.message);
+      }
     })
   },
   /**

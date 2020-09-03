@@ -8,34 +8,61 @@
 
 .list {
   background-color: #ffffff;
-  margin-bottom: 2vw;
+  margin-bottom: 4vw;
   border-radius: 20rpx;
   padding: 2vw;
 }
-.nav{
+
+.nav {
   display: flex;
   align-items: center;
   height: 10vw;
   line-height: 10vw;
 }
 
-.nav .day{
+.nav .day {
   font-size: 30rpx;
 }
 
-.nav .orderNo{
+.nav .orderNo {
   font-size: 25rpx;
   margin-left: 2vw;
 }
 
-.box{
+.box {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.box image{
+.box image {
   width: 150rpx;
   height: 150rpx;
   border-radius: 10rpx;
+}
+
+.title {
+  font-size: 30rpx;
+  height: 150rpx;
+  width: 58%;
+}
+
+.price {
+  width: 15%;
+}
+
+.handle {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.handle view {
+  color: #fc5700;
+  font-size: 25rpx;
+  border: 1rpx solid #fc5700;
+  border-radius: 20rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
 }

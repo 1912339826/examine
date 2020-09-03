@@ -1,4 +1,15 @@
 function myrequest(url, method, param, successCallback, failCallback) {
+    wx.getSetting({
+        // 是否授过权
+        success(res) {
+            let userInfo = !!res.authSetting['scope.userInfo'];
+            if (userInfo) {
+                wx.setStorageSync('authorization', true);
+            } else {
+                wx.setStorageSync('authorization', false);
+            }
+        }
+    })
     console.log('准备发起请求 :>> ', url);
     var _this = this;
     wx.request({

@@ -7,11 +7,11 @@
 	<view class="bottom_">
 		<view wx:if="{{!!taster}}" class="botton_box">
 			<view class="button_no" wx:if="{{owned}}">已拥有</view>
-			<view class="button_yes" wx:else bindtap="pay">申请</view>
+			<view class="button_yes" wx:else bindtap="pay" data-taster="{{true}}">申请</view>
 		</view>
 		<view wx:else class="botton_box">
 			<view class="button_no" wx:if="{{owned}}">已拥有</view>
-			<view class="button_yes" wx:else bindtap="pay">购买</view>
+			<view class="button_yes" wx:else bindtap="pay" data-taster="{{false}}">购买</view>
 		</view>
 	</view>
 </view>
