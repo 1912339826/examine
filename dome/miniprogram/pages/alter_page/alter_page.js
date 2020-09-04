@@ -1,4 +1,4 @@
-// pages/to_apply_for_withdrawal/to_apply_for_withdrawal.js
+// pages/alter_page/alter_page.js
 const app = getApp();
 const fun_ref = app.ref.default;
 const fun_config = app.config.default;
@@ -9,10 +9,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    balance: 0,
-    value: ""
+    ischange: false,
+    value: "",
+    inquire: {
+      name: "昵称",
+      specialty: "特长",
+      signature: "签名"
+    },
+    type: ""
   },
-
+  // 一下进入此页面：
+  // wx.navigateTo({
+  //   url: `../alter_page/alter_page?type=${e.currentTarget.dataset.name}`
+  // })
   /**
    * 生命周期函数--监听页面加载
    */
@@ -22,57 +31,42 @@ Page({
       backgroundColor: '#395996'
     })
     wx.setNavigationBarTitle({
-      title: '提现页面'
+      title: `更改${this.data.inquire[options.type]}`
     })
-  },
-  go_withdrawal_record() {
-    wx.navigateTo({
-      url: "../withdrawal_record/withdrawal_record"
-    });
-  },
-  change_() {
-    if (this.data.value == "") {} else {
-      if ((this.data.balance - Number(this.data.value)) < 0) {
-        this.setData({
-          value: this.data.balance
-        })
-      } else {}
-    }
-  },
-  // 全部提现
-  withdraw_all() {
     this.setData({
-      value: this.data.balance
+      type: options.type,
+      value: wx.getStorageSync('user').taster[options.type]
     })
   },
-  // 提现
-  withdraw() {
+  onChange() {
+    this.setData({
+      ischange: true
+    })
+  },
+  sub() {
+    console.log(this.data.value)
     if (this.data.value == "") {
-      Toast.fail("请输入金额")
+      Toast.fail("没有输入，请重新填写")
     } else {
-      this.apply_withdraw()
+      this.update_taster()
     }
   },
-  apply_withdraw() {
-    fun_ref.post(fun_config.apply_withdraw.url, {
-      price: this.data.value
+  update_taster() {
+    let type = this.data.type;
+    fun_ref.post(fun_config.update_taster.url, {
+      [type]: this.data.value,
+      id: wx.getStorageSync('user').taster.id
     }, res => {
       if (res.data.status == 200) {
         Toast.success(res.data.message);
-        this.index_taster()
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 300);
       } else {
-        Toast.fail(res.data.message);
+        Toast.fail('失败');
       }
-    })
-  },
-  index_taster() {
-    fun_ref.get(fun_config.index_taster.url, {}, res => {
-      wx.setStorageSync('user', res.data);
-      wx.setStorageSync('authorization', true);
-      this.setData({
-        balance: wx.getStorageSync('user').taster.balance,
-        value: ""
-      })
     })
   },
   /**
@@ -86,9 +80,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      balance: wx.getStorageSync('user').taster.balance
-    })
+
   },
 
   /**

@@ -10,16 +10,17 @@
 		<view class="son son_title">
 			<view>提现金额</view>
 			<view>
-				<van-field model:value="{{ value }}" placeholder="" border="{{ false }}" label="￥" />
+				<van-field bind:change="change_" model:value="{{ value }}" type="digit" placeholder="" border="{{ false }}" label="￥" />
 			</view>
 			<view>
-				当前余额剩余5元，<text class="all">全部提现</text>
+				当前余额剩余{{balance}}元，<text class="all" bindtap="withdraw_all">全部提现</text>
 			</view>
 		</view>
 
 		<view class="son">
-			<view class="button_">提现</view>
+			<view class="button_"  bindtap="withdraw">提现</view>
 		</view>
 	</view>
 </view>
 <tab active_index="3" />
+<van-toast id="van-toast" />

@@ -12,24 +12,22 @@
 	</view>
 
 	<view class="lists">
-
-
 		<view class="list" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
-			<view class="box">
+			<view class="box" bindtap="play" data-title="{{item.title}}" data-isid="{{item.id}}" data-introduction="{{item.introduction}}" data-price="{{item.price}}" data-id="{{item.videoId}}">
 				<view class="img">
-					<image class="play_img" src="../../images/play.png" bindtap="play" data-title="{{item.title}}" data-isid="{{item.id}}" data-introduction="{{item.introduction}}" data-price="{{item.price}}" data-id="{{item.videoId}}"></image>
+					<image class="play_img" src="../../images/play.png" ></image>
 					<image src="{{item.cover}}" class="show" />
-					<view class="praise">
+					<!-- <view class="praise">
 						<text>{{item.likes}}</text>
 						<image wx:if="{{!!item.isLikes}}" src="../../images/star.png"></image>
 						<image src="../../images/star_no.png" wx:else />
-					</view>
+					</view> -->
 				</view>
 				<view class="content">
 					<view class="price_button">
 						<view class="price">{{item.price}} ￥</view>
-						<image src="../../images/bravo_03.png" class="button" wx:if="{{item.isLikes==true}}" bindtap="cancelLikes" data-videoId="{{item.id}}" data-index="{{index}}" />
-						<image src="../../images/bravo_03.png" class="button" wx:else bindtap="addLikes" data-videoId="{{item.id}}" data-index="{{index}}" />
+						<!-- <image src="../../images/bravo_03.png" class="button" wx:if="{{item.isLikes==true}}" bindtap="cancelLikes" data-videoId="{{item.id}}" data-index="{{index}}" /> -->
+						<!-- <image src="../../images/bravo_03.png" class="button" wx:else bindtap="addLikes" data-videoId="{{item.id}}" data-index="{{index}}" /> -->
 					</view>
 					<view class="introductory van-multi-ellipsis--l2">{{item.introduction}}
 					</view>

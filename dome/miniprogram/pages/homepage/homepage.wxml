@@ -1,7 +1,7 @@
 <!--pages/homepage/homepage.wxml-->
 <!-- 品鉴官主页 -->
 <view class="homepage">
-	<image src="../../images/homepage_back_img_03.png" alt="" class="back_img" />
+	<image src="../../images/homepage_back_img_03.jpg" alt="" class="back_img" />
 	<view class="personage">
 		<view class="head_portrait">
 			<image src="{{pic}}" alt="" />

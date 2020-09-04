@@ -14,8 +14,8 @@ Page({
     introduction: "",
     price: "",
     owned: false,
-    taster: wx.getStorageSync('user').taster,
-    tasterId: wx.getStorageSync('user').tasterId,
+    taster: false,
+    tasterId: false,
     videoId: "",
     id: ""
   },
@@ -130,7 +130,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      taster: wx.getStorageSync('user').taster,
+      tasterId: wx.getStorageSync('user').tasterId,
+    })
   },
 
   /**

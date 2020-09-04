@@ -118,4 +118,24 @@ export default {
     type: "GET",
     url: `${BASE_URLA}/circleFriends/getList`
   },
+  // 申请提现
+  apply_withdraw: {
+    type: "POST",
+    url: `${BASE_URLA}/withdraw/apply`
+  },
+  // 提现记录
+  getList_withdraw: {
+    type: "GET",
+    url: `${BASE_URLA}/withdraw/getList`
+  },
+  // 照片上传 
+  UploadPhotos: {
+    type: "POST",
+    url: `${BASE_URLA}/info/import`
+  },
+  // 品鉴官更改信息
+  update_taster: {
+    type: "POST",
+    url: `${BASE_URLA}/taster/update`
+  },
 };

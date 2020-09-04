@@ -80,7 +80,9 @@
 		</view>
 
 		<view class="son">
-		  	<van-button block type="danger" size="small" bindtap="go_be_reviewing">提交</van-button>
+			<van-button block type="danger" size="small"  disabled wx:if="{{!radio_change_list}}">提交</van-button>
+		  	<van-button block type="danger" size="small" bindtap="go_be_reviewing"  wx:else>提交</van-button>
+				
 		</view>
 		<view class="son hint">
       提交品鉴官相关信息，等待审核，通过后成为品鉴官		

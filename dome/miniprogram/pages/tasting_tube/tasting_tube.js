@@ -5,11 +5,11 @@ const fun_config = app.config.default;
 import Toast from '@vant/weapp/toast/toast';
 // 临时数据
 const citys = [{
-  text: "1",
+  text: "",
   children: [{
-    text: "11",
+    text: "",
     children: [{
-      text: "111",
+      text: "",
       children: []
     }]
   }]
@@ -75,6 +75,7 @@ Page({
     this.setData({
       lists: []
     })
+    this.tasterList()
     this.cityTree()
   },
   tasterList() {
@@ -92,7 +93,7 @@ Page({
         lists: newarr,
         totalPage: res.data.result.totalPage
       }, function () {
-        Toast.clear();
+
       })
     })
   },
@@ -117,7 +118,7 @@ Page({
           this.setData({
             [columns2]: arr[0].children[0].children
           }, function () {
-            this.tasterList()
+            Toast.clear();
           })
         })
       })
@@ -138,14 +139,23 @@ Page({
     }
   },
   go_homepage(e) {
-    wx.navigateTo({
-      url: `../homepage/homepage?id=${e.currentTarget.dataset.id}`
-    });
+    if (wx.getStorageSync('authorization')) {
+      wx.navigateTo({
+        url: `../homepage/homepage?id=${e.currentTarget.dataset.id}`
+      });
+    } else {
+      Toast.fail("未登录")
+    }
+
   },
   goapply() {
-    wx.navigateTo({
-      url: '../apply/apply'
-    });
+    if (wx.getStorageSync('authorization')) {
+      wx.navigateTo({
+        url: '../apply/apply'
+      });
+    } else {
+      Toast.fail("未登录")
+    }
   },
   // bind_input
   bind_input(e) {
@@ -194,16 +204,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
     this.setData({
-      apply: wx.getStorageSync('user').tasterId
+      apply: wx.getStorageSync('user').taster
     })
   },
 

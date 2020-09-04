@@ -2,17 +2,21 @@
 const app = getApp();
 const fun_ref = app.ref.default;
 const fun_config = app.config.default;
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    authorization: wx.getStorageSync('authorization'),
-    apply: wx.getStorageSync('user').taster,
-    name: wx.getStorageSync('user').name,
-    gender: wx.getStorageSync('user').sex,
-    head_sculpture: wx.getStorageSync('user').avatarPic,
+    authorization: false,
+    apply: false,
+    name: '',
+    gender: false,
+    head_sculpture: false,
+    balance: false,
+    signature: "",
+    id: ""
   },
 
   /**
@@ -33,9 +37,9 @@ Page({
   },
   fun_click(e) {
     console.log(e.currentTarget.dataset.name)
-    if (e.currentTarget.dataset.name == "store") {
-      wx.redirectTo({
-        url: `../${e.currentTarget.dataset.name}/${e.currentTarget.dataset.name}`
+    if (e.currentTarget.dataset.name == "tasting_tube_shoppingmall") {
+      wx.navigateTo({
+        url: `../${e.currentTarget.dataset.name}/${e.currentTarget.dataset.name}?id=${this.data.id}&&name=${this.data.name}&&pic=${this.data.head_sculpture}`
       });
     } else {
       wx.navigateTo({
@@ -64,8 +68,11 @@ Page({
    */
   onShow: function () {
     this.setData({
-      apply: wx.getStorageSync('user').tasterId
+      authorization: wx.getStorageSync('authorization')
     })
+    if (this.data.authorization) {
+      this.index_taster()
+    }
   },
   getUserInfo() {
     let that = this;
@@ -97,16 +104,41 @@ Page({
   },
   // 获取用户信息
   index_taster() {
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+    })
     fun_ref.get(fun_config.index_taster.url, {}, res => {
       console.log(res)
       wx.setStorageSync('user', res.data);
       wx.setStorageSync('authorization', true);
+      if (!!res.data.taster) {
+        this.setData({
+          name: wx.getStorageSync('user').taster.name,
+          head_sculpture: wx.getStorageSync('user').taster.pic,
+          signature: wx.getStorageSync('user').taster.signature,
+          id: wx.getStorageSync('user').tasterId,
+          apply: wx.getStorageSync('user').tasterId,
+          balance: wx.getStorageSync('user').taster.balance,
+        })
+      } else {
+        this.setData({
+          name: wx.getStorageSync('user').name,
+          head_sculpture: wx.getStorageSync('user').avatarPic,
+        })
+      }
       this.setData({
         authorization: true,
-        name: wx.getStorageSync('user').name,
         gender: wx.getStorageSync('user').sex,
-        head_sculpture: wx.getStorageSync('user').avatarPic
+      }, function () {
+        Toast.clear();
       })
+    })
+  },
+  // 去更改页面更改信息
+  alter(e) {
+    wx.navigateTo({
+      url: `../alter_page/alter_page?type=signature`
     })
   },
 

@@ -10,35 +10,45 @@
   padding-left: 40rpx;
   padding-right: 40rpx;
   color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 20rpx;
-  height: 220rpx;
 }
 
-.top>view {
+.top_top {
+  height: 162rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top_top>view {
   width: 30%;
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
-.top>.balance {
+.top_top>.balance {
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 7rpx;
 }
 
-.top>.balance>view:nth-child(1) {
+.top_top>.balance>view:nth-child(1) {
   font-size: 30rpx;
 }
 
-.top>.balance>view:nth-child(2) {
+.top_top>.balance>view:nth-child(2) {
   font-size: 20rpx;
   margin-top: 10rpx;
 }
 
-.top>.my_top {
+.top_top>.my_top {
   flex-direction: column;
+  align-items: center;
+}
+
+.top_bottom{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -46,11 +56,9 @@
   display: flex;
   align-items: center;
   font-size: 30rpx;
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
 }
 
-.name_gender_button button{
+.name_gender_button button {
   font-size: 30rpx;
   margin-top: 20rpx;
   width: 100%;
@@ -60,13 +68,15 @@
   color: #ffffff;
 }
 
-.top>.my_top>.signature {
+.top_bottom>.signature {
   font-size: 24rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
 }
 
 .head_sculpture {
-  width: 135rpx;
-  height: 130rpx;
+  width: 150rpx;
+  height: 145rpx;
   position: relative;
 }
 

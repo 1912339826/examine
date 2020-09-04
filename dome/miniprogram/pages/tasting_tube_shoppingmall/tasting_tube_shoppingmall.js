@@ -27,7 +27,7 @@ Page({
     pageNo: 1,
     id: '',
     totalPage: 1,
-    taster: wx.getStorageSync('user').taster
+    taster: false
   },
 
   /**
@@ -159,7 +159,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      taster: wx.getStorageSync('user').taster
+    })
   },
 
   /**

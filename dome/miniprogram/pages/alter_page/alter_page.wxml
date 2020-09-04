@@ -1,0 +1,10 @@
+<!--pages/alter_page/alter_page.wxml-->
+<view class="alter_page">
+	<van-field model:value="{{ value }}" label="请输入：" border="{{ false }}" bind:change="onChange" />
+	<view class="button_">
+		<van-button type="primary" wx:if="{{ischange}}" bindtap="sub">保存</van-button>
+		<van-button type="primary" wx:else disabled>保存</van-button>
+	</view>
+</view>
+
+<van-toast id="van-toast" />

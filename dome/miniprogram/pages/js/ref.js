@@ -17,7 +17,7 @@ function myrequest(url, method, param, successCallback, failCallback) {
         data: param,
         dataType: 'json',
         method: method,
-        timeout: 10000,
+        timeout: 100000,
         header: {
             'custom-header': method,
             'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',

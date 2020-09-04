@@ -1,0 +1,10 @@
+/* pages/alter_page/alter_page.wxss */
+.alter_page{
+  padding: 20rpx;
+}
+
+.button_{
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: flex-end;
+}

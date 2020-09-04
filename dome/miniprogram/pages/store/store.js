@@ -23,7 +23,7 @@ Page({
       videoId: "2c6fc60198ed4c41a2464cd9eb7bd54a"
     }],
     totalPage: 1,
-    taster: wx.getStorageSync('user').taster
+    taster: false
   },
 
   /**
@@ -66,53 +66,68 @@ Page({
   },
   // 取消点赞
   cancelLikes(e) {
-    console.log(e.currentTarget.dataset)
-    fun_ref.post(fun_config.cancelLikes.url, {
-      userId: wx.getStorageSync('user').id,
-      videoId: e.currentTarget.dataset.videoid
-    }, res => {
-      if (res.data.success) {
-        let lists = this.data.lists;
-        lists[e.currentTarget.dataset.index].isLikes = null;
-        lists[e.currentTarget.dataset.index].likes--
-        this.setData({
-          lists: lists
-        })
-      }
-    })
+    if (wx.getStorageSync('authorization')) {
+      fun_ref.post(fun_config.cancelLikes.url, {
+        userId: wx.getStorageSync('user').id,
+        videoId: e.currentTarget.dataset.videoid
+      }, res => {
+        if (res.data.success) {
+          let lists = this.data.lists;
+          lists[e.currentTarget.dataset.index].isLikes = null;
+          lists[e.currentTarget.dataset.index].likes--
+          this.setData({
+            lists: lists
+          })
+        }
+      })
+    } else {
+      Toast.fail("未登录")
+    }
+    
   },
   // 点赞
   addLikes(e) {
-    console.log(e.currentTarget.dataset)
-    fun_ref.post(fun_config.addLikes.url, {
-      userId: wx.getStorageSync('user').id,
-      videoId: e.currentTarget.dataset.videoid
-    }, res => {
-      if (res.data.success) {
-        let lists = this.data.lists;
-        lists[e.currentTarget.dataset.index].isLikes = true;
-        lists[e.currentTarget.dataset.index].likes++
-        this.setData({
-          lists: lists
-        })
-      }
-    })
+    if (wx.getStorageSync('authorization')) {
+      fun_ref.post(fun_config.addLikes.url, {
+        userId: wx.getStorageSync('user').id,
+        videoId: e.currentTarget.dataset.videoid
+      }, res => {
+        if (res.data.success) {
+          let lists = this.data.lists;
+          lists[e.currentTarget.dataset.index].isLikes = true;
+          lists[e.currentTarget.dataset.index].likes++
+          this.setData({
+            lists: lists
+          })
+        }
+      })
+    } else {
+      Toast.fail("未登录")
+    }
+    
   },
   // 播放
   play(e) {
-    console.log(e.currentTarget.dataset)
-    wx.navigateTo({
-      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" +e.currentTarget.dataset.isid,
-    })
+    if (wx.getStorageSync('authorization')) {
+      wx.navigateTo({
+        url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid,
+      })
+    } else {
+      Toast.fail("未登录")
+    }
   },
   purchase(e) {
-    console.log(e.currentTarget.dataset.taster)
-    if (e.currentTarget.dataset.taster) {
-      // 申请
-      this.bindVideo_taster(e.currentTarget.dataset.id)
+    if (wx.getStorageSync('authorization')) {
+      if (e.currentTarget.dataset.taster) {
+        // 申请
+        this.bindVideo_taster(e.currentTarget.dataset.id)
+      } else {
+        // 购买
+      }
     } else {
-      // 购买
+      Toast.fail("未登录")
     }
+
   },
   bindVideo_taster(id) {
     fun_ref.post(fun_config.bindVideo_taster.url, {
@@ -137,7 +152,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      taster: wx.getStorageSync('user').taster
+    })
   },
 
   /**

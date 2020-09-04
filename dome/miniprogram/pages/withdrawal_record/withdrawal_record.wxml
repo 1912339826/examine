@@ -2,18 +2,21 @@
 <!-- 提现记录 -->
 <view class="withdrawal_record">
 	<view class="lists">
-		<view class="list" wx:for="{{lists_length}}">
+		<view class="list" wx:for="{{lists}}" data-id="{{item.id}}" wx:key="id" wx:for-index="index" wx:for-item="item">
 			<view class="left">
 				<image mode='widthFix' src="../../images/wallet_icon_03.png" />
 				<view class="massage">
 					<view class="state_root_in">
-						<view class="state">提现成功</view>
+						<view class="state" wx:if="{{item.status==0}}">正在审核</view>
+						<view class="state" wx:if="{{item.status==3}}">提现成功</view>
+						<view class="state" wx:if="{{item.status==4}}">提现失败</view>
 					</view>
-					<view class="day">22020-8-1 20:11</view>
+					<view class="day">{{item.timestamp}}</view>
 				</view>
 				<view class="root_in">微信钱包</view>
 			</view>
-			<view class="right">￥200</view>
+			<view class="right">￥{{item.price}}</view>
 		</view>
 	</view>
 </view>
+<van-toast id="van-toast" />
