@@ -13,8 +13,12 @@
 			</view>
 			<view class="heard_img">
 				<image src="{{pic}}" />
+				<!-- <image src="../../images/circles_heard_03.png"></image> -->
 			</view>
-			<view class="heard_img_delete">删除</view>
+			<!-- <view class="heard_img_delete">删除</view> -->
+			<view class="heard_img_delete" wx:if="{{!id}}">
+				<image src="../../images/publish.png" bindtap="publish"></image>
+			</view>
 		</view>
 	</view>
 	<view class="box">
@@ -43,9 +47,15 @@
 							<view class="title">
 								{{item.content}}
 							</view>
-							<view class="figure_set" wx:if="{{!!item.pics}}">
+							<view class="figure_set" wx:if="{{item.photos[0]!=['']}}">
 								<!-- <image mode='widthFix' wx:for="{{figure_set}}" src="../../images/friend_circle_img_03.png" /> -->
-								<image src="{{item.pics}}" mode='widthFix'></image>
+								<!-- <image src="{{item.pics}}" mode='widthFix'></image> -->
+								<view class="img_box" wx:if="{{item.photos.length>1}}">
+									<image src="{{item_img}}" class="img_" wx:for="{{item.photos}}" wx:key="id_img" wx:for-index="index_img" wx:for-item="item_img"></image>
+								</view>
+								<view class="img_box" wx:if="{{item.photos.length==1}}">
+									<image src="{{item_img}}" mode='widthFix' wx:for="{{item.photos}}" wx:key="id_img" wx:for-index="index_img" wx:for-item="item_img"></image>
+								</view>
 							</view>
 						</view>
 						<view class="movement">
@@ -59,7 +69,7 @@
 							</view>
 						</view>
 						<view class="textarea_box" wx:if="{{textarea_==item.id}}">
-							<textarea wx:if="{{textarea_==item.id}}" focus="{{textarea_==item.id}}" class="textarea_input" bindinput="textarea_input" bindconfirm="confirm" value="{{textarea_value}}" class="weui-input" type="text" maxlength="-1" placeholder="请输入" />
+							<textarea wx:if="{{textarea_==item.id}}" focus="{{textarea_==item.id}}" class="textarea_input" bindinput="textarea_input"  value="{{textarea_value}}" class="weui-input" type="text" maxlength="-1" placeholder="请输入" />
 							<view class="textarea_button" bindtap="add_comment" data-index="{{index}}" data-indexs="{{indexs}}" data-id="{{item.id}}">评论</view>
 							</view>
 						</view>

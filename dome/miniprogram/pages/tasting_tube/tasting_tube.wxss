@@ -10,6 +10,8 @@
   width: 100%;
   text-align: center;
   color: #ffffff;
+  box-shadow: 0px 5px 5px #0000002c;
+  z-index: 5;
 }
 
 .top>.test {
@@ -117,6 +119,7 @@
 .content .lists .list image {
   width: 210rpx;
   height: 288rpx;
+  z-index: 1;
 }
 
 .content .lists .list .bottom {

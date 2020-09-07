@@ -15,15 +15,13 @@ Page({
     gender: false,
     head_sculpture: false,
     balance: false,
-    signature: "",
-    id: ""
+    signature: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(this.data.head_sculpture)
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#395996'
@@ -36,10 +34,9 @@ Page({
     }
   },
   fun_click(e) {
-    console.log(e.currentTarget.dataset.name)
     if (e.currentTarget.dataset.name == "tasting_tube_shoppingmall") {
       wx.navigateTo({
-        url: `../${e.currentTarget.dataset.name}/${e.currentTarget.dataset.name}?id=${this.data.id}&&name=${this.data.name}&&pic=${this.data.head_sculpture}`
+        url: `../${e.currentTarget.dataset.name}/${e.currentTarget.dataset.name}?id=${this.data.apply}&&name=${this.data.name}&&pic=${this.data.head_sculpture}`
       });
     } else {
       wx.navigateTo({
@@ -109,7 +106,6 @@ Page({
       forbidClick: true,
     })
     fun_ref.get(fun_config.index_taster.url, {}, res => {
-      console.log(res)
       wx.setStorageSync('user', res.data);
       wx.setStorageSync('authorization', true);
       if (!!res.data.taster) {
@@ -117,9 +113,14 @@ Page({
           name: wx.getStorageSync('user').taster.name,
           head_sculpture: wx.getStorageSync('user').taster.pic,
           signature: wx.getStorageSync('user').taster.signature,
-          id: wx.getStorageSync('user').tasterId,
           apply: wx.getStorageSync('user').tasterId,
           balance: wx.getStorageSync('user').taster.balance,
+        },function(){
+          if(!this.data.signature){
+            this.setData({
+              signature:false
+            })
+          }
         })
       } else {
         this.setData({

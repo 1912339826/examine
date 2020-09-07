@@ -27,14 +27,15 @@
 		<view class="lists">
 
 			<view class="list" bindtap="go_homepage" data-id="{{item.id}}" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
-				<image src="{{item.pic}}" />
+				<!-- <image src="{{item.pic}}" /> -->
+				<van-image  custom-class="show" fit="cover" src="{{item.pic}}" />
 				<view class="bottom">
 					<view class="son">
 						<view>姓名: <text>{{item.name}}</text></view>
 						<view>城市: <text>{{item.town}}</text></view>
 					</view>
 					<view class="son">
-						<view>特长: <text>{{item.specialty}}</text></view>
+						<view>特长: <text wx:if="{{!item.specialty}}">无</text><text wx:if="{{!!item.specialty}}">{{item.specialty}}</text></view>
 					</view>
 				</view>
 			</view>

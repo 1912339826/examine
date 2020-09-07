@@ -16,7 +16,7 @@
 			<view class="box" bindtap="play" data-title="{{item.title}}" data-isid="{{item.id}}" data-introduction="{{item.introduction}}" data-price="{{item.price}}" data-id="{{item.videoId}}">
 				<view class="img">
 					<image class="play_img" src="../../images/play.png" ></image>
-					<image src="{{item.cover}}" class="show" />
+					<van-image  custom-class="show" fit="cover" src="{{item.cover}}" />
 					<!-- <view class="praise">
 						<text>{{item.likes}}</text>
 						<image wx:if="{{!!item.isLikes}}" src="../../images/star.png"></image>

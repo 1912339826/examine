@@ -46,7 +46,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '全部订单'
     })
-    console.log(this.timestamp(1599041637000))
     this.setData({
       lists:[]
     })
@@ -57,7 +56,6 @@ Page({
       pageNo: this.data.pageNo,
       pageSize: 10
     }, res => {
-      console.log(res.data.result.data)
       let arr = this.data.lists;
       for (let index = 0; index < res.data.result.data.length; index++) {
         const element = res.data.result.data[index];
@@ -80,7 +78,6 @@ Page({
     return `${y}-${m}-${d}`
   },
   play(e) {
-    console.log(e.currentTarget.dataset)
     wx.navigateTo({
       url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price,
     })

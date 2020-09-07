@@ -90,7 +90,6 @@ Page({
   // 获取用户信息
   index_taster() {
     fun_ref.get(fun_config.index_taster.url, {}, res => {
-      console.log(res)
       wx.setStorageSync('user', res.data)
       wx.redirectTo({
         url: `../information/information`,

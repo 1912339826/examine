@@ -1,0 +1,7 @@
+/* pages/publish/publish.wxss */
+textarea{
+}
+
+.box{
+  display: flex;
+}

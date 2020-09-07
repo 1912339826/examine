@@ -38,22 +38,14 @@ Page({
       name,
       pic
     }, function () {
-      if (!!this.data.id) {
-        this.circleFriends_list()
-      } else {
-        this.getList_circleFriends()
-        this.setData({
-          name: wx.getStorageSync('user').name,
-          pic: wx.getStorageSync('user').avatarPic
-        })
-      }
 
     })
-    var timestamp = Date.parse(new Date());
-    this.setData({
-      Todays_date: this.disconnecting_time(timestamp)
+  },
+  // 去发动态
+  publish() {
+    wx.navigateTo({
+      url: '../publish/publish',
     })
-
   },
   back() {
     wx.navigateBack({
@@ -92,22 +84,20 @@ Page({
       userId: this.data.id
       // userId: "eb0fc0b43d6447f4b77702309f642293"
     }, res => {
-      console.log(res.data.result.data)
       let arr = this.data.lists;
       let newarr = arr.concat(res.data.result.data)
       this.setData({
         lists: newarr,
         totalPage: res.data.result.totalPage
       }, function () {
-        for (let index = 0; index < res.data.result.data.length; index++) {
-          const element = res.data.result.data[index];
+        for (let index = 0; index < this.data.lists.length; index++) {
+          const element = this.data.lists[index];
           element.string_time = this.disconnecting_time(element.createTime);
         }
         this.setData({
-          figure_set: this.sort_pro(res.data.result.data, ['string_time'])
+          figure_set: this.sort_pro(this.data.lists, ['string_time'])
         }, function () {
           Toast.clear();
-          console.log(this.data.figure_set)
         })
       })
     })
@@ -121,22 +111,20 @@ Page({
       pageNo: this.data.pageNo,
       pageSize: 8,
     }, res => {
-      console.log(res.data.result.data)
       let arr = this.data.lists;
       let newarr = arr.concat(res.data.result.data)
       this.setData({
         lists: newarr,
         totalPage: res.data.result.totalPage
       }, function () {
-        for (let index = 0; index < res.data.result.data.length; index++) {
-          const element = res.data.result.data[index];
+        for (let index = 0; index < this.data.lists.length; index++) {
+          const element = this.data.lists[index];
           element.string_time = this.disconnecting_time(element.createTime);
         }
         this.setData({
-          figure_set: this.sort_pro(res.data.result.data, ['string_time'])
+          figure_set: this.sort_pro(this.data.lists, ['string_time'])
         }, function () {
           Toast.clear();
-          console.log(this.data.figure_set)
         })
       })
     })
@@ -185,7 +173,6 @@ Page({
   },
   // 非冒泡
   circles_(e) {
-    console.log(e.currentTarget.dataset.id)
     if (this.data.circles_img_id == e.currentTarget.dataset.id) {
       this.setData({
         circles_img_id: null
@@ -197,14 +184,12 @@ Page({
     }
   },
   PL_img(e) {
-    console.log(e.currentTarget.dataset.id)
     this.setData({
       textarea_: e.currentTarget.dataset.id
     })
   },
   // 评论
   add_comment(e) {
-    console.log(this.data.textarea_value)
     // 当前动态的id
     // console.log(e.currentTarget.dataset.id)
     // 从今天算起的index
@@ -220,7 +205,6 @@ Page({
         circleFriendsId: e.currentTarget.dataset.id,
         content: this.data.textarea_value
       }, res => {
-        console.log(res.data)
         let figure_set = this.data.figure_set;
         if (res.data.success) {
           figure_set[e.currentTarget.dataset.indexs]["children"][e.currentTarget.dataset.index]["circleFriendsComments"].push({
@@ -245,22 +229,35 @@ Page({
       circles_img_id: null
     })
   },
-  confirm(e) {
-    console.log('111')
-    console.log(e)
-  },
   textarea_input(e) {
     this.setData({
       textarea_value: e.detail.value
     })
   },
-  gl(add) {
-    return add
-  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      pageNo: 1,
+      figure_set: [],
+      lists: []
+    }, function () {
+      var timestamp = Date.parse(new Date());
+      this.setData({
+        Todays_date: this.disconnecting_time(timestamp)
+      }, function () {
+        if (!!this.data.id) {
+          this.circleFriends_list()
+        } else {
+          this.getList_circleFriends()
+          this.setData({
+            name: wx.getStorageSync('user').name,
+            pic: wx.getStorageSync('user').avatarPic
+          })
+        }
+      })
+    })
 
   },
 
@@ -282,7 +279,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log('111')
   },
 
   /**
@@ -301,8 +297,6 @@ Page({
         } else {
           this.getList_circleFriends()
         }
-
-
       })
     }
   },

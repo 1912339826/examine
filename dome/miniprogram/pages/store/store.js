@@ -83,7 +83,7 @@ Page({
     } else {
       Toast.fail("未登录")
     }
-    
+
   },
   // 点赞
   addLikes(e) {
@@ -104,7 +104,7 @@ Page({
     } else {
       Toast.fail("未登录")
     }
-    
+
   },
   // 播放
   play(e) {
@@ -123,21 +123,54 @@ Page({
         this.bindVideo_taster(e.currentTarget.dataset.id)
       } else {
         // 购买
+        this.wxPay_pay(e.currentTarget.dataset.id)
       }
     } else {
       Toast.fail("未登录")
     }
 
   },
+
   bindVideo_taster(id) {
     fun_ref.post(fun_config.bindVideo_taster.url, {
       videoId: id
     }, res => {
-      console.log(res.data.message)
       if (res.data.message == "") {
         Toast.success('申请成功！');
       } else {
         Toast.fail(res.data.message);
+      }
+    })
+  },
+
+  wxPay_pay(id) {
+    fun_ref.post(fun_config.wxPay_pay.url, {
+      videoId: id,
+      tasterId: ""
+    }, res => {
+      if (res.data.success) {
+        this.requestPayment(res.data.result.timeStamp, res.data.result.nonceStr, res.data.result.package, res.data.result.sign)
+      } else {
+        Toast.fail(res.data.message);
+      }
+    })
+  },
+
+  requestPayment(timeStamp, nonceStr, result_package, paySign) {
+    wx.requestPayment({
+      nonceStr: nonceStr,
+      package: result_package,
+      paySign: paySign,
+      timeStamp: timeStamp,
+      signType: "MD5",
+      success: (res) => {
+        console.log(res)
+        Toast.success("支付成功！");
+        this.play_video_vod(this.data.videoId)
+      },
+      fail: (err) => {
+        console.log(err)
+        Toast.fail('支付失败！');
       }
     })
   },

@@ -2,8 +2,8 @@
 <!-- 商城 -->
 <view class="store">
 	<view class="recommend_sort">
-		<view class="recommend">推荐</view>
-		<view class="sort">类别</view>
+		<view class="recommend" style="opacity:0;">推荐</view>
+		<view class="sort" style="opacity:0;">类别</view>
 	</view>
 	<view class="big_img">
 		<image src="../../images/information_big_03.jpg" />
@@ -11,10 +11,10 @@
 
 	<view class="lists">
 		<view class="list" data-id="{{item.id}}" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
-			<view class="box"  bindtap="play" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}">
+			<view class="box" bindtap="play" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}">
 				<view class="img">
-					<image class="play_img" src="../../images/play.png" ></image>
-					<image src="{{item.cover}}" class="show" />
+					<image class="play_img" src="../../images/play.png"></image>
+					<van-image  custom-class="show" fit="cover" src="{{item.cover}}" />
 					<!-- <view class="praise">
 						<text>{{item.likes}}</text>
 						<image src="../../images/star.png" wx:if="{{item.isLikes==true}}" />
@@ -33,15 +33,9 @@
 			</view>
 			<view class="button_buy">
 				<view class="button_" wx:if="{{!!taster}}" data-taster="{{true}}" data-id="{{item.id}}" bindtap="purchase">申请</view>
-				<view class="button_" wx:else  data-taster="{{false}}" bindtap="purchase">购买</view>
+				<view class="button_" wx:else data-taster="{{false}}" data-id="{{item.id}}" bindtap="purchase">购买</view>
 			</view>
 		</view>
-
-
-
-
-
-
 	</view>
 </view>
 <tab active_index="2" />

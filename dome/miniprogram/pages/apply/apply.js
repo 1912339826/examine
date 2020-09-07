@@ -60,9 +60,6 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  bindGetUserInfo(res) {
-    console.log(res)
-  },
   onLoad: function (options) {
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
@@ -75,32 +72,32 @@ Page({
   },
   // 提交按钮
   go_be_reviewing() {
-    // if (this.data.input_name == "" || this.data.input_phone == "" || !!this.data.changecity[2].id || this.data.text_individual == "" || this.data.text_teams == "") {
-    //   Toast.fail("请填写完整")
-    //   return
-    // }
-    Toast.loading({
-      message: '加载中...',
-      forbidClick: true,
-    })
-    fun_ref.post(fun_config.tasterSubmit.url, {
-      name: this.data.input_name,
-      phone: this.data.input_phone,
-      cityId: this.data.changecity[2].id,
-      introduction: this.data.text_individual,
-      teamIntroduction: this.data.text_teams
-    }, res => {
-      Toast.clear();
-      if (res.data.status == 200) {
-        wx.navigateTo({
-          url: "../be_reviewing/be_reviewing"
-        });
-      } else {
-        Toast.fail(res.data.message)
-      }
-    }, File => {
-      console.log(File)
-    })
+    if (this.data.input_name == "" && this.data.input_phone == "" && !!this.data.changecity[2].id && this.data.text_individual == "" && this.data.text_teams == "") {
+      Toast.fail("请填写完整")
+      return
+    }
+    // Toast.loading({
+    //   message: '加载中...',
+    //   forbidClick: true,
+    // })
+    // fun_ref.post(fun_config.tasterSubmit.url, {
+    //   name: this.data.input_name,
+    //   phone: this.data.input_phone,
+    //   cityId: this.data.changecity[2].id,
+    //   introduction: this.data.text_individual,
+    //   teamIntroduction: this.data.text_teams
+    // }, res => {
+    //   Toast.clear();
+    //   if (res.data.status == 200) {
+    //     wx.navigateTo({
+    //       url: "../be_reviewing/be_reviewing"
+    //     });
+    //   } else {
+    //     Toast.fail(res.data.message)
+    //   }
+    // }, File => {
+    //   console.log(File)
+    // })
   },
   city() {
     this.setData({
@@ -110,30 +107,30 @@ Page({
   // 城市（省市区）
   cityTree() {
     
-    // Toast.loading({
-    //   message: '加载中...',
-    //   forbidClick: true,
-    // })
-    // fun_ref.get(fun_config.cityTree.url, {}, res => {
-    //   let arr = [];
-    //   arr = res.data.result;
-    //   let columns0 = `columns[${0}].values`;
-    //   let columns1 = `columns[${1}].values`;
-    //   let columns2 = `columns[${2}].values`;
-    //   this.setData({
-    //     [columns0]: arr
-    //   }, function () {
-    //     this.setData({
-    //       [columns1]: arr[0].children
-    //     }, function () {
-    //       this.setData({
-    //         [columns2]: arr[0].children[0].children
-    //       }, function () {
-    //         Toast.clear();
-    //       })
-    //     })
-    //   })
-    // })
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+    })
+    fun_ref.get(fun_config.cityTree.url, {}, res => {
+      let arr = [];
+      arr = res.data.result;
+      let columns0 = `columns[${0}].values`;
+      let columns1 = `columns[${1}].values`;
+      let columns2 = `columns[${2}].values`;
+      this.setData({
+        [columns0]: arr
+      }, function () {
+        this.setData({
+          [columns1]: arr[0].children
+        }, function () {
+          this.setData({
+            [columns2]: arr[0].children[0].children
+          }, function () {
+            Toast.clear();
+          })
+        })
+      })
+    })
   },
   // 城市选择变化事件。
   onChange(event) {
@@ -152,12 +149,10 @@ Page({
   },
   // 取消
   onCancel: function () {
-    console.log("取消")
     this.onClose()
   },
   // 确定
   onConfirm: function (e) {
-    console.log(e.detail.value)
     this.setData({
       changecity: e.detail.value
     })

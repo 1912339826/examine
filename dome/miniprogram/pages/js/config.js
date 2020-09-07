@@ -5,9 +5,9 @@
 
 let envVersion = wx.getAccountInfoSync().miniProgram.envVersion
 if (!envVersion || envVersion == "develop") {
-  // var BASE_URLA = "https://llc.njqiahao.com/api";
+  var BASE_URLA = "https://llc.njqiahao.com/api";
   //  var BASE_URLA = "http://106.54.252.48:8091";
-  var BASE_URLA = "http://192.168.5.198:8091";
+  // var BASE_URLA = "http://192.168.5.198:8091";
 } else if (envVersion == "trial") {
   var BASE_URLA = "https://llc.njqiahao.com/api";
 } else if (envVersion == "release") {
@@ -137,5 +137,15 @@ export default {
   update_taster: {
     type: "POST",
     url: `${BASE_URLA}/taster/update`
+  },
+  // 发布朋友圈
+  add_circleFriends: {
+    type: "POST",
+    url: `${BASE_URLA}/circleFriends/add`
+  },
+  // 上传图片
+  import_info: {
+    type: "POST",
+    url: `${BASE_URLA}/info/import`
   },
 };

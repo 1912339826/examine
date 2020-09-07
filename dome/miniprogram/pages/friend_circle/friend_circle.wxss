@@ -57,17 +57,24 @@
 
 .heard_img_delete {
   position: absolute;
-  height: 25rpx;
-  line-height: 25rpx;
+  /* height: 25rpx; */
+  /* line-height: 25rpx; */
+  width: 96rpx;
+  height: 96rpx;
   z-index: 2;
   right: 0;
   bottom: 60rpx;
   border-radius: 20rpx;
-  background-color: #ffffff;
-  color: #000000;
-  font-size: 15rpx;
+  /* background-color: #ffffff; */
+  /* color: #000000; */
+  /* font-size: 15rpx; */
   padding-left: 10rpx;
   padding-right: 10rpx;
+}
+
+.heard_img_delete image {
+  width: 96rpx;
+  height: 96rpx;
 }
 
 
@@ -89,7 +96,7 @@
   font-weight: 600;
 }
 
-.lists .isday  .date_el{
+.lists .isday .date_el {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,22 +105,22 @@
   height: 100rpx;
 }
 
-.date_el .top{
+.date_el .top {
   display: flex;
   align-items: center;
 }
 
-.date_el .top .day{
+.date_el .top .day {
   font-size: 40rpx;
   height: 40rpx;
   line-height: 40rpx;
 }
 
-.date_el .top .month{
+.date_el .top .month {
   font-size: 20rpx;
 }
 
-.date_el .bottom{
+.date_el .bottom {
   font-size: 20rpx;
 }
 
@@ -156,21 +163,39 @@
 }
 
 .figure_set {
+  /* width: 450rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; */
+}
+
+.figure_set .img_box {
   width: 450rpx;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-.figure_set::after {
+/* .figure_set::after {
+  content: "";
+  width: 30%;
+} */
+
+.figure_set .img_box::after {
   content: "";
   width: 30%;
 }
 
 .figure_set image {
-  width: 30%;
   margin-bottom: 20rpx;
 }
+
+
+.figure_set .img_box .img_{
+  width: 140rpx;
+  height: 140rpx;
+}
+
 
 .movement {
   position: relative;
@@ -236,7 +261,8 @@
   border-bottom-right-radius: 10%;
   border-top-right-radius: 10%;
 }
-.textarea_button{
+
+.textarea_button {
   height: 35rpx;
   line-height: 35rpx;
   font-size: 35rpx;

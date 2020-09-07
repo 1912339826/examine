@@ -36,7 +36,8 @@ Page({
       introduction: options.introduction,
       price: options.price,
       videoId: options.videoId,
-      id: options.id
+      id: options.id,
+      tasterId: options.tasterId
     })
     this.play_video_vod(options.videoId)
   },
@@ -48,7 +49,6 @@ Page({
     fun_ref.get(fun_config.play_video_vod.url, {
       videoId: videoId
     }, res => {
-      console.log(res)
       this.setData({
         src: res.data.result
       }, function () {
@@ -69,7 +69,7 @@ Page({
   },
   // 当播放到末尾时
   ended() {
-    console.log("111")
+    console.log("播放结束")
   },
   // 点击购买或者申请按钮
   pay(e) {
@@ -78,13 +78,13 @@ Page({
       this.bindVideo_taster()
     } else {
       // 购买
+      this.wxPay_pay()
     }
   },
   bindVideo_taster() {
     fun_ref.post(fun_config.bindVideo_taster.url, {
       videoId: this.data.id
     }, res => {
-      console.log(res.data.message)
       if (res.data.message == "") {
         Toast.success('申请成功！');
       } else {
@@ -92,31 +92,43 @@ Page({
       }
     })
   },
-  wxPay_pay(tasterId) {
-    fun_ref.get(fun_config.wxPay_pay.url, {
-      videoId: this.data.videoId,
+  wxPay_pay() {
+    let tasterId;
+    if (!!this.data.tasterId) {
+      tasterId = this.data.tasterId
+    } else {
+      tasterId = ""
+    }
+    fun_ref.post(fun_config.wxPay_pay.url, {
+      videoId: this.data.id,
       tasterId: tasterId
     }, res => {
-      console.log(res)
-      // this.requestPayment()
+      if (res.data.success) {
+        this.requestPayment(res.data.result.timeStamp, res.data.result.nonceStr, res.data.result.package, res.data.result.sign)
+      } else {
+        Toast.fail(res.data.message);
+      }
     })
   },
-  // requestPayment(nonceStr, package, paySign, timeStamp) {
-  //   wx.wx.requestPayment({
-  //     nonceStr: nonceStr,
-  //     package: package,
-  //     paySign: paySign,
-  //     timeStamp: timeStamp,
-  //     signType: "MD5",
-  //     success: (res) => {
-  //       Toast.success("支付成功！");
-  //       this.play_video_vod(this.data.videoId)
-  //     },
-  //     fail: (res) => {
-  //       Toast.fail('支付失败！');
-  //     }
-  //   })
-  // },
+
+  requestPayment(timeStamp, nonceStr, result_package, paySign) {
+    wx.requestPayment({
+      nonceStr: nonceStr,
+      package: result_package,
+      paySign: paySign,
+      timeStamp: timeStamp,
+      signType: "MD5",
+      success: (res) => {
+        console.log(res)
+        Toast.success("支付成功！");
+        this.play_video_vod(this.data.videoId)
+      },
+      fail: (err) => {
+        console.log(err)
+        Toast.fail('支付失败！');
+      }
+    })
+  },
 
 
   /**
@@ -131,8 +143,7 @@ Page({
    */
   onShow: function () {
     this.setData({
-      taster: wx.getStorageSync('user').taster,
-      tasterId: wx.getStorageSync('user').tasterId,
+      taster: wx.getStorageSync('user').taster
     })
   },
 

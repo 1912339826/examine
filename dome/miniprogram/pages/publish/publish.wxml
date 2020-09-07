@@ -1,0 +1,13 @@
+<!--pages/publish/publish.wxml-->
+<view class="publish">
+	<view class="box">
+		<textarea bindinput="bindTextAreaBlur_individual" placeholder="请输入..." />
+		<van-button size="small" square type="primary" bindtap="publish" disabled wx:if="{{disabled}}">发表</van-button>
+		<van-button size="small" square type="primary" bindtap="publish" wx:if="{{!disabled}}">发表</van-button>
+		</view>
+  <view class="img_">
+      	<van-uploader bind:delete="delete" max-count="6" upload-icon="plus" deletable="{{ true }}"  file-list="{{ fileList }}" bind:after-read="afterRead" />
+  </view>
+
+</view>
+<van-toast id="van-toast" />

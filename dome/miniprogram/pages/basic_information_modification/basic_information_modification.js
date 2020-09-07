@@ -74,13 +74,11 @@ Page({
           sizeType: ['original', 'compressed'],
           sourceType: [arr[res.tapIndex]],
           success(ress) {
-            console.log(ress.tempFilePaths[0])
             wx.uploadFile({
               url: fun_config.UploadPhotos.url, // 仅为示例，非真实的接口地址
               filePath: ress.tempFilePaths[0],
               name: 'file',
               success(res) {
-                console.log(JSON.parse(res.data).result.url)
                 // JSON.parse(res.data).result.url
                 this.index_taster()
               },
@@ -95,7 +93,6 @@ Page({
   },
   index_taster() {
     fun_ref.get(fun_config.index_taster.url, {}, res => {
-      console.log(res)
       wx.setStorageSync('user', res.data);
       wx.setStorageSync('authorization', true);
       this.taster_judge()

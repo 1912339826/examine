@@ -26,7 +26,8 @@
 				</view>
 				<view class="isday">{{item.time.getFullYear}}年{{item.time.getMonth+1}}月{{item.time.getDate}}日</view>
 			</view>
-			<image src="{{item.pic}}"></image>
+			<!-- <image src="{{item.pic}}"></image> -->
+				<van-image  custom-class="show" fit="cover" src="{{item.pic}}" />
 		</view>
 	</view>
 </view>

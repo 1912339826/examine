@@ -4,13 +4,15 @@
 	<image src="../../images/homepage_back_img_03.jpg" alt="" class="back_img" />
 	<view class="personage">
 		<view class="head_portrait">
-			<image src="{{pic}}" alt="" />
-			<view class="add">
+			<!-- <image src="{{pic}}" alt="" /> -->
+			<van-image  custom-class="show" fit="cover" src="{{pic}}" />
+			<!-- <view class="add">
 				<van-icon name="plus" size="50rpx" color="#fb6a67" />
-			</view>
+			</view> -->
 		</view>
 		<view class="name">{{name}}</view>
-		<view class="signature">{{signature}}</view>
+		<view class="signature" wx:if="{{!!signature}}">{{signature}}</view>
+		<view class="signature" wx:if="{{!signature}}"></view>
 	</view>
 
 	<view class="individual_teams">

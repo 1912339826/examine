@@ -36,7 +36,7 @@ Page({
       title: '提现记录'
     })
     this.setData({
-      lists:[]
+      lists: []
     })
     this.getList_withdraw()
   },
@@ -49,7 +49,6 @@ Page({
       pageNo: this.data.pageNo,
       pageSize: 15
     }, res => {
-      console.log(res.data.result.data)
       let arr = this.data.lists;
       for (let index = 0; index < res.data.result.data.length; index++) {
         const element = res.data.result.data[index];

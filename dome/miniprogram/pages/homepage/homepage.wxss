@@ -45,7 +45,7 @@
 }
 
 .personage .name{
-  margin-top: 20rpx;
+  margin-top: 40rpx;
   font-size: 35rpx;
   font-weight: 600;
   color: #4d4d4d;

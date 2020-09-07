@@ -171,7 +171,6 @@ Page({
   },
   // 搜索
   select() {
-    console.log(this.data.value, this.data.changecity)
     Toast.loading({
       message: '加载中...',
       forbidClick: true,
@@ -184,12 +183,10 @@ Page({
   },
   // 取消
   onCancel: function () {
-    console.log("取消")
     this.onClose()
   },
   // 确定
   onConfirm: function (e) {
-    console.log(e.detail.value[2])
     this.setData({
       changecity: e.detail.value[2]
     })

@@ -44,7 +44,6 @@ Page({
     })
   },
   sub() {
-    console.log(this.data.value)
     if (this.data.value == "") {
       Toast.fail("没有输入，请重新填写")
     } else {

@@ -86,7 +86,6 @@
 		</view>
 		<view class="son hint">
       提交品鉴官相关信息，等待审核，通过后成为品鉴官		
-			<!-- <button class='authBtn' type='primary' open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo'>授权登录</button> -->
 		</view>
 	</view>
 </view>

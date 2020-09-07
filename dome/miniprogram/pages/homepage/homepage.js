@@ -35,7 +35,6 @@ Page({
     fun_ref.get(fun_config.getInfo_taster.url, {
       id: id
     }, res => {
-      console.log(res.data.result)
       let {
         id,
         introduction,

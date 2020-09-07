@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "tab": "../../components/tab/tab",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-image": "@vant/weapp/image/index"
   },
   "component": true
 }

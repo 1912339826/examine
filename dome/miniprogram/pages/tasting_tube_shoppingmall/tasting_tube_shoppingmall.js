@@ -34,7 +34,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id)
     let {
       id,
       name,
@@ -71,7 +70,6 @@ Page({
       pageNo: this.data.pageNo,
       pageSize: 4
     }, res => {
-      console.log(res.data.result.data)
       let arr = [];
       let newarr = [];
       arr = this.data.lists
@@ -86,7 +84,6 @@ Page({
   },
   // 取消点赞
   cancelLikes(e) {
-    console.log(e.currentTarget.dataset)
     fun_ref.post(fun_config.cancelLikes.url, {
       userId: wx.getStorageSync('user').id,
       videoId: e.currentTarget.dataset.videoId
@@ -103,7 +100,6 @@ Page({
   },
   // 点赞
   addLikes(e) {
-    console.log(e.currentTarget.dataset)
     fun_ref.post(fun_config.addLikes.url, {
       userId: wx.getStorageSync('user').id,
       videoId: e.currentTarget.dataset.videoid
@@ -120,30 +116,57 @@ Page({
   },
   // 播放
   play(e) {
-    console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
-      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" +e.currentTarget.dataset.isid,
+      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&tasterId=" + this.data.id,
     })
   },
 
   purchase(e) {
-    console.log(e.currentTarget.dataset.taster)
     if (e.currentTarget.dataset.taster) {
       // 申请
       this.bindVideo_taster(e.currentTarget.dataset.id)
     } else {
       // 购买
+      this.wxPay_pay(e.currentTarget.dataset.id)
     }
   },
   bindVideo_taster(id) {
     fun_ref.post(fun_config.bindVideo_taster.url, {
       videoId: id
     }, res => {
-      console.log(res.data.message)
       if (res.data.message == "") {
         Toast.success('申请成功！');
       } else {
         Toast.fail(res.data.message);
+      }
+    })
+  },
+  wxPay_pay(id) {
+    fun_ref.post(fun_config.wxPay_pay.url, {
+      videoId: id,
+      tasterId: this.data.id
+    }, res => {
+      if (res.data.success) {
+        this.requestPayment(res.data.result.timeStamp, res.data.result.nonceStr, res.data.result.package, res.data.result.sign)
+      } else {
+        Toast.fail(res.data.message);
+      }
+    })
+  },
+
+  requestPayment(timeStamp, nonceStr, result_package, paySign) {
+    wx.requestPayment({
+      nonceStr: nonceStr,
+      package: result_package,
+      paySign: paySign,
+      timeStamp: timeStamp,
+      signType: "MD5",
+      success: (res) => {
+        Toast.success("支付成功！");
+        this.play_video_vod(this.data.videoId)
+      },
+      fail: (err) => {
+        Toast.fail('支付失败！');
       }
     })
   },
