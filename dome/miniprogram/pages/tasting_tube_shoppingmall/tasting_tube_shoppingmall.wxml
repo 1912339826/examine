@@ -8,7 +8,12 @@
 		</view>
 	</view>
 	<view class="big_img">
-		<image src="../../images/information_big_03.jpg" />
+		<!-- <image src="../../images/information_big_03.jpg" /> -->
+		<swiper autoplay="{{true}}" circular="{{true}}"   wx:if="{{getList_ad_list.length!=0}}">
+			<swiper-item wx:for="{{getList_ad_list}}" wx:key="id" wx:for-index="index" wx:for-item="item" data-id="{{item.id}}" bindtap="getList_ad_fn">
+				<image src="{{item.pic}}"></image>
+			</swiper-item>
+		</swiper>
 	</view>
 
 	<view class="lists">
@@ -29,7 +34,7 @@
 						<!-- <image src="../../images/bravo_03.png" class="button" wx:if="{{item.isLikes==true}}" bindtap="cancelLikes" data-videoId="{{item.id}}" data-index="{{index}}" /> -->
 						<!-- <image src="../../images/bravo_03.png" class="button" wx:else bindtap="addLikes" data-videoId="{{item.id}}" data-index="{{index}}" /> -->
 					</view>
-					<view class="introductory van-multi-ellipsis--l2">{{item.introduction}}
+					<view class="introductory van-multi-ellipsis--l2">{{item.title}}
 					</view>
 				</view>
 			</view>
@@ -37,7 +42,7 @@
 				<view class="button_" data-id="{{item.id}}" data-videoId="{{item.videoId}}" wx:if="{{!!taster&&!item.own}}" data-taster="{{true}}" bindtap="purchase">申请</view>
 				<view class="button_" wx:if="{{!!taster&&item.own}}">已申请</view>
 				<view class="button_" data-id="{{item.id}}" data-videoId="{{item.videoId}}" wx:if="{{!taster&&!item.own}}" data-taster="{{false}}" bindtap="purchase">购买</view>
-				<view class="button_" wx:if="{{!taster&&item.own}}" >已购买</view>
+				<view class="button_" wx:if="{{!taster&&item.own}}">已购买</view>
 			</view>
 		</view>
 

@@ -161,11 +161,11 @@ export default {
   // 广告
   getList_ad: {
     type: "GET",
-    url: `${BASE_URLA}/ad/getList`
+    url: `${BASE_URLA}/appletsAd/getList`
   },
   // 广告的详情
   getInfo_ad: {
     type: "GET",
-    url: `${BASE_URLA}/ad/getInfo`
+    url: `${BASE_URLA}/appletsAd/getInfo`
   },
 };

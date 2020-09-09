@@ -33,6 +33,10 @@ Page({
     const {
       file
     } = event.detail;
+    Toast.loading({
+      message: '添加图片中...',
+      forbidClick: true,
+    });
     wx.uploadFile({
       url: fun_config.import_info.url,
       filePath: file.path,
@@ -48,16 +52,11 @@ Page({
         that.setData({
           fileList: fileList
         }, function () {
-          if (that.data.textarea_value != "" || that.data.fileList != []) {
-            that.setData({
-              disabled: false
-            })
-          } else {
-            that.setData({
-              disabled: true
-            })
-          }
+          that.setData({
+            disabled: false
+          })
         })
+        Toast.success('添加成功，请稍等');
       },
     });
   },
@@ -68,14 +67,20 @@ Page({
     this.setData({
       fileList: fileList
     }, function () {
-      if (this.data.textarea_value != "" || this.data.fileList != []) {
-        that.setData({
+      if (this.data.fileList.length != 0) {
+        this.setData({
           disabled: false
         })
       } else {
-        that.setData({
-          disabled: true
-        })
+        if (this.data.textarea_value != "") {
+          this.setData({
+            disabled: false
+          })
+        } else {
+          this.setData({
+            disabled: true
+          })
+        }
       }
     })
   },
@@ -83,18 +88,27 @@ Page({
     this.setData({
       textarea_value: e.detail.value
     }, function () {
-      if (e.detail.value != "" || this.data.fileList != []) {
+      if (e.detail.value != "") {
         this.setData({
           disabled: false
         })
       } else {
-        this.setData({
-          disabled: true
-        })
+        if (this.data.fileList.length != 0) {
+          this.setData({
+            disabled: false
+          })
+        } else {
+          this.setData({
+            disabled: true
+          })
+        }
       }
     })
   },
   publish() {
+    if (this.data.fileList.length == 0 && this.data.textarea_value == "") {
+      return
+    }
     let fileList = [];
     for (let index = 0; index < this.data.fileList.length; index++) {
       const element = this.data.fileList[index];

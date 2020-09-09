@@ -8,5 +8,6 @@
     "van-toast": "@vant/weapp/toast/index",
     "van-image": "@vant/weapp/image/index"
   },
-  "component": true
+  "component": true,
+  "enablePullDownRefresh": true
 }

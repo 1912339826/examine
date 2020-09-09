@@ -1,13 +1,17 @@
 {
   "pages": [
-    "pages/information/information",
     "pages/my/my",
+    "pages/apply/apply",
+    "pages/tasting_tube/tasting_tube",
+    "pages/be_reviewing/be_reviewing",
+    "pages/information/information",
+    "pages/publish/publish",
     "pages/store/store",
     
     "pages/information_details/information_details",
-    "pages/tasting_tube/tasting_tube",
-    "pages/apply/apply",
-    "pages/publish/publish",
+    
+   
+   
     "pages/friend_circle/friend_circle",
     "pages/basic_information_modification/basic_information_modification",
     "pages/alter_page/alter_page",
@@ -18,8 +22,8 @@
     "pages/play/play",
     "pages/headquarters_of_the_message/headquarters_of_the_message",
     "pages/homepage/homepage",
-    "pages/tasting_tube_shoppingmall/tasting_tube_shoppingmall",
-    "pages/be_reviewing/be_reviewing"
+    "pages/tasting_tube_shoppingmall/tasting_tube_shoppingmall"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

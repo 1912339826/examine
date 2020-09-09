@@ -238,27 +238,40 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      pageNo: 1,
-      figure_set: [],
-      lists: []
-    }, function () {
-      var timestamp = Date.parse(new Date());
+    if (wx.getStorageSync('previewImage')) {
+      wx.setStorageSync('previewImage', false)
+    } else {
       this.setData({
-        Todays_date: this.disconnecting_time(timestamp)
+        pageNo: 1,
+        figure_set: [],
+        lists: []
       }, function () {
-        if (!!this.data.id) {
-          this.circleFriends_list()
-        } else {
-          this.getList_circleFriends()
-          this.setData({
-            name: wx.getStorageSync('user').name,
-            pic: wx.getStorageSync('user').avatarPic
-          })
-        }
+        var timestamp = Date.parse(new Date());
+        this.setData({
+          Todays_date: this.disconnecting_time(timestamp)
+        }, function () {
+          if (!!this.data.id) {
+            this.circleFriends_list()
+          } else {
+            this.getList_circleFriends()
+            this.setData({
+              name: wx.getStorageSync('user').name,
+              pic: wx.getStorageSync('user').avatarPic
+            })
+          }
+        })
       })
-    })
+    }
+  },
 
+  previewImage(e) {
+    wx.previewImage({
+      current: e.currentTarget.dataset.current,
+      urls: e.currentTarget.dataset.urls,
+      complete() {
+        wx.setStorageSync('previewImage', true)
+      }
+    })
   },
 
   /**
@@ -278,8 +291,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数

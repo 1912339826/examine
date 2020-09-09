@@ -5,7 +5,7 @@
 			<view class="left">
 				<van-icon name="search" />
 			</view>
-			<input class="weui-input" bindinput="bind_input" placeholder-class="input_placeholder" placeholder="请输入品鉴官姓名" />
+			<input class="weui-input" bindinput="bind_input" value="{{value}}" placeholder-class="input_placeholder" placeholder="请输入品鉴官姓名" />
 			<view class="button_" bindtap="select_city">
 				<van-icon name="arrow-down" />
 				<text>{{changecity.text}}</text>
@@ -13,7 +13,7 @@
 			<view class="right">
 			</view>
 			<view bindtap="select" class="select">搜索</view>
-			<view class="apply" wx:if="{{!apply}}" bindtap="goapply">
+			<view class="apply" wx:if="{{!status}}" bindtap="goapply">
 				<image src="../../images/apply_03.png" />
 				<view>申请品鉴官</view>
 			</view>
@@ -21,7 +21,7 @@
 	</view>
 	<view class="content">
 		<!-- <image src="../../images/information_big_03.jpg" class="big_img" /> -->
-		<swiper autoplay="{{true}}" circular="{{true}}">
+		<swiper autoplay="{{true}}" circular="{{true}}"  wx:if="{{getList_ad_list.length!=0}}">
 			<swiper-item wx:for="{{getList_ad_list}}" wx:key="id" wx:for-index="index" wx:for-item="item" data-id="{{item.id}}" bindtap="getList_ad_fn">
 				<image src="{{item.pic}}" class="big_img"></image>
 			</swiper-item>
@@ -31,14 +31,14 @@
 				<!-- <image src="{{item.pic}}" /> -->
 				<van-image custom-class="show" fit="cover" src="{{item.pic}}" />
 				<view class="bottom">
-					<view class="son">
+					<view class="son van-ellipsis">
 						<view>姓名: <text>{{item.name}}</text></view>
 					</view>
-					<view class="son">
+					<view class="son van-ellipsis">
 						<view>城市: <text>{{item.town}}</text></view>
 					</view>
-					<view class="son">
-						<view>特长: <text wx:if="{{!item.specialty}}">无</text><text wx:if="{{!!item.specialty}}">{{item.specialty}}</text></view>
+					<view class="son van-ellipsis">
+						<text>特长: <text wx:if="{{!item.specialty}}">无</text><text wx:if="{{!!item.specialty}}">{{item.specialty}}</text></text>
 					</view>
 				</view>
 			</view>

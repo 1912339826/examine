@@ -35,7 +35,7 @@
   background-color: #dfdfdf;
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
-  height: 50rpx;
+  height: 60rpx;
   width: 50rpx;
   display: flex;
   justify-content: center;
@@ -45,27 +45,27 @@
 .search .weui-input {
   color: #395996;
   width: 34%;
-  height: 50rpx;
-  line-height: 50rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   background-color: #dfdfdf;
 }
 
 .input_placeholder{
-  font-size: 25rpx;
+  font-size: 30rpx;
 }
 
 .search .right {
   background-color: #dfdfdf;
-  height: 50rpx;
+  height: 60rpx;
   width: 40rpx;
-  line-height: 50rpx;
+  line-height: 60rpx;
   border-top-right-radius: 50%;
   border-bottom-right-radius: 50%;
 }
 
 .search .button_changecity {
-  height: 50rpx;
-  line-height: 50rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   display: flex;
   /* background-color: #dfdfdf; */
   color: #ffffff;
@@ -74,8 +74,8 @@
 }
 
 .search .button_ {
-  height: 50rpx;
-  line-height: 50rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   display: flex;
   background-color: #dfdfdf;
   color: #395996;
@@ -85,13 +85,14 @@
 
 .search .select {
   margin-left: 20rpx;
-  padding-left: 15rpx;
-  padding-right: 15rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
   color: #395996;
   background-color: #ffffff;
-  border-radius: 30%;
-  height: 50rpx;
-  line-height: 50rpx;
+  border-radius: 20rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  font-size: 25rpx;
 }
 
 .apply {
@@ -116,7 +117,7 @@
   margin-bottom: 20rpx;
   width: calc(100% - 60rpx);
   height: 200rpx;
-  border-radius: 8.5%;
+  border-radius: 20rpx;
 
 }
 
@@ -154,9 +155,9 @@
   justify-content: space-between;
   height: 50rpx;
   line-height: 50rpx;
+  width: 190rpx;
 }
 
 .tasting_tube .content swiper {
-  padding-top: 30rpx;
   height: 270rpx;
 }

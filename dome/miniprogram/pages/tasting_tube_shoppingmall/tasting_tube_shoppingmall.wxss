@@ -13,10 +13,22 @@
   margin-bottom: 20rpx;
 }
 
-.big_img image {
+/* .big_img image {
   border-radius: 40rpx;
   width: 720rpx;
   height: calc(37rpx * 8);
+} */
+
+.big_img swiper {
+  width: 720rpx;
+  height: calc(37rpx * 8);
+  text-align: center;
+}
+
+.big_img swiper image {
+  border-radius: 40rpx;
+  width: 100%;
+  height: 100%;
 }
 
 .lists {
@@ -53,7 +65,7 @@
   background-color: darkblue;
 }
 
-.list .img .play_img{
+.list .img .play_img {
   width: 50rpx;
   height: 50rpx;
   position: absolute;
@@ -62,7 +74,7 @@
   left: 50%;
 }
 
-.list .img video{
+.list .img video {
   width: 100%;
   height: 336rpx;
   position: absolute;

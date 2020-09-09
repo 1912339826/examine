@@ -44,7 +44,7 @@
 .big_img {
   margin-top: 20rpx;
   text-align: center;
-  margin-bottom: 20rpx;
+  
 }
 
 .big_img swiper {
@@ -60,6 +60,7 @@
 }
 
 .lists {
+  margin-top: 20rpx;
   width: 720rpx;
   display: flex;
   flex-wrap: wrap;
@@ -137,7 +138,7 @@
   font-size: 20rpx;
   width: 250rpx;
   height: 50rpx;
-  margin-top: 5rpx;
+  /* margin-top: 5rpx; */
   white-space: pre-wrap
 }
 

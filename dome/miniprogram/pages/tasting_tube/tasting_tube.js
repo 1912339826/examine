@@ -20,6 +20,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    status: "",
     value: "",
     columns: [{
         values: citys,
@@ -59,15 +60,18 @@ Page({
       status: 1,
       teamId: null,
       teamIntroduction: "搞笑+跳舞",
-      teamName: null,
-      getList_ad_list: []
-    }]
+      teamName: null
+    }],
+    getList_ad_list: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      status: wx.getStorageSync('user').tasterId
+    })
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#395996'
@@ -83,10 +87,10 @@ Page({
     this.tasterList()
     this.cityTree()
   },
-  tasterList() {
+  tasterList(pull) {
     fun_ref.get(fun_config.tasterList.url, {
       pageNo: this.data.pageNo, //页码
-      pageSize: 6, //每页记录条数,
+      pageSize: 9, //每页记录条数,
       name: this.data.value,
       cityId: this.data.changecity.id
     }, res => {
@@ -98,7 +102,9 @@ Page({
         lists: newarr,
         totalPage: res.data.result.totalPage
       }, function () {
-
+        if (pull == "pull") {
+          wx.stopPullDownRefresh();
+        }
       })
     })
   },
@@ -276,6 +282,24 @@ Page({
         this.tasterList()
       })
     }
+  },
+  // 下拉刷新，重置当前搜索结果
+  onPullDownRefresh() {
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+    })
+    this.setData({
+      value: "",
+      changecity: {
+        text: "城市",
+        id: ""
+      },
+      pageNo: 1,
+      lists: []
+    }, function () {
+      this.tasterList("pull")
+    })
   },
 
   /**

@@ -1,7 +1,32 @@
 /* pages/publish/publish.wxss */
-textarea{
+.publish {
+  padding: 20rpx;
 }
 
-.box{
-  display: flex;
+.box textarea {
+  padding: 20rpx;
+}
+
+.van-uploader .van-uploader__upload {
+  background-color: rgb(226, 223, 223);
+}
+
+.van-icon-photograph {
+  color: rgb(138, 136, 136);
+}
+
+.button_  button {
+  width: 70%;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 40rpx;
+  color: #ffffff;
+  border-radius: 20rpx;
+}
+
+
+.button_ {
+  width: 100%;
+  text-align: center;
 }

@@ -11,7 +11,7 @@ Page({
     head_sculpture: "",
     name: "",
     specialty: "",
-    taster:{}
+    taster: {}
   },
 
   /**
@@ -40,7 +40,7 @@ Page({
    */
   onShow: function () {
     this.setData({
-      taster:wx.getStorageSync('user').taster
+      taster: wx.getStorageSync('user').taster
     })
     this.index_taster()
   },
@@ -84,8 +84,9 @@ Page({
               filePath: ress.tempFilePaths[0],
               name: 'file',
               success(res) {
+                console.log(res)
                 // JSON.parse(res.data).result.url
-                that.index_taster()
+                that.update_taster(JSON.parse(res.data).result.url)
               },
             });
           }
@@ -96,6 +97,34 @@ Page({
       }
     })
   },
+
+  update_taster(url) {
+    let type;
+    let id;
+    if (!!wx.getStorageSync('user').taster) {
+      type = "pic";
+      id = wx.getStorageSync('user').taster.id
+    } else {
+      type = "avatar_pic";
+      id = wx.getStorageSync('user').id
+    }
+    fun_ref.post(fun_config.update_taster.url, {
+      [type]: url,
+      id: id
+    }, res => {
+      if (res.data.status == 200) {
+        // Toast.success(res.data.message);
+        this.index_taster()
+      } else {
+        Toast.fail('失败');
+      }
+    })
+  },
+
+
+
+
+
   index_taster() {
     fun_ref.get(fun_config.index_taster.url, {}, res => {
       wx.setStorageSync('user', res.data);

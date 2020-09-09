@@ -1,13 +1,14 @@
 /* pages/apply/apply.wxss */
 .apply {
   position: relative;
-  height: calc(100vh - 120rpx);
   padding-bottom: 120rpx;
+  background-color: #f5eb45;
+  height: calc(100vh + 200rpx);
 }
 
 .apply_back {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 120rpx);
   position: absolute;
   z-index: 1;
 }
@@ -16,12 +17,12 @@
   width: 100%;
   position: absolute;
   z-index: 2;
-  /* padding-top: 500rpx; */
-  padding-top: 42vh;
+  /* margin-top: 500rpx; */
+  margin-top: 39vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  height: 900rpx;
 }
 
 .apply_son>.son {
@@ -30,7 +31,7 @@
   align-self: center;
   font-size: 30rpx;
   width: 77%;
-  margin-bottom: 15rpx;
+  margin-bottom: 25rpx;
 }
 
 .apply_son>.son>.gap {
@@ -44,10 +45,9 @@
   width: 100%;
   padding-left: 20rpx;
   background-color: #ffffff;
-  border-top-left-radius: 10%;
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
-  border-top-right-radius: 10%;
+  border-radius: 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
 }
 
 .placeholder_class {
@@ -64,24 +64,18 @@
 }
 
 .apply_son>.son .city {
-  border-top-left-radius: 10%;
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
-  border-top-right-radius: 10%;
-  height: 40rpx;
-  line-height: 40rpx;
+  border-radius: 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   background-color: #ffffff;
-  font-size: 20rpx;
+  font-size: 22rpx;
 }
 
 .apply_son>.son>.gap textarea {
   background-color: #ffffff;
   width: 100%;
-  height: 100rpx;
-  border-top-left-radius: 10%;
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
-  border-top-right-radius: 10%;
+  height: 150rpx;
+  border-radius: 20rpx;
 }
 
 .apply_son>.informed_consent {

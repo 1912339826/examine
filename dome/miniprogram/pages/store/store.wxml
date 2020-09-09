@@ -5,7 +5,7 @@
 		<view class="recommend" style="opacity:0;">推荐</view>
 		<view class="sort" style="opacity:0;">类别</view>
 	</view>
-	<view class="big_img">
+	<view class="big_img" wx:if="{{getList_ad_list.length!=0}}">
 		<!-- <image src="../../images/information_big_03.jpg" /> -->
 		<swiper autoplay="{{true}}" circular="{{true}}">
 			<swiper-item wx:for="{{getList_ad_list}}" wx:key="id" wx:for-index="index" wx:for-item="item" data-id="{{item.id}}" bindtap="getList_ad_fn">
@@ -32,7 +32,7 @@
 						<!-- <image src="../../images/bravo_03.png" class="button" wx:if="{{item.isLikes==true}}" bindtap="cancelLikes" data-videoId="{{item.id}}" data-index="{{index}}" /> -->
 						<!-- <image src="../../images/bravo_03.png" class="button" wx:else bindtap="addLikes" data-videoId="{{item.id}}" data-index="{{index}}" /> -->
 					</view>
-					<view class="introductory van-multi-ellipsis--l2">{{item.introduction}}
+					<view class="introductory van-multi-ellipsis--l2">{{item.title}}
 					</view>
 				</view>
 			</view>

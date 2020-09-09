@@ -51,10 +51,10 @@
 								<!-- <image mode='widthFix' wx:for="{{figure_set}}" src="../../images/friend_circle_img_03.png" /> -->
 								<!-- <image src="{{item.pics}}" mode='widthFix'></image> -->
 								<view class="img_box" wx:if="{{item.photos.length>1}}">
-									<image src="{{item_img}}" class="img_" wx:for="{{item.photos}}" wx:key="id_img" wx:for-index="index_img" wx:for-item="item_img"></image>
+									<image bindtap="previewImage" data-urls="{{item.photos}}" data-current="{{item_img}}" src="{{item_img}}" class="img_" wx:for="{{item.photos}}" wx:key="id_img" wx:for-index="index_img" wx:for-item="item_img"></image>
 								</view>
 								<view class="img_box" wx:if="{{item.photos.length==1}}">
-									<image src="{{item_img}}" mode='widthFix' wx:for="{{item.photos}}" wx:key="id_img" wx:for-index="index_img" wx:for-item="item_img"></image>
+									<image bindtap="previewImage" data-urls="{{item.photos}}" data-current="{{item_img}}"  src="{{item_img}}" mode='widthFix' wx:for="{{item.photos}}" wx:key="id_img" wx:for-index="index_img" wx:for-item="item_img"></image>
 								</view>
 							</view>
 						</view>
@@ -81,5 +81,3 @@
 </view>
 
 <van-toast id="van-toast" />
-<!-- <input class="weui-input" focus="{{focus}}" wx:if="{{focus}}" type="text" confirm-type="send" placeholder="将会获取焦点" /> -->
-<!-- <input class="weui-input" focus="{{focus}}"  type="text" confirm-type="send" placeholder="将会获取焦点" /> -->

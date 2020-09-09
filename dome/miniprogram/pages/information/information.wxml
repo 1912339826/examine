@@ -14,7 +14,7 @@
 		</view>
 	</view>
 
-	<view class="big_list">
+	<view class="big_list" wx:if="{{getList_ad_list.length!=0}}">
 		<!-- <image src="../../images/information_big_03.jpg"></image> -->
 		<swiper autoplay="{{true}}" circular="{{true}}">
 			<swiper-item wx:for="{{getList_ad_list}}" wx:key="id" wx:for-index="index" wx:for-item="item" data-id="{{item.id}}" bindtap="getList_ad_fn">

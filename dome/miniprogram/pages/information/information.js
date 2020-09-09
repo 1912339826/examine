@@ -65,7 +65,7 @@ Page({
     fun_ref.get(fun_config.list.url, {
       type: type,
       pageNo: pageNo, //当前页码
-      pageSize: 3 //每页记录条数
+      pageSize: 6 //每页记录条数
     }, res => {
       let arr = [];
       for (let index = 0; index < res.data.result.data.length; index++) {

@@ -52,12 +52,12 @@ textarea{
   background-color: #22b573;
   color: #ffffff;
   text-align: center;
-  height: 58rpx;
-  line-height: 58rpx;
+  height: 70rpx;
+  line-height: 70rpx;
   border-radius: 20rpx;
   font-size: 30rpx;
   padding-left: 10rpx;
   padding-right: 10rpx;
-  width: 115rpx;
+  width: 50vw;
   margin-top: 30rpx;
 }

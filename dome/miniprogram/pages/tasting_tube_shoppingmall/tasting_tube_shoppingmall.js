@@ -28,7 +28,8 @@ Page({
     id: '',
     totalPage: 1,
     taster: false,
-    is_my: false
+    is_my: false,
+    getList_ad_list:[]
   },
 
   /**
@@ -61,6 +62,7 @@ Page({
       }
       this.getTasterMall_taster()
     })
+    this.getList_ad()
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#395996'
@@ -78,7 +80,7 @@ Page({
     fun_ref.get(fun_config.getTasterMall_taster.url, {
       id: this.data.id,
       pageNo: this.data.pageNo,
-      pageSize: 4
+      pageSize: 6
     }, res => {
       let arr = [];
       let newarr = [];
@@ -178,6 +180,20 @@ Page({
       fail: (err) => {
         Toast.fail('支付失败！');
       }
+    })
+  },
+   // 广告
+   getList_ad() {
+    fun_ref.get(fun_config.getList_ad.url, {}, res => {
+      this.setData({
+        getList_ad_list: res.data.result
+      })
+    })
+  },
+  // 广告详情
+  getList_ad_fn(e) {
+    wx.navigateTo({
+      url: '../information_details/information_details?id=' + e.currentTarget.dataset.id + "&&type=advertising"
     })
   },
 
