@@ -29,7 +29,7 @@
   justify-content: space-between;
   align-self: center;
   font-size: 30rpx;
-  width: 70%;
+  width: 77%;
   margin-bottom: 15rpx;
 }
 
@@ -56,9 +56,10 @@
 }
 
 .apply_son>.son>.text {
-  width: 23%;
+  width: 26%;
   color: #ffffff;
   display: flex;
+  text-align: justify;
   justify-content: space-between;
 }
 
@@ -138,7 +139,8 @@
 
 
 van-button {
-  width: 100%;
+  width: 84%;
+  margin: 0 auto;
   border-radius: 20%;
 }
 

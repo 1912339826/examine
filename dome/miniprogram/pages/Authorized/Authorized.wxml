@@ -2,8 +2,8 @@
 
 <view class="Authorized">
 	<!-- <image class="logo" src="../../images/logo_03 (2).png" mode='widthFix'></image> -->
-	<image class="logo" src="../../images/logo_03 (2).png" mode='widthFix'></image>
-	<view class="name">品鉴官 </view>
+	<image class="logo" src="../../images/logo.png" mode='widthFix'></image>
+	<view class="name">城市品鉴官</view>
 	<view class="massage">
 		允许微信授权后，可体验更多功能。
 	</view>

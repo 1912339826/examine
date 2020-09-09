@@ -70,7 +70,8 @@
 						</view>
 						<view class="textarea_box" wx:if="{{textarea_==item.id}}">
 							<textarea wx:if="{{textarea_==item.id}}" focus="{{textarea_==item.id}}" class="textarea_input" bindinput="textarea_input"  value="{{textarea_value}}" class="weui-input" type="text" maxlength="-1" placeholder="请输入" />
-							<view class="textarea_button" bindtap="add_comment" data-index="{{index}}" data-indexs="{{indexs}}" data-id="{{item.id}}">评论</view>
+							<view class="textarea_button" bindtap="add_comment" data-index="{{index}}" data-indexs="{{indexs}}" data-id="{{item.id}}">发送</view>
+							<!-- 评论 -->
 							</view>
 						</view>
 				</view>

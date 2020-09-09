@@ -17,10 +17,11 @@
 			<van-icon name="arrow" size="80rpx" color="#666666" />
 		</view>
 	</view>
-	<view class="ones_strong_suit box" wx:if="{{specialty}}" data-name="specialty" bindtap="alter">
+	<view class="ones_strong_suit box" wx:if="{{!!taster}}" data-name="specialty" bindtap="alter">
 		<view class="left">特长</view>
 		<view class="right">
-			<view>{{specialty}}</view>
+			<view wx:if="{{!!specialty}}">{{specialty}}</view>
+			<view wx:if="{{!specialty}}">无</view>
 			<van-icon name="arrow" size="80rpx" color="#666666" />
 		</view>
 	</view>

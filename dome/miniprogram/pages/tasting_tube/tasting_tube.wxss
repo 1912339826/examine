@@ -16,6 +16,10 @@
 
 .top>.test {
   height: 38rpx;
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+  margin: 0 auto;
 }
 
 .search {
@@ -40,10 +44,14 @@
 
 .search .weui-input {
   color: #395996;
-  width: 40%;
+  width: 34%;
   height: 50rpx;
   line-height: 50rpx;
   background-color: #dfdfdf;
+}
+
+.input_placeholder{
+  font-size: 25rpx;
 }
 
 .search .right {
@@ -55,7 +63,17 @@
   border-bottom-right-radius: 50%;
 }
 
-.search .button {
+.search .button_changecity {
+  height: 50rpx;
+  line-height: 50rpx;
+  display: flex;
+  /* background-color: #dfdfdf; */
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+}
+
+.search .button_ {
   height: 50rpx;
   line-height: 50rpx;
   display: flex;
@@ -67,8 +85,8 @@
 
 .search .select {
   margin-left: 20rpx;
-  padding-left: 5rpx;
-  padding-right: 5rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
   color: #395996;
   background-color: #ffffff;
   border-radius: 30%;
@@ -87,9 +105,9 @@
 }
 
 .content {
-  padding-top: 160rpx;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
+  padding-top: 110rpx;
+  /* padding-left: 20rpx;
+  padding-right: 20rpx; */
   text-align: center;
 }
 
@@ -99,9 +117,12 @@
   width: calc(100% - 60rpx);
   height: 200rpx;
   border-radius: 8.5%;
+
 }
 
 .content .lists {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -133,4 +154,9 @@
   justify-content: space-between;
   height: 50rpx;
   line-height: 50rpx;
+}
+
+.tasting_tube .content swiper {
+  padding-top: 30rpx;
+  height: 270rpx;
 }

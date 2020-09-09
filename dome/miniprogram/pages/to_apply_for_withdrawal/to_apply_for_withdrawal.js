@@ -47,7 +47,7 @@ Page({
   },
   // 提现
   withdraw() {
-    if (this.data.value == "") {
+    if (this.data.value == "" || this.data.value == 0) {
       Toast.fail("请输入金额")
     } else {
       this.apply_withdraw()

@@ -23,7 +23,8 @@
 				<image src="../../images/woman.png" class="gender_masculinity_03" wx:if="{{gender=='女'}}" />
 			</view>
 			<view class="name_gender_button" wx:if="{{!authorization}}">
-				<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="log" class="fix">登录</button>
+				<!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="log" class="fix">登录</button> -->
+				<button class="fix" bindtap="register">登录</button>
 			</view>
 			<view class="signature" wx:if="{{!!apply}}" bindtap="alter">
 				<text wx:if="{{!signature}}">编辑个性签名</text><text wx:else>{{signature}}</text>
@@ -31,7 +32,7 @@
 		</view>
 	</view>
 	<view class="lists" wx:if="{{authorization}}">
-		<view class="list order_list" data-name="order_list" wx:if="{{!apply}}" bindtap="fun_click">
+		<view class="list order_list" data-name="order_list" bindtap="fun_click">
 			<view class="tex">我的购买记录</view>
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>
@@ -43,7 +44,7 @@
 			<view class="tex">提现记录</view>
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>
-		<view class="list basic_information_modification" wx:if="{{!!apply}}" data-name="basic_information_modification" bindtap="fun_click">
+		<view class="list basic_information_modification" data-name="basic_information_modification" bindtap="fun_click">
 			<view class="tex">基本信息</view>
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>

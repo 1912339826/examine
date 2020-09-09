@@ -72,32 +72,50 @@ Page({
   },
   // 提交按钮
   go_be_reviewing() {
-    if (this.data.input_name == "" && this.data.input_phone == "" && !!this.data.changecity[2].id && this.data.text_individual == "" && this.data.text_teams == "") {
-      Toast.fail("请填写完整")
+    Toast.clear();
+    if (!this.data.input_name) {
+      Toast.fail("请填写姓名")
       return
     }
-    // Toast.loading({
-    //   message: '加载中...',
-    //   forbidClick: true,
-    // })
-    // fun_ref.post(fun_config.tasterSubmit.url, {
-    //   name: this.data.input_name,
-    //   phone: this.data.input_phone,
-    //   cityId: this.data.changecity[2].id,
-    //   introduction: this.data.text_individual,
-    //   teamIntroduction: this.data.text_teams
-    // }, res => {
-    //   Toast.clear();
-    //   if (res.data.status == 200) {
-    //     wx.navigateTo({
-    //       url: "../be_reviewing/be_reviewing"
-    //     });
-    //   } else {
-    //     Toast.fail(res.data.message)
-    //   }
-    // }, File => {
-    //   console.log(File)
-    // })
+    if (!this.data.input_phone) {
+      Toast.fail("请填写联系方式")
+      return
+    }
+    if (!this.data.changecity[2].id) {
+      Toast.fail("请选择城市")
+      return
+    }
+    if (!this.data.text_individual) {
+      Toast.fail("请填写个人介绍")
+      return
+    }
+    if (!this.data.text_teams) {
+      Toast.fail("请填写团队介绍")
+      return
+    }
+
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+    })
+    fun_ref.post(fun_config.tasterSubmit.url, {
+      name: this.data.input_name,
+      phone: this.data.input_phone,
+      cityId: this.data.changecity[2].id,
+      introduction: this.data.text_individual,
+      teamIntroduction: this.data.text_teams
+    }, res => {
+      Toast.clear();
+      if (res.data.status == 200) {
+        wx.navigateTo({
+          url: "../be_reviewing/be_reviewing"
+        });
+      } else {
+        Toast.fail(res.data.message)
+      }
+    }, File => {
+      console.log(File)
+    })
   },
   city() {
     this.setData({
@@ -106,7 +124,7 @@ Page({
   },
   // 城市（省市区）
   cityTree() {
-    
+
     Toast.loading({
       message: '加载中...',
       forbidClick: true,

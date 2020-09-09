@@ -54,6 +54,16 @@ Page({
       phone: this.data.value
     }, res => {
       Toast(res.data.message)
+      setTimeout(() => {
+        if (res.data.status == 200) {
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+      }, 500);
+
+
+
     })
   },
   /**

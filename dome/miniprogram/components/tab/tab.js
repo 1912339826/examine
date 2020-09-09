@@ -15,18 +15,18 @@ Component({
   data: {
     img_list: [{
       active: "../../images/information_active.png",
-      active_no: "../../images/information_active_no.jpg"
+      active_no: "../../images/information_active_no.png"
     }, {
-      active: "../../images/tasting_tube_active.jpg",
+      active: "../../images/tasting_tube_active.png",
       active_no: "../../images/tasting_tube_active_no.png"
     }, {
-      active: "../../images/store_active.jpg",
+      active: "../../images/store_active.png",
       active_no: "../../images/store_active_no.png"
     }, {
-      active: "../../images/my_active.jpg",
+      active: "../../images/my_active.png",
       active_no: "../../images/my_active_no.png"
     }],
-    tab: ["../../images/information_active_no.jpg", "../../images/tasting_tube_active_no.png", "../../images/store_active_no.png", "../../images/my_active_no.png"],
+    tab: ["../../images/information_active_no.png", "../../images/tasting_tube_active_no.png", "../../images/store_active_no.png", "../../images/my_active_no.png"],
     navigateTo_list: ["../information/information", "../tasting_tube/tasting_tube", "../store/store", "../my/my"]
   },
 

@@ -8,11 +8,11 @@
   height: 50rpx;
   line-height: 50rpx;
   font-size: 40rpx;
-  padding: 40rpx;
+  padding: 20rpx 40rpx 20rpx 40rpx;
 }
 
 .introduction {
-  padding: 40rpx;
+  padding: 0 40rpx 40rpx 40rpx;
 }
 
 .bottom_ {
@@ -36,7 +36,6 @@
 .bottom_ .botton_box view {
   width: 100%;
   text-align: right;
- 
   padding-right: 80rpx;
   height: 100rpx;
   line-height: 100rpx;
@@ -51,4 +50,10 @@
 .button_no{
   color: #ebebeb;
   background-image: linear-gradient(to right, #ffffff, #A2A6A5);
+}
+
+.message{
+  color: red;
+  padding-left: 40rpx;
+  padding-bottom: 20rpx;
 }

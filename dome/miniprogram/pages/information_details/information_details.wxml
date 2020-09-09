@@ -1,0 +1,11 @@
+<!--pages/information_details/information_details.wxml-->
+
+<view class="information_details">
+	<view class="title">
+		{{title}}
+	</view>
+	<view class="content">
+		<rich-text nodes="{{content}}"></rich-text>
+	</view>
+</view>
+<van-toast id="van-toast" />

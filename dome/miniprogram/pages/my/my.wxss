@@ -13,7 +13,7 @@
 }
 
 .top_top {
-  height: 162rpx;
+  height: 210rpx;
   display: flex;
   justify-content: space-between;
 }
@@ -36,7 +36,7 @@
 }
 
 .top_top>.balance>view:nth-child(2) {
-  font-size: 20rpx;
+  font-size: 26rpx;
   margin-top: 10rpx;
 }
 
@@ -50,6 +50,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 20rpx;
 }
 
 .name_gender {

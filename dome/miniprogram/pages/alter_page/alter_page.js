@@ -34,9 +34,17 @@ Page({
       title: `更改${this.data.inquire[options.type]}`
     })
     this.setData({
-      type: options.type,
-      value: wx.getStorageSync('user').taster[options.type]
+      type: options.type
     })
+    if (!!wx.getStorageSync('user').taster) {
+      this.setData({
+        value: wx.getStorageSync('user').taster[options.type]
+      })
+    } else {
+      this.setData({
+        value: wx.getStorageSync('user')[options.type]
+      })
+    }
   },
   onChange() {
     this.setData({
@@ -47,7 +55,11 @@ Page({
     if (this.data.value == "") {
       Toast.fail("没有输入，请重新填写")
     } else {
-      this.update_taster()
+      if (!!wx.getStorageSync('user').taster) {
+        this.update_taster()
+      } else {
+        this.update_user()
+      }
     }
   },
   update_taster() {
@@ -55,6 +67,24 @@ Page({
     fun_ref.post(fun_config.update_taster.url, {
       [type]: this.data.value,
       id: wx.getStorageSync('user').taster.id
+    }, res => {
+      if (res.data.status == 200) {
+        Toast.success(res.data.message);
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 300);
+      } else {
+        Toast.fail('失败');
+      }
+    })
+  },
+  update_user() {
+    let type = this.data.type;
+    fun_ref.post(fun_config.update_user.url, {
+      [type]: this.data.value,
+      id: wx.getStorageSync('user').id
     }, res => {
       if (res.data.status == 200) {
         Toast.success(res.data.message);

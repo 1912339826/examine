@@ -23,7 +23,8 @@ Page({
       videoId: "2c6fc60198ed4c41a2464cd9eb7bd54a"
     }],
     totalPage: 1,
-    taster: false
+    taster: false,
+    getList_ad_list: []
   },
 
   /**
@@ -37,6 +38,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '商城'
     })
+    this.getList_ad()
     // 测试数据清空
     this.setData({
       lists: []
@@ -82,6 +84,11 @@ Page({
       })
     } else {
       Toast.fail("未登录")
+      setTimeout(() => {
+        wx.redirectTo({
+          url: '../my/my',
+        })
+      }, 500);
     }
 
   },
@@ -103,6 +110,11 @@ Page({
       })
     } else {
       Toast.fail("未登录")
+      setTimeout(() => {
+        wx.redirectTo({
+          url: '../my/my',
+        })
+      }, 500);
     }
 
   },
@@ -114,6 +126,11 @@ Page({
       })
     } else {
       Toast.fail("未登录")
+      setTimeout(() => {
+        wx.redirectTo({
+          url: '../my/my',
+        })
+      }, 500);
     }
   },
   purchase(e) {
@@ -127,6 +144,11 @@ Page({
       }
     } else {
       Toast.fail("未登录")
+      setTimeout(() => {
+        wx.redirectTo({
+          url: '../my/my',
+        })
+      }, 500);
     }
 
   },
@@ -172,6 +194,20 @@ Page({
         console.log(err)
         Toast.fail('支付失败！');
       }
+    })
+  },
+  // 广告
+  getList_ad() {
+    fun_ref.get(fun_config.getList_ad.url, {}, res => {
+      this.setData({
+        getList_ad_list: res.data.result
+      })
+    })
+  },
+  // 广告详情
+  getList_ad_fn(e) {
+    wx.navigateTo({
+      url: '../information_details/information_details?id=' + e.currentTarget.dataset.id + "&&type=advertising"
     })
   },
   /**

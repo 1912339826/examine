@@ -3,6 +3,9 @@
 <view class="play">
 	<video oster-for-crawler="{{item.cover}}" bindended="ended" src="{{src}}" style="width:100%"></video>
 	<view class="price">￥{{price}}</view>
+	<view class="message">
+		<text wx:if="{{!owned}}">注：未拥有，只能试看30秒！</text>
+	</view>
 	<view class="introduction">简介：{{introduction}}</view>
 	<view class="bottom_">
 		<view wx:if="{{!!taster}}" class="botton_box">

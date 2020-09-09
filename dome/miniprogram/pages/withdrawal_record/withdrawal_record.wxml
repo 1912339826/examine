@@ -10,6 +10,7 @@
 						<view class="state" wx:if="{{item.status==0}}">正在审核</view>
 						<view class="state" wx:if="{{item.status==3}}">提现成功</view>
 						<view class="state" wx:if="{{item.status==4}}">提现失败</view>
+						<view class="state" wx:if="{{item.status==2}}">拒绝提现</view>
 					</view>
 					<view class="day">{{item.timestamp}}</view>
 				</view>

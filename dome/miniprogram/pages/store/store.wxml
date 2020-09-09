@@ -6,7 +6,12 @@
 		<view class="sort" style="opacity:0;">类别</view>
 	</view>
 	<view class="big_img">
-		<image src="../../images/information_big_03.jpg" />
+		<!-- <image src="../../images/information_big_03.jpg" /> -->
+		<swiper autoplay="{{true}}" circular="{{true}}">
+			<swiper-item wx:for="{{getList_ad_list}}" wx:key="id" wx:for-index="index" wx:for-item="item" data-id="{{item.id}}" bindtap="getList_ad_fn">
+				<image src="{{item.pic}}"></image>
+			</swiper-item>
+		</swiper>
 	</view>
 
 	<view class="lists">
@@ -14,7 +19,7 @@
 			<view class="box" bindtap="play" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}">
 				<view class="img">
 					<image class="play_img" src="../../images/play.png"></image>
-					<van-image  custom-class="show" fit="cover" src="{{item.cover}}" />
+					<van-image custom-class="show" fit="cover" src="{{item.cover}}" />
 					<!-- <view class="praise">
 						<text>{{item.likes}}</text>
 						<image src="../../images/star.png" wx:if="{{item.isLikes==true}}" />
@@ -32,8 +37,10 @@
 				</view>
 			</view>
 			<view class="button_buy">
-				<view class="button_" wx:if="{{!!taster}}" data-taster="{{true}}" data-id="{{item.id}}" bindtap="purchase">申请</view>
-				<view class="button_" wx:else data-taster="{{false}}" data-id="{{item.id}}" bindtap="purchase">购买</view>
+				<view class="button_" wx:if="{{!!taster&&!item.own}}" data-taster="{{true}}" data-id="{{item.id}}" bindtap="purchase">申请</view>
+				<view class="button_" wx:if="{{!!taster&&item.own}}">已申请</view>
+				<view class="button_" wx:if="{{!taster&&!item.own}}" data-taster="{{false}}" data-id="{{item.id}}" bindtap="purchase">购买</view>
+				<view class="button_" wx:if="{{!taster&&item.own}}">已购买</view>
 			</view>
 		</view>
 	</view>

@@ -138,6 +138,11 @@ export default {
     type: "POST",
     url: `${BASE_URLA}/taster/update`
   },
+  // 普通用户更改信息
+  update_user: {
+    type: "POST",
+    url: `${BASE_URLA}/user/update`
+  },
   // 发布朋友圈
   add_circleFriends: {
     type: "POST",
@@ -147,5 +152,20 @@ export default {
   import_info: {
     type: "POST",
     url: `${BASE_URLA}/info/import`
+  },
+  // 资讯详情
+  getInfo_news: {
+    type: "GET",
+    url: `${BASE_URLA}/news/getInfo`
+  },
+  // 广告
+  getList_ad: {
+    type: "GET",
+    url: `${BASE_URLA}/ad/getList`
+  },
+  // 广告的详情
+  getInfo_ad: {
+    type: "GET",
+    url: `${BASE_URLA}/ad/getInfo`
   },
 };

@@ -60,6 +60,7 @@ Page({
       teamId: null,
       teamIntroduction: "搞笑+跳舞",
       teamName: null,
+      getList_ad_list: []
     }]
   },
 
@@ -71,6 +72,10 @@ Page({
       frontColor: '#ffffff',
       backgroundColor: '#395996'
     })
+    wx.setNavigationBarTitle({
+      title: '城市品鉴官'
+    })
+    this.getList_ad()
     // 有手写测试数据，清空
     this.setData({
       lists: []
@@ -145,6 +150,11 @@ Page({
       });
     } else {
       Toast.fail("未登录")
+      setTimeout(() => {
+        wx.redirectTo({
+          url: '../my/my',
+        })
+      }, 500);
     }
 
   },
@@ -155,6 +165,11 @@ Page({
       });
     } else {
       Toast.fail("未登录")
+      setTimeout(() => {
+        wx.redirectTo({
+          url: '../my/my',
+        })
+      }, 500);
     }
   },
   // bind_input
@@ -209,6 +224,20 @@ Page({
   onShow: function () {
     this.setData({
       apply: wx.getStorageSync('user').taster
+    })
+  },
+  // 广告
+  getList_ad() {
+    fun_ref.get(fun_config.getList_ad.url, {}, res => {
+      this.setData({
+        getList_ad_list: res.data.result
+      })
+    })
+  },
+  // 广告详情
+  getList_ad_fn(e) {
+    wx.navigateTo({
+      url: '../information_details/information_details?id=' + e.currentTarget.dataset.id + "&&type=advertising"
     })
   },
 

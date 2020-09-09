@@ -27,7 +27,8 @@ Page({
     pageNo: 1,
     id: '',
     totalPage: 1,
-    taster: false
+    taster: false,
+    is_my: false
   },
 
   /**
@@ -49,6 +50,15 @@ Page({
       // 清空临时数据
       lists: []
     }, function () {
+      if (this.data.id == wx.getStorageSync('user').tasterId) {
+        this.setData({
+          is_my: true
+        })
+      } else {
+        this.setData({
+          is_my: false
+        })
+      }
       this.getTasterMall_taster()
     })
     wx.setNavigationBarColor({

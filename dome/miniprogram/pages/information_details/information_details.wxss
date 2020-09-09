@@ -1,0 +1,19 @@
+/* pages/information_details/information_details.wxss */
+.information_details {
+  padding: 20rpx;
+}
+
+.title {
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.content {
+  margin-top: 20rpx;
+  text-indent: 20rpx;
+}
+
+rich-text .pho {
+  width: calc(100% - 40rpx);
+}

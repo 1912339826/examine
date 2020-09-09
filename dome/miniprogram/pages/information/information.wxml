@@ -15,22 +15,27 @@
 	</view>
 
 	<view class="big_list">
-		<image src="../../images/information_big_03.jpg"></image>
+		<!-- <image src="../../images/information_big_03.jpg"></image> -->
+		<swiper autoplay="{{true}}" circular="{{true}}">
+			<swiper-item wx:for="{{getList_ad_list}}" wx:key="id" wx:for-index="index" wx:for-item="item" data-id="{{item.id}}" bindtap="getList_ad_fn">
+				<image src="{{item.pic}}"></image>
+			</swiper-item>
+		</swiper>
 		<view class="big_list_text">是非成败转头空,青山依旧在</view>
 	</view>
 	<view class="lists">
-		<view class="list" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
+		<view class="list" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item" data-id="{{item.id}}" bindtap="details_page">
 			<view class="left">
-				<view class="title">
-				{{item.title}}
+				<view class="title van-multi-ellipsis--l2">
+					{{item.title}}
 				</view>
-				<view class="isday">{{item.time.getFullYear}}年{{item.time.getMonth+1}}月{{item.time.getDate}}日</view>
+				<view class="isday">{{item.time.getFullYear}}年{{item.time.getMonth}}月{{item.time.getDate}}日</view>
 			</view>
 			<!-- <image src="{{item.pic}}"></image> -->
-				<van-image  custom-class="show" fit="cover" src="{{item.pic}}" />
+			<van-image custom-class="show" fit="cover" src="{{item.pic}}" />
 		</view>
 	</view>
 </view>
 
-<tab active_index="0"/>
+<tab active_index="0" />
 <van-toast id="van-toast" />

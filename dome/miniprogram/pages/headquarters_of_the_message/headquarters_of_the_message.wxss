@@ -30,8 +30,8 @@
 .content>view{
   text-align: center;
   margin-top: 20rpx;
-  font-size: 25rpx;
-  font-weight: 600;
+  font-size: 28rpx;
+  /* font-weight: 600; */
   margin-bottom: 20rpx;
 }
 
@@ -52,12 +52,12 @@ textarea{
   background-color: #22b573;
   color: #ffffff;
   text-align: center;
-  height: 50rpx;
-  line-height: 50rpx;
+  height: 58rpx;
+  line-height: 58rpx;
   border-radius: 20rpx;
   font-size: 30rpx;
   padding-left: 10rpx;
   padding-right: 10rpx;
-  width: 100rpx;
+  width: 115rpx;
   margin-top: 30rpx;
 }

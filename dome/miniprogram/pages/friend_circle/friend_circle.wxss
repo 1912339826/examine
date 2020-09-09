@@ -207,14 +207,14 @@
 }
 
 .movement .circles_button_ {
-  width: 40rpx;
+  width: 50rpx;
 }
 
 .movement .PL {
   position: absolute;
-  width: 100rpx;
-  height: 50rpx;
-  right: 50rpx;
+  width: 150rpx;
+  height: 65rpx;
+  right: 65rpx;
 }
 
 .dynamic {
@@ -256,16 +256,15 @@
   height: 75rpx;
   color: #000000;
   font-size: 30rpx;
-  border-top-left-radius: 10%;
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
-  border-top-right-radius: 10%;
 }
 
 .textarea_button {
   height: 35rpx;
   line-height: 35rpx;
-  font-size: 35rpx;
-  border: 1rpx solid #BABABA;
+  font-size: 30rpx;
+  background-color: #07c160;
   padding: 10rpx;
+  width: 80rpx;
+  color: #ffffff;
+  text-align: center;
 }

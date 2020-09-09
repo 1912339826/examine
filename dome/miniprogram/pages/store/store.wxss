@@ -47,10 +47,16 @@
   margin-bottom: 20rpx;
 }
 
-.big_img image {
-  border-radius: 40rpx;
+.big_img swiper {
   width: 720rpx;
   height: calc(37rpx * 8);
+  text-align: center;
+}
+
+.big_img swiper image {
+  border-radius: 40rpx;
+  width: 100%;
+  height: 100%;
 }
 
 .lists {

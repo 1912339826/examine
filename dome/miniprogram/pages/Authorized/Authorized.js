@@ -57,6 +57,9 @@ Page({
       this.getUserInfo()
     } else {
       // 拒绝
+      wx.navigateBack({
+        delta: 1,
+      })
     }
   },
   getUserInfo() {
@@ -91,8 +94,11 @@ Page({
   index_taster() {
     fun_ref.get(fun_config.index_taster.url, {}, res => {
       wx.setStorageSync('user', res.data)
-      wx.redirectTo({
-        url: `../information/information`,
+      // wx.redirectTo({
+      //   url: `../information/information`,
+      // })
+      wx.navigateBack({
+        delta: 1,
       })
     })
   },

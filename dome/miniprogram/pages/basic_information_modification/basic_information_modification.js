@@ -10,7 +10,8 @@ Page({
   data: {
     head_sculpture: "",
     name: "",
-    specialty: ""
+    specialty: "",
+    taster:{}
   },
 
   /**
@@ -38,6 +39,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      taster:wx.getStorageSync('user').taster
+    })
     this.index_taster()
   },
   // 判断是品鉴官、普通用户
@@ -65,7 +69,8 @@ Page({
     })
   },
   chooseImage() {
-    let arr = ["album", "camera"]
+    let arr = ["album", "camera"];
+    let that = this;
     wx.showActionSheet({
       itemList: ['从手机相册选择', '拍照'],
       success(res) {
@@ -75,12 +80,12 @@ Page({
           sourceType: [arr[res.tapIndex]],
           success(ress) {
             wx.uploadFile({
-              url: fun_config.UploadPhotos.url, // 仅为示例，非真实的接口地址
+              url: fun_config.UploadPhotos.url, // 真实的接口地址
               filePath: ress.tempFilePaths[0],
               name: 'file',
               success(res) {
                 // JSON.parse(res.data).result.url
-                this.index_taster()
+                that.index_taster()
               },
             });
           }

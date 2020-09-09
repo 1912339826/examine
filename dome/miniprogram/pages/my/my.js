@@ -44,11 +44,18 @@ Page({
       });
     }
   },
+
+  // 登录
+  register() {
+    wx.navigateTo({
+      url: '../Authorized/Authorized',
+    })
+  },
   log(e) {
     let message = e.detail.errMsg
     if (message == "getUserInfo:ok") {
       // 允许
-      this.getUserInfo()
+      // this.getUserInfo()
     } else {
       // 拒绝
     }
@@ -115,10 +122,10 @@ Page({
           signature: wx.getStorageSync('user').taster.signature,
           apply: wx.getStorageSync('user').tasterId,
           balance: wx.getStorageSync('user').taster.balance,
-        },function(){
-          if(!this.data.signature){
+        }, function () {
+          if (!this.data.signature) {
             this.setData({
-              signature:false
+              signature: false
             })
           }
         })

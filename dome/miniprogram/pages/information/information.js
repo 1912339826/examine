@@ -22,7 +22,8 @@ Page({
       //   title: "中新社北京8月21日电 (记者 陈溯)中国水利部副部长田学斌21日对外宣布，中国贫困人口饮水安全问题已得到全面解决。",
       //   pic: "https://jason-blog.oss-cn-hangzhou.aliyuncs.com/images/2020/05/23/toux.png"
       // }
-    ]
+    ],
+    getList_ad_list: []
   },
 
   /**
@@ -33,7 +34,8 @@ Page({
       frontColor: '#ffffff',
       backgroundColor: '#395996'
     })
-    this.list(this.data.type,this.data.pageNo,true)
+    this.list(this.data.type, this.data.pageNo, true)
+    this.getList_ad()
   },
 
   tab_son: function (e) {
@@ -41,8 +43,8 @@ Page({
     tab = ["tab_son", "tab_son", "tab_son"];
     tab[e.target.dataset.index] = "tab_son_active";
     this.setData({
-      tab_son_list: tab ,
-      type:  Number(e.target.dataset.index)+1,
+      tab_son_list: tab,
+      type: Number(e.target.dataset.index) + 1,
       pageNo: 1
     }, function () {
       this.list(this.data.type, this.data.pageNo, true)
@@ -88,6 +90,25 @@ Page({
           Toast.clear();
         })
       }
+    })
+  },
+  details_page(e) {
+    wx.navigateTo({
+      url: '../information_details/information_details?id=' + e.currentTarget.dataset.id + "&&type=information"
+    })
+  },
+  // 广告
+  getList_ad() {
+    fun_ref.get(fun_config.getList_ad.url, {}, res => {
+      this.setData({
+        getList_ad_list: res.data.result
+      })
+    })
+  },
+  // 广告详情
+  getList_ad_fn(e) {
+    wx.navigateTo({
+      url: '../information_details/information_details?id=' + e.currentTarget.dataset.id + "&&type=advertising"
     })
   },
   /**
