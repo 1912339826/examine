@@ -6,5 +6,10 @@
 .button_{
   margin-top: 40rpx;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+}
+
+.button_ button{
+  width: 66vw;
+  border-radius: 4px;
 }

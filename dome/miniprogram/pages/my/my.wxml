@@ -18,16 +18,19 @@
 		</view>
 		<view class="top_bottom">
 			<view class="name_gender" wx:if="{{authorization}}">
-				<view>{{name}}</view>
-				<image src="../../images/gender_masculinity_03.png" class="gender_masculinity_03" wx:if="{{gender=='男'}}" />
-				<image src="../../images/woman.png" class="gender_masculinity_03" wx:if="{{gender=='女'}}" />
+				<view class="van-ellipsis">{{name}}
+					<image src="../../images/gender_masculinity_03.png" class="gender_masculinity_03" wx:if="{{gender=='男'}}" />
+					<image src="../../images/woman.png" class="gender_masculinity_03" wx:if="{{gender=='女'}}" />
+				</view>
+
 			</view>
 			<view class="name_gender_button" wx:if="{{!authorization}}">
 				<!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="log" class="fix">登录</button> -->
 				<button class="fix" bindtap="register">登录</button>
 			</view>
 			<view class="signature" wx:if="{{!!apply}}" bindtap="alter">
-				<text wx:if="{{!signature}}">编辑个性签名</text><text wx:else>{{signature}}</text>
+				<van-field value="{{ signature }}" input-align="center" input-class="signature_input" placeholder="编辑个性签名" border="{{ false }}" readonly="{{true}}"/>
+				<!-- <text wx:if="{{!signature}}">编辑个性签名</text><text  class="van-ellipsis"  wx:else>{{signature}}</text> -->
 			</view>
 		</view>
 	</view>
@@ -36,11 +39,11 @@
 			<view class="tex">我的购买记录</view>
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>
-		<view class="list to_apply_for_withdrawal" data-name="to_apply_for_withdrawal" bindtap="fun_click" wx:if="{{!!apply}}">
+		<view class="list to_apply_for_withdrawal" data-name="to_apply_for_withdrawal" bindtap="fun_click" wx:if="{{!!apply&&!!open}}">
 			<view class="tex">申请提款</view>
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>
-		<view class="list withdrawal_record" data-name="withdrawal_record" bindtap="fun_click" wx:if="{{!!apply}}">
+		<view class="list withdrawal_record" data-name="withdrawal_record" bindtap="fun_click" wx:if="{{!!apply&&!!open}}">
 			<view class="tex">提现记录</view>
 			<image src="../../images/arrows_03.png" class="arrows_03" />
 		</view>

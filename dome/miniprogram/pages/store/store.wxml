@@ -3,7 +3,8 @@
 <view class="store">
 	<view class="recommend_sort">
 		<view class="recommend" style="opacity:0;">推荐</view>
-		<view class="sort" style="opacity:0;">类别</view>
+		<view class="sort" style="opacity:1;" bindtap="category">
+			类别 <van-icon name="arrow-down" color="#ffffff"/></view>
 	</view>
 	<view class="big_img" wx:if="{{getList_ad_list.length!=0}}">
 		<!-- <image src="../../images/information_big_03.jpg" /> -->
@@ -47,3 +48,6 @@
 </view>
 <tab active_index="2" />
 <van-toast id="van-toast" />
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose">
+	<van-picker columns="{{ list_category_list }}" show-toolbar="{{true}}" title="请选择" bind:confirm="confirm" bind:cancel="cancel"/>
+</van-popup>

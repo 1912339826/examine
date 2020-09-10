@@ -24,7 +24,12 @@ Page({
     }],
     totalPage: 1,
     taster: false,
-    getList_ad_list: []
+    getList_ad_list: [],
+    show: false,
+    list_category_list: [],
+    list_category_change: {
+      id: ""
+    }
   },
 
   /**
@@ -43,17 +48,25 @@ Page({
     this.setData({
       lists: []
     })
-    this.myMall()
+    this.myMall(this.data.list_category_change)
+    this.list_category()
   },
   // 获取商品
-  myMall() {
+  myMall(id) {
+    let catId;
+    // if (!!id.id) {
+    catId = id.id
+    // } else {
+    // catId = ""
+    // }
     Toast.loading({
       message: '加载中...',
       forbidClick: true,
     })
     fun_ref.get(fun_config.getVideoList.url, {
       pageNo: this.data.pageNo,
-      pageSize: 4
+      pageSize: 4,
+      catId: catId
     }, res => {
       let arr = this.data.lists;
       let newarr = arr.concat(res.data.result.data)
@@ -210,6 +223,60 @@ Page({
       url: '../information_details/information_details?id=' + e.currentTarget.dataset.id + "&&type=advertising"
     })
   },
+  // 类别
+  category() {
+    if (wx.getStorageSync('authorization')) {
+      this.setData({
+        show: true
+      })
+    } else {
+      Toast.fail("未登录")
+      setTimeout(() => {
+        wx.redirectTo({
+          url: '../my/my',
+        })
+      }, 500);
+    }
+
+  },
+  cancel() {
+    this.onClose()
+  },
+  confirm(e) {
+    this.setData({
+      list_category_change: e.detail.value
+    }, function () {
+      this.setData({
+        lists: [],
+        totalPage: 1,
+        pageNo: 1
+      })
+      this.myMall(this.data.list_category_change)
+    })
+    this.onClose()
+  },
+  onClose() {
+    this.setData({
+      show: false
+    })
+  },
+  // 获取商品类别
+  list_category() {
+    fun_ref.get(fun_config.list_category.url, {}, res => {
+      let list_category_list = [{
+        id: "",
+        text: "全部",
+        name: "全部"
+      }]
+      for (let index = 0; index < res.data.result.length; index++) {
+        const element = res.data.result[index];
+        element.text = element.name
+      }
+      this.setData({
+        list_category_list: list_category_list.concat(res.data.result)
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -258,7 +325,7 @@ Page({
       this.setData({
         pageNo: pageNo
       }, function () {
-        this.myMall()
+        this.myMall(this.data.list_category_change)
       })
     }
   },

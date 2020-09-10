@@ -54,7 +54,7 @@ textarea{
   text-align: center;
   height: 70rpx;
   line-height: 70rpx;
-  border-radius: 20rpx;
+  border-radius: 4px;
   font-size: 30rpx;
   padding-left: 10rpx;
   padding-right: 10rpx;

@@ -150,16 +150,16 @@
 }
 
 .dynamic_content {
-  width: 500rpx;
+  width: 460rpx;
 }
 
 .dynamic_content .title {
   font-size: 25rpx;
-  height: 80rpx;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   margin-bottom: 20rpx;
+  padding-top: 20rpx;
 }
 
 .figure_set {
@@ -207,14 +207,14 @@
 }
 
 .movement .circles_button_ {
-  width: 50rpx;
+  width: 70rpx;
 }
 
 .movement .PL {
   position: absolute;
   width: 150rpx;
   height: 65rpx;
-  right: 65rpx;
+  right: 80rpx;
 }
 
 .dynamic {
@@ -248,12 +248,14 @@
   align-items: center;
   width: 100%;
   color: #BABABA;
+  margin-top: 20rpx;
 }
 
 .circles textarea {
   background-color: #ffffff;
   width: 70%;
-  height: 75rpx;
+  height: 100rpx;
+  padding: 20rpx;
   color: #000000;
   font-size: 30rpx;
 }

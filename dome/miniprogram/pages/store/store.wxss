@@ -39,12 +39,14 @@
 
 .recommend_sort>.sort {
   margin-right: 60rpx;
+  display: flex;
+  align-items: center;
 }
 
 .big_img {
   margin-top: 20rpx;
   text-align: center;
-  
+
 }
 
 .big_img swiper {

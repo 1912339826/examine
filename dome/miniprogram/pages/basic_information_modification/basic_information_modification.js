@@ -84,9 +84,9 @@ Page({
               filePath: ress.tempFilePaths[0],
               name: 'file',
               success(res) {
-                console.log(res)
                 // JSON.parse(res.data).result.url
-                that.update_taster(JSON.parse(res.data).result.url)
+                // that.update_taster(JSON.parse(res.data).result.url)
+                that.update(JSON.parse(res.data).result.url)
               },
             });
           }
@@ -98,17 +98,37 @@ Page({
     })
   },
 
-  update_taster(url) {
+
+  update(url) {
     let type;
     let id;
     if (!!wx.getStorageSync('user').taster) {
       type = "pic";
       id = wx.getStorageSync('user').taster.id
+      this.update_taster(type, id, url)
     } else {
-      type = "avatar_pic";
+      type = "avatarPic";
       id = wx.getStorageSync('user').id
+      this.update_user(type, id, url)
     }
+  },
+
+  update_taster(type, id, url) {
     fun_ref.post(fun_config.update_taster.url, {
+      [type]: url,
+      id: id
+    }, res => {
+      if (res.data.status == 200) {
+        // Toast.success(res.data.message);
+        this.index_taster()
+      } else {
+        Toast.fail('失败');
+      }
+    })
+  },
+
+  update_user(type, id, url) {
+    fun_ref.post(fun_config.update_user.url, {
       [type]: url,
       id: id
     }, res => {

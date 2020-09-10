@@ -22,7 +22,7 @@
   line-height: 80rpx;
   font-size: 40rpx;
   color: #ffffff;
-  border-radius: 20rpx;
+  border-radius: 4px;
 }
 
 

@@ -44,7 +44,7 @@
 
 .search .weui-input {
   color: #395996;
-  width: 34%;
+  width: 24%;
   height: 60rpx;
   line-height: 60rpx;
   background-color: #dfdfdf;
@@ -89,7 +89,7 @@
   padding-right: 20rpx;
   color: #395996;
   background-color: #ffffff;
-  border-radius: 20rpx;
+  border-radius: 4px;
   height: 56rpx;
   line-height: 56rpx;
   font-size: 25rpx;

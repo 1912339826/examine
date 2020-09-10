@@ -47,11 +47,15 @@ Page({
   },
   // 提现
   withdraw() {
-    if (this.data.value == "" || this.data.value == 0) {
+    if (this.data.value == "") {
       Toast.fail("请输入金额")
-    } else {
-      this.apply_withdraw()
+      return
     }
+    if (Number(this.data.value == 0)) {
+      Toast.fail("金额错误")
+      return
+    }
+    this.apply_withdraw()
   },
   apply_withdraw() {
     fun_ref.post(fun_config.apply_withdraw.url, {

@@ -16,7 +16,13 @@ Page({
       specialty: "特长",
       signature: "签名"
     },
-    type: ""
+    type: "",
+    maxlength: 25,
+    maxlength_obj: {
+      name: 15,
+      specialty: 20,
+      signature: 25
+    }
   },
   // 一下进入此页面：
   // wx.navigateTo({
@@ -29,6 +35,9 @@ Page({
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#395996'
+    })
+    this.setData({
+      maxlength: this.data.maxlength_obj[options.type]
     })
     wx.setNavigationBarTitle({
       title: `更改${this.data.inquire[options.type]}`
@@ -47,9 +56,15 @@ Page({
     }
   },
   onChange() {
-    this.setData({
-      ischange: true
-    })
+    if (this.data.value == " ") {
+      this.setData({
+        value: ""
+      })
+    } else {
+      this.setData({
+        ischange: true
+      })
+    }
   },
   sub() {
     if (this.data.value == "") {

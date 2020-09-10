@@ -15,13 +15,17 @@ Page({
     gender: false,
     head_sculpture: false,
     balance: false,
-    signature: ""
+    signature: "",
+    open: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      open: wx.getStorageSync('user').open
+    })
     wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#395996'
@@ -123,9 +127,13 @@ Page({
           apply: wx.getStorageSync('user').tasterId,
           balance: wx.getStorageSync('user').taster.balance,
         }, function () {
-          if (!this.data.signature) {
+          if (this.data.signature == null) {
             this.setData({
-              signature: false
+              signature: ""
+            })
+          } else {
+            this.setData({
+              signature: wx.getStorageSync('user').taster.signature
             })
           }
         })
