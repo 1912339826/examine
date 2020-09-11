@@ -11,7 +11,9 @@ Page({
     head_sculpture: "",
     name: "",
     specialty: "",
-    taster: {}
+    taster: {},
+    introPic: "",
+    teamPic: ""
   },
 
   /**
@@ -51,6 +53,8 @@ Page({
         specialty: wx.getStorageSync('user').taster.specialty,
         head_sculpture: wx.getStorageSync('user').taster.pic,
         name: wx.getStorageSync('user').taster.name,
+        introPic: wx.getStorageSync('user').taster.introPic,
+        teamPic: wx.getStorageSync('user').taster.teamPic
       })
     } else {
       this.setData({
@@ -68,7 +72,8 @@ Page({
       }]
     })
   },
-  chooseImage() {
+  chooseImage(e) {
+    // e.currentTarget.dataset.name
     let arr = ["album", "camera"];
     let that = this;
     wx.showActionSheet({
@@ -86,7 +91,13 @@ Page({
               success(res) {
                 // JSON.parse(res.data).result.url
                 // that.update_taster(JSON.parse(res.data).result.url)
-                that.update(JSON.parse(res.data).result.url)
+                if (e.currentTarget.dataset.name == "head_sculpture") {
+                  that.update(JSON.parse(res.data).result.url)
+                } else if (e.currentTarget.dataset.name == "introPic") {
+                  that.update_taster("introPic", wx.getStorageSync('user').taster.id, JSON.parse(res.data).result.url)
+                } else if (e.currentTarget.dataset.name == "teamPic") {
+                  that.update_taster("teamPic", wx.getStorageSync('user').taster.id, JSON.parse(res.data).result.url)
+                }
               },
             });
           }
@@ -97,8 +108,7 @@ Page({
       }
     })
   },
-
-
+  // update_taster 品鉴官
   update(url) {
     let type;
     let id;

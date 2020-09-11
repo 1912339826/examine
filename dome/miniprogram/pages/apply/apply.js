@@ -26,6 +26,9 @@ Page({
     text_teams: "",
     radio_change_list: false,
     show: false,
+    notice_show: false,
+    notice_title: "",
+    notice_content: "",
     changecity: [{
         text: "省份",
         id: ""
@@ -214,6 +217,28 @@ Page({
   bindTextAreaBlur_teams(e) {
     this.setData({
       text_teams: e.detail.value
+    })
+  },
+  // 点击阅读品鉴官须知
+  notice() {
+    this.getInfo_notice()
+  },
+  notice_onClose() {
+    this.setData({
+      notice_show: false
+    })
+  },
+  getInfo_notice() {
+    fun_ref.get(fun_config.getInfo_notice.url, {}, res => {
+      console.log(res.data.result)
+      this.setData({
+        notice_title: res.data.result.title,
+        notice_content: res.data.result.content
+      }, function () {
+        this.setData({
+          notice_show: true
+        })
+      })
     })
   },
   /**

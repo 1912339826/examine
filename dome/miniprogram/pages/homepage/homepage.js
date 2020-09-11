@@ -16,6 +16,10 @@ Page({
     signature: "",
     specialty: "",
     teamIntroduction: "",
+    cover: "",
+    userId: "",
+    introPic: "",
+    teamPic: ""
   },
 
   /**
@@ -44,6 +48,9 @@ Page({
         specialty,
         teamIntroduction,
         userId,
+        cover,
+        introPic,
+        teamPic
       } = res.data.result;
       this.setData({
         id,
@@ -54,6 +61,9 @@ Page({
         specialty,
         teamIntroduction,
         userId,
+        cover,
+        introPic,
+        teamPic
       })
     })
   },
@@ -64,7 +74,7 @@ Page({
   },
   go_friend_circle() {
     wx.navigateTo({
-      url: `../friend_circle/friend_circle?id=${this.data.userId}&&name=${this.data.name}&&pic=${this.data.pic}`
+      url: `../friend_circle/friend_circle?id=${this.data.userId}&&name=${this.data.name}&&pic=${this.data.pic}&&cover=${this.data.cover}`
     });
   },
   /**

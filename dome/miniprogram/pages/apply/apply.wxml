@@ -52,21 +52,21 @@
 		</view>
 
 		<view class="son informed_consent" >
-		<view> <text>阅读</text>  <text>“品鉴官须知”</text></view>
+		<view> <text>阅读</text>  <text bindtap="notice" style="color:red">“品鉴官须知”</text></view>
 		<view class="checkbox_group">
 		  <view data-checked="yes" bindtap="checked_">
 				<view class="img">
 				 <image src="../../images/pane.png" mode='widthFix' class="pane"/>
 				 <image src="../../images/right.png" class="pane_" wx:if="{{radio_change_list}}"/>
 				</view>
-				 <view>选中</view>
+				 <view>同意</view>
 			</view>
 			<view data-checked="no" bindtap="checked_">
 			  <view class="img">
 					<image src="../../images/pane.png" mode='widthFix' class="pane"/>
 					<image src="../../images/right.png"  class="pane_" wx:if="{{!radio_change_list}}"/>
 			  </view>
-				 <view>未选中</view>
+				 <view>不同意</view>
 			</view>
 		</view>
 		<!-- <checkbox-group bindchange="radio_change">
@@ -95,3 +95,10 @@
 </van-popup>
 <tab active_index="1" />
 <van-toast id="van-toast" />
+
+<van-popup show="{{ notice_show }}" round closeable custom-style="height: 60%;width:74vw" bind:close="notice_onClose">
+   <view class="title">{{notice_title}}</view>
+	 <view class="content">
+	    <rich-text nodes="{{notice_content}}"></rich-text>
+	 </view>
+</van-popup>

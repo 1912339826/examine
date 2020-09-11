@@ -1,9 +1,13 @@
 {
   "pages": [
-    "pages/information/information",
-    "pages/store/store",
     "pages/my/my",
     "pages/apply/apply",
+    
+    "pages/friend_circle/friend_circle",
+    "pages/information/information",
+    "pages/store/store",
+    
+    
     "pages/tasting_tube/tasting_tube",
     "pages/be_reviewing/be_reviewing",
 
@@ -14,7 +18,7 @@
 
 
 
-    "pages/friend_circle/friend_circle",
+    
     "pages/basic_information_modification/basic_information_modification",
     "pages/alter_page/alter_page",
     "pages/withdrawal_record/withdrawal_record",

@@ -21,7 +21,12 @@ Page({
     Todays_date: "",
     circles_img_id: "",
     textarea_value: "",
-    textarea_: ""
+    textarea_: "",
+    show: false,
+    actions: [{
+      name: "更换封面"
+    }],
+    cover: ""
   },
 
   /**
@@ -31,12 +36,14 @@ Page({
     let {
       id,
       name,
-      pic
+      pic,
+      cover
     } = options;
     this.setData({
       id,
       name,
-      pic
+      pic,
+      cover
     }, function () {
 
     })
@@ -256,7 +263,8 @@ Page({
             this.getList_circleFriends()
             this.setData({
               name: wx.getStorageSync('user').name,
-              pic: wx.getStorageSync('user').avatarPic
+              pic: wx.getStorageSync('user').avatarPic,
+              cover: wx.getStorageSync('user').taster.cover
             })
           }
         })
@@ -273,7 +281,78 @@ Page({
       }
     })
   },
+  // 更换封面
+  replace_cover() {
+    this.setData({
+      show: true
+    })
+  },
+  replace_cover_onClose() {
+    this.setData({
+      show: false
+    })
+  },
+  replace_cover_cancel() {
+    this.replace_cover_onClose()
+  },
+  replace_cover_onSelect(event) {
+    let that = this;
+    if (event.detail.name == "更换封面") {
+      wx.chooseImage({
+        count: 1,
+        sourceType: ["album"],
+        success(res) {
+          that.import_info(res.tempFilePaths[0])
+        }
+      })
+    }
 
+  },
+  import_info(filePath) {
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+    })
+    let that = this;
+    wx.uploadFile({
+      filePath: filePath,
+      name: 'file',
+      formData: {
+        user: 'test'
+      },
+      url: fun_config.import_info.url,
+      success(res) {
+        console.log(JSON.parse(res.data).result.url)
+        // that.update_taster(JSON.parse(res.data).result.url)
+      }
+    })
+  },
+
+  update_taster(cover) {
+    fun_ref.post(fun_config.update_taster.url, {
+      "cover": cover,
+      id: wx.getStorageSync('user').taster.id
+    }, res => {
+      if (res.data.status == 200) {
+        Toast.success(res.data.message);
+        this.index_taster()
+      } else {
+        Toast.fail('失败');
+      }
+    })
+  },
+  index_taster() {
+    fun_ref.get(fun_config.index_taster.url, {}, res => {
+      wx.setStorageSync('user', res.data);
+      wx.setStorageSync('authorization', true);
+      this.setData({
+        cover: wx.getStorageSync('user').taster.cover,
+      })
+      setTimeout(() => {
+        this.replace_cover_onClose()
+      }, 300);
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

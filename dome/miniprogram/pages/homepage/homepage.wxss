@@ -92,12 +92,21 @@
 .teams{
   padding-left: 50rpx;
   padding-top: 50rpx;
+  display: flex;
+}
+
+.teams image{
+  width: 256rpx;
+  height: 256rpx;
+  background-color: aqua;
+  margin-right: 20rpx;
+  border-radius: 12px;
 }
 
 .individual_teams{
   margin-top: 40rpx;
 }
 
-.teams>view:nth-child(2){
+.teams>.content>view:nth-child(2){
   margin-top: 20rpx;
 }

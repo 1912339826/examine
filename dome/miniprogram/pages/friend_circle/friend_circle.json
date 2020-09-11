@@ -3,7 +3,8 @@
     "van-icon": "@vant/weapp/icon/index",
     "van-toast": "@vant/weapp/toast/index",
     "van-row": "@vant/weapp/row/index",
-    "van-col": "@vant/weapp/col/index"
+    "van-col": "@vant/weapp/col/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index"
   },
   "navigationStyle": "custom"
 }

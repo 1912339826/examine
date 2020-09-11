@@ -5,7 +5,7 @@ export default {
     let Month = newDate.getMonth() + 1
     let getMonth = Month > 10 ? Month : `0` + Month
     let isDate = newDate.getDate()
-    let getDate = isDate > 10 ? isDate : `0` + isDate
+    let getDate = isDate > 10 ? isDate :  isDate
     let getHours = newDate.getHours()
     let getMinutes = newDate.getMinutes()
     let getSeconds = newDate.getSeconds()

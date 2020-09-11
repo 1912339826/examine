@@ -3,7 +3,7 @@
 <view class="basic_information_modification">
 	<view class="top">
 	</view>
-	<view class="head_portrait box" bindtap="chooseImage">
+	<view class="head_portrait box" bindtap="chooseImage" data-name="head_sculpture">
 		<view class="left">头像</view>
 		<view class="right">
 			<image src="{{head_sculpture}}" catchtap="previewMedia"></image>
@@ -22,6 +22,23 @@
 		<view class="right">
 			<view wx:if="{{!!specialty}}">{{specialty}}</view>
 			<view wx:if="{{!specialty}}">无</view>
+			<van-icon name="arrow" size="80rpx" color="#666666" />
+		</view>
+	</view>
+	<view class="head_portrait box" bindtap="chooseImage"  data-name="introPic">
+		<view class="left">个人简介贴图</view>
+		<view class="right">
+			<image src="{{introPic}}" catchtap="previewMedia" wx:if="{{!!introPic}}"></image>
+			<view wx:else>无</view>
+			<van-icon name="arrow" size="80rpx" color="#666666" />
+		</view>
+	</view>
+
+	<view class="head_portrait box" bindtap="chooseImage"  data-name="teamPic">
+		<view class="left">团队简介贴图</view>
+		<view class="right">
+			<image src="{{teamPic}}" catchtap="previewMedia" wx:if="{{!!teamPic}}"></image>
+			<view wx:else>无</view>
 			<van-icon name="arrow" size="80rpx" color="#666666" />
 		</view>
 	</view>

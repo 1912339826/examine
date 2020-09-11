@@ -5,9 +5,9 @@
 
 let envVersion = wx.getAccountInfoSync().miniProgram.envVersion
 if (!envVersion || envVersion == "develop") {
-  // var BASE_URLA = "https://llc.njqiahao.com/api";
+  var BASE_URLA = "https://llc.njqiahao.com/api";
   //  var BASE_URLA = "http://106.54.252.48:8091";
-  var BASE_URLA = "http://192.168.5.198:8091";
+  // var BASE_URLA = "http://192.168.5.198:8091";
 } else if (envVersion == "trial") {
   var BASE_URLA = "https://llc.njqiahao.com/api";
 } else if (envVersion == "release") {
@@ -172,5 +172,10 @@ export default {
   list_category: {
     type: "GET",
     url: `${BASE_URLA}/category/list`
+  },
+  //  品鉴官须知
+  getInfo_notice: {
+    type: "GET",
+    url: `${BASE_URLA}/notice/getInfo`
   },
 };

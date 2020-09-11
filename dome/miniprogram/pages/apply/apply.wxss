@@ -161,3 +161,16 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   transform: translate(-50%, -50%) scale(1);
   -webkit-transform: translate(-50%, -50%) scale(1);
 }
+
+.title{
+  text-align: center;
+  padding: 20rpx;
+}
+
+.content{
+  padding: 20rpx;
+  text-indent: 20rpx;
+}
+
+
+

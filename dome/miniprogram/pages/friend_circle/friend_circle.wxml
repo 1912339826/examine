@@ -7,7 +7,8 @@
 			<view class="back" bindtap="back">
 				<van-icon name="arrow-left" color="#ffffff" />
 			</view>
-			<image src="../../images/friend_circle_top_back_03.png" />
+			<image src="../../images/friend_circle_top_back_03.png" wx:if="{{!!id}}" />
+			<image src="../../images/friend_circle_top_back_03.png" wx:else bindtap="replace_cover" />
 			<view class="title">
 				{{name}}的朋友圈
 			</view>
@@ -54,7 +55,7 @@
 									<image bindtap="previewImage" data-urls="{{item.photos}}" data-current="{{item_img}}" src="{{item_img}}" class="img_" wx:for="{{item.photos}}" wx:key="id_img" wx:for-index="index_img" wx:for-item="item_img"></image>
 								</view>
 								<view class="img_box" wx:if="{{item.photos.length==1}}">
-									<image bindtap="previewImage" data-urls="{{item.photos}}" data-current="{{item_img}}"  src="{{item_img}}" mode='widthFix' wx:for="{{item.photos}}" wx:key="id_img" wx:for-index="index_img" wx:for-item="item_img"></image>
+									<image bindtap="previewImage" data-urls="{{item.photos}}" data-current="{{item_img}}" src="{{item_img}}" mode='widthFix' wx:for="{{item.photos}}" wx:key="id_img" wx:for-index="index_img" wx:for-item="item_img"></image>
 								</view>
 							</view>
 						</view>
@@ -69,7 +70,7 @@
 							</view>
 						</view>
 						<view class="textarea_box" wx:if="{{textarea_==item.id}}">
-							<textarea wx:if="{{textarea_==item.id}}" focus="{{textarea_==item.id}}" class="textarea_input" bindinput="textarea_input"  value="{{textarea_value}}" class="weui-input" type="text" maxlength="-1" placeholder="请输入" />
+							<textarea wx:if="{{textarea_==item.id}}" focus="{{textarea_==item.id}}" class="textarea_input" bindinput="textarea_input" value="{{textarea_value}}" class="weui-input" type="text" maxlength="-1" placeholder="请输入" />
 							<view class="textarea_button" bindtap="add_comment" data-index="{{index}}" data-indexs="{{indexs}}" data-id="{{item.id}}">发送</view>
 							<!-- 评论 -->
 							</view>
@@ -81,3 +82,12 @@
 </view>
 
 <van-toast id="van-toast" />
+
+<van-action-sheet
+  show="{{ show }}"
+  actions="{{ actions }}"
+  cancel-text="取消"
+	bind:close="replace_cover_onClose"
+  bind:select="replace_cover_onSelect"
+	bind:cancel="replace_cover_cancel"
+/>

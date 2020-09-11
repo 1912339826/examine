@@ -32,11 +32,11 @@ Page({
         className: 'column2',
         defaultIndex: 2,
       },
-      {
-        values: citys[0]["children"][0]["children"],
-        className: 'column3',
-        defaultIndex: 0,
-      }
+      // {
+      //   values: citys[0]["children"][0]["children"],
+      //   className: 'column3',
+      //   defaultIndex: 0,
+      // }
     ],
     show: false,
     changecity: {
@@ -119,7 +119,7 @@ Page({
       arr = res.data.result;
       let columns0 = `columns[${0}].values`;
       let columns1 = `columns[${1}].values`;
-      let columns2 = `columns[${2}].values`;
+      // let columns2 = `columns[${2}].values`;
       this.setData({
         [columns0]: arr
       }, function () {
@@ -127,7 +127,7 @@ Page({
           [columns1]: arr[0].children
         }, function () {
           this.setData({
-            [columns2]: arr[0].children[0].children
+            // [columns2]: arr[0].children[0].children
           }, function () {
             Toast.clear();
           })
@@ -144,9 +144,9 @@ Page({
     // value 当前列的值
     if (index == 0) {
       picker.setColumnValues(1, value[0]["children"]);
-      picker.setColumnValues(2, value[0]["children"][0]["children"]);
+      // picker.setColumnValues(2, value[0]["children"][0]["children"]);
     } else if (index == 1) {
-      picker.setColumnValues(2, value[1]["children"]);
+      // picker.setColumnValues(2, value[1]["children"]);
     }
   },
   go_homepage(e) {
@@ -208,8 +208,9 @@ Page({
   },
   // 确定
   onConfirm: function (e) {
+    console.log(e.detail.value)
     this.setData({
-      changecity: e.detail.value[2]
+      changecity: e.detail.value[1]
     })
     this.onClose()
   },

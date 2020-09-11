@@ -1,11 +1,11 @@
 <!--pages/homepage/homepage.wxml-->
 <!-- 品鉴官主页 -->
 <view class="homepage">
-	<image src="../../images/homepage_back_img_03.jpg" alt="" class="back_img" />
+	<image src="{{cover}}" alt="" class="back_img" />
 	<view class="personage">
 		<view class="head_portrait">
 			<!-- <image src="{{pic}}" alt="" /> -->
-			<van-image  custom-class="show" fit="cover" src="{{pic}}" />
+			<van-image custom-class="show" fit="cover" src="{{pic}}" />
 			<!-- <view class="add">
 				<van-icon name="plus" size="50rpx" color="#fb6a67" />
 			</view> -->
@@ -25,14 +25,22 @@
 					<!-- friend_circle -->
 				</view>
 				<view class="teams">
-					<view>个人介绍：</view>
-					<view>{{introduction}}</view>
+					<!-- <image src="{{introPic}}" wx:if="{{introPic}}"></image> -->
+					<van-image custom-class="show" fit="cover" src="{{introPic}}" />
+					<view class="content">
+						<view>个人介绍：</view>
+						<view class="pre">{{introduction}}</view>
+					</view>
 				</view>
 			</van-tab>
 			<van-tab title="团队介绍">
 				<view class="teams">
-					<view>团队介绍：</view>
-					<view>{{teamIntroduction}}</view>
+					<!-- <image src="{{teamPic}}"  mode='widthFix' wx:if="{{teamPic}}"></image> -->
+					<van-image custom-class="show" fit="cover" src="{{teamPic}}" />
+					<view class="content">
+						<view>团队介绍：</view>
+						<view>{{teamIntroduction}}</view>
+					</view>
 				</view>
 			</van-tab>
 		</van-tabs>
