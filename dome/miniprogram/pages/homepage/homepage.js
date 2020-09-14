@@ -78,6 +78,12 @@ Page({
       url: `../friend_circle/friend_circle?id=${this.data.userId}&&name=${this.data.name}&&pic=${this.data.pic}&&cover=${this.data.cover}`
     });
   },
+  previewImage(e) {
+    wx.previewImage({
+      current: e.currentTarget.dataset.img,
+      urls: [e.currentTarget.dataset.img]
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -29,7 +29,7 @@ Page({
     totalPage: 1,
     taster: false,
     is_my: false,
-    getList_ad_list:[]
+    getList_ad_list: []
   },
 
   /**
@@ -129,17 +129,24 @@ Page({
   // 播放
   play(e) {
     wx.navigateTo({
-      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&tasterId=" + this.data.id,
+      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&tasterId=" + this.data.id + "&&type=" + e.currentTarget.dataset.type +"&&cover=" + e.currentTarget.dataset.cover,
     })
   },
 
   purchase(e) {
     if (e.currentTarget.dataset.taster) {
       // 申请
-      this.bindVideo_taster(e.currentTarget.dataset.id)
+      this.bindVideo_taster(e.currentTarget.dataset.isid)
     } else {
       // 购买
-      this.wxPay_pay(e.currentTarget.dataset.id)
+      if (e.currentTarget.dataset.type == 1) {
+        wx.navigateTo({
+          url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&tasterId=" + this.data.id + "&&type=" + e.currentTarget.dataset.type +"&&cover=" + e.currentTarget.dataset.cover,
+        })
+      } else {
+        this.wxPay_pay(e.currentTarget.dataset.isid,e.currentTarget.dataset.price)
+      }
+
     }
   },
   bindVideo_taster(id) {
@@ -153,10 +160,12 @@ Page({
       }
     })
   },
-  wxPay_pay(id) {
+  wxPay_pay(id,price) {
     fun_ref.post(fun_config.wxPay_pay.url, {
       videoId: id,
-      tasterId: this.data.id
+      tasterId: this.data.id,
+      price:price,
+      count:1
     }, res => {
       if (res.data.success) {
         this.requestPayment(res.data.result.timeStamp, res.data.result.nonceStr, res.data.result.package, res.data.result.sign)
@@ -182,8 +191,8 @@ Page({
       }
     })
   },
-   // 广告
-   getList_ad() {
+  // 广告
+  getList_ad() {
     fun_ref.get(fun_config.getList_ad.url, {}, res => {
       this.setData({
         getList_ad_list: res.data.result

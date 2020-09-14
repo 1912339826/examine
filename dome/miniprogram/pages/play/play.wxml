@@ -4,10 +4,10 @@
 	<video oster-for-crawler="{{item.cover}}" bindended="ended" src="{{src}}" style="width:100%"></video>
 	<view class="price">￥{{price}}</view>
 	<view class="message">
-		<text wx:if="{{!owned}}">注：未拥有，只能试看30秒！</text>
+		<text wx:if="{{!owned&&!type}}">注：未拥有，只能试看30秒！</text>
 	</view>
 	<view class="introduction">简介：{{introduction}}</view>
-	<view class="bottom_">
+	<view class="bottom_" wx:if="{{type==0}}">
 		<view wx:if="{{!!taster}}" class="botton_box">
 			<view class="button_no" wx:if="{{owned}}">已拥有</view>
 			<view class="button_yes" wx:else bindtap="pay" data-taster="{{true}}">申请</view>
@@ -15,6 +15,12 @@
 		<view wx:else class="botton_box">
 			<view class="button_no" wx:if="{{owned}}">已拥有</view>
 			<view class="button_yes" wx:else bindtap="pay" data-taster="{{false}}">购买</view>
+		</view>
+	</view>
+
+	<view class="bottom_" wx:if="{{type==1}}">
+		<view class="botton_box">
+			<view class="button_yes" bindtap="go_shopping">购买</view>
 		</view>
 	</view>
 </view>

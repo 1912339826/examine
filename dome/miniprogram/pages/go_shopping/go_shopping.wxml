@@ -1,0 +1,40 @@
+<!--pages/go_shopping/go_shopping.wxml-->
+<view class="go_shopping">
+	<view class="img_name">
+		<image src="{{cover}}"></image>
+		<view class="name">{{title}}</view>
+	</view>
+	<view class="item">
+		<view class="name">数量：</view>
+		<view class="content">
+			<van-stepper value="{{ 1 }}" bind:change="onChange" />
+		</view>
+	</view>
+
+	<view class="item">
+		<view class="name">姓名：</view>
+		<view class="content">
+			<input class="weui-input"  model:value="{{ name }}" placeholder="请填写姓名" />
+		</view>
+	</view>
+	<view class="item">
+		<view class="name">电话：</view>
+		<view class="content">
+			<input class="weui-input"  model:value="{{ phone }}" placeholder="请填写联系方式" />
+		</view>
+	</view>
+
+	<view class="item textarea">
+		<view class="name">地址：</view>
+		<view class="content">
+			<textarea bindinput="address_fun" placeholder="请填写地址，例如：江苏省 南京市 秦淮区 XXX街道 XXX"></textarea>
+		</view>
+	</view>
+</view>
+
+<view class="bottom">
+	<view class="sun">合计：￥{{total}}</view>
+	<view class="button_" bindtap="shopping">购买</view>
+</view>
+
+<van-toast id="van-toast" />

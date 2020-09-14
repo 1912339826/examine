@@ -4,7 +4,7 @@ const fun_ref = app.ref.default;
 const fun_config = app.config.default;
 import Toast from '@vant/weapp/toast/toast';
 Page({
-
+  // type :1 其他
   /**
    * 页面的初始数据
    */
@@ -17,7 +17,9 @@ Page({
     taster: false,
     tasterId: false,
     videoId: "",
-    id: ""
+    id: "",
+    type: 0,
+    cover: ""
   },
 
   /**
@@ -37,7 +39,9 @@ Page({
       price: options.price,
       videoId: options.videoId,
       id: options.id,
-      tasterId: options.tasterId
+      tasterId: options.tasterId,
+      type: options.type,
+      cover: options.cover
     })
     this.play_video_vod(options.videoId)
   },
@@ -92,6 +96,12 @@ Page({
       }
     })
   },
+  // 普通商品去购买页面
+  go_shopping() {
+    wx.navigateTo({
+      url: '../go_shopping/go_shopping?cover=' + this.data.cover + "&&title=" + this.data.title + "&&price=" + this.data.price + "&&id=" + this.data.id +"&&tasterId=" + this.data.tasterId,
+    })
+  },
   wxPay_pay() {
     let tasterId;
     if (!!this.data.tasterId) {
@@ -101,7 +111,9 @@ Page({
     }
     fun_ref.post(fun_config.wxPay_pay.url, {
       videoId: this.data.id,
-      tasterId: tasterId
+      tasterId: tasterId,
+      price:this.data.price,
+      count:1
     }, res => {
       if (res.data.success) {
         this.requestPayment(res.data.result.timeStamp, res.data.result.nonceStr, res.data.result.package, res.data.result.sign)

@@ -135,7 +135,7 @@ Page({
   play(e) {
     if (wx.getStorageSync('authorization')) {
       wx.navigateTo({
-        url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid,
+        url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&type=" + e.currentTarget.dataset.type + "&&cover=" + e.currentTarget.dataset.cover,
       })
     } else {
       Toast.fail("未登录")
@@ -150,10 +150,17 @@ Page({
     if (wx.getStorageSync('authorization')) {
       if (e.currentTarget.dataset.taster) {
         // 申请
-        this.bindVideo_taster(e.currentTarget.dataset.id)
+        this.bindVideo_taster(e.currentTarget.dataset.isid)
       } else {
         // 购买
-        this.wxPay_pay(e.currentTarget.dataset.id)
+        if (e.currentTarget.dataset.type == 1) {
+          wx.navigateTo({
+            url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&type=" + e.currentTarget.dataset.type + "&&cover=" + e.currentTarget.dataset.cover,
+          })
+        } else {
+          this.wxPay_pay(e.currentTarget.dataset.isid,e.currentTarget.dataset.price)
+        }
+
       }
     } else {
       Toast.fail("未登录")
@@ -178,10 +185,12 @@ Page({
     })
   },
 
-  wxPay_pay(id) {
+  wxPay_pay(id,price) {
     fun_ref.post(fun_config.wxPay_pay.url, {
       videoId: id,
-      tasterId: ""
+      tasterId: "",
+      price:price,
+      count: 1
     }, res => {
       if (res.data.success) {
         this.requestPayment(res.data.result.timeStamp, res.data.result.nonceStr, res.data.result.package, res.data.result.sign)

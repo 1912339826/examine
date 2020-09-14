@@ -1,0 +1,70 @@
+/* pages/go_shopping/go_shopping.wxss */
+.go_shopping {
+  padding: 40rpx;
+}
+
+.img_name {
+  display: flex;
+}
+
+.img_name image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 5px;
+  margin-right: 40rpx;
+}
+
+.img_name .name {
+  padding-top: 40rpx;
+  font-size: 30rpx;
+}
+
+.item {
+  margin-top: 110rpx;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.textarea {
+  align-items: inherit;
+}
+
+.item .name {
+  width: 30%;
+}
+
+textarea {
+  width: 100%;
+  height: 300rpx;
+}
+
+.content {
+  width: 70%;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+}
+
+.bottom .sun {
+  color: red;
+  padding-left: 40rpx;
+}
+
+.button_ {
+  width: 270rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #ffffff;
+  background-color: #ff6600;
+  text-align: center;
+  font-size: 30rpx;
+}

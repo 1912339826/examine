@@ -3,7 +3,7 @@
 <wxs module="dateFr" src="../../filter/dismantle.wxs"></wxs>
 <view class="order_list">
 	<view class="lists">
-		<view class="list" wx:for="{{lists}}" bindtap="play" data-title="{{item.video.title}}" data-price="{{item.video.price}}" data-introduction="{{item.video.introduction}}" data-id="{{item.video.videoId}}">
+		<view class="list" data-cover="{{item.video.cover}}" wx:for="{{lists}}" bindtap="play" data-type="{{item.video.type}}" data-title="{{item.video.title}}" data-price="{{item.video.price}}" data-introduction="{{item.video.introduction}}" data-id="{{item.video.videoId}}">
 			<view class="nav">
 					<view class="day">{{item.timestamp}}</view>
 				<view class="orderNo">订单号：{{item.orderNo}}</view>

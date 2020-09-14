@@ -40,14 +40,14 @@
 		<view class="son">
 			<view class="text">个 人 介 绍</view>
 			<view class="gap">
-				<textarea bindinput="bindTextAreaBlur_individual" placeholder="" />
+				<textarea maxlength="{{50}}" bindinput="bindTextAreaBlur_individual" placeholder="" />
 				</view>
 		</view>
 
 		<view class="son">
 			<view class="text">团 队 介 绍</view>
 				<view class="gap">
-			 <textarea bindinput="bindTextAreaBlur_teams" placeholder="" />
+			 <textarea maxlength="{{100}}" bindinput="bindTextAreaBlur_teams" placeholder="" />
 			</view>
 		</view>
 

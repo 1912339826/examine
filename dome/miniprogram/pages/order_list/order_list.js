@@ -47,7 +47,7 @@ Page({
       title: '全部订单'
     })
     this.setData({
-      lists:[]
+      lists: []
     })
     this.list_order();
   },
@@ -79,7 +79,7 @@ Page({
   },
   play(e) {
     wx.navigateTo({
-      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price,
+      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&type=" + e.currentTarget.dataset.type +"&&cover=" + e.currentTarget.dataset.cover,
     })
   },
   /**

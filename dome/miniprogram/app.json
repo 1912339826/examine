@@ -1,11 +1,13 @@
 {
   "pages": [
+    "pages/store/store",
+    "pages/go_shopping/go_shopping",
     "pages/information/information",
     "pages/apply/apply",
     "pages/my/my",
     "pages/friend_circle/friend_circle",
     
-    "pages/store/store",
+    
     
     
     "pages/tasting_tube/tasting_tube",

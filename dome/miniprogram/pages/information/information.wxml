@@ -21,7 +21,7 @@
 				<image src="{{item.pic}}"></image>
 			</swiper-item>
 		</swiper>
-		<view class="big_list_text">是非成败转头空,青山依旧在</view>
+		<!-- <view class="big_list_text">是非成败转头空,青山依旧在</view> -->
 	</view>
 	<view class="lists">
 		<view class="list" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item" data-id="{{item.id}}" bindtap="details_page">

@@ -17,7 +17,7 @@
 
 	<view class="lists">
 		<view class="list" data-id="{{item.id}}" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
-			<view class="box" bindtap="play" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}">
+			<view class="box" bindtap="play" data-cover="{{item.cover}}" data-type="{{item.type}}" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}">
 				<view class="img">
 					<image class="play_img" src="../../images/play.png"></image>
 					<van-image custom-class="show" fit="cover" src="{{item.cover}}" />
@@ -38,9 +38,9 @@
 				</view>
 			</view>
 			<view class="button_buy">
-				<view class="button_" wx:if="{{!!taster&&!item.own}}" data-taster="{{true}}" data-id="{{item.id}}" bindtap="purchase">申请</view>
+				<view class="button_" wx:if="{{!!taster&&!item.own}}" data-taster="{{true}}" data-isid="{{item.id}}" bindtap="purchase">申请</view>
 				<view class="button_" wx:if="{{!!taster&&item.own}}">已申请</view>
-				<view class="button_" wx:if="{{!taster&&!item.own}}" data-taster="{{false}}" data-id="{{item.id}}" bindtap="purchase">购买</view>
+				<view class="button_" wx:if="{{!taster&&!item.own}}" data-cover="{{item.cover}}"  data-taster="{{false}}" data-type="{{item.type}}"  data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}" bindtap="purchase">购买</view>
 				<view class="button_" wx:if="{{!taster&&item.own}}">已购买</view>
 			</view>
 		</view>
