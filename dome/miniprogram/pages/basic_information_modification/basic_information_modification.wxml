@@ -6,7 +6,7 @@
 	<view class="head_portrait box" bindtap="chooseImage" data-name="head_sculpture">
 		<view class="left">头像</view>
 		<view class="right">
-			<image src="{{head_sculpture}}" catchtap="previewMedia"></image>
+			<image src="{{head_sculpture}}" catchtap="previewMedia" data-img="{{head_sculpture}}"></image>
 			<van-icon name="arrow" size="80rpx" color="#666666" />
 		</view>
 	</view>
@@ -25,11 +25,21 @@
 			<van-icon name="arrow" size="80rpx" color="#666666" />
 		</view>
 	</view>
+	
 	<view class="head_portrait box" bindtap="chooseImage"  data-name="introPic">
 		<view class="left">个人简介贴图</view>
 		<view class="right">
-			<image src="{{introPic}}" catchtap="previewMedia" wx:if="{{!!introPic}}"></image>
+			<image src="{{introPic}}" catchtap="previewMedia"  data-img="{{introPic}}" wx:if="{{!!introPic}}"></image>
 			<view wx:else>无</view>
+			<van-icon name="arrow" size="80rpx" color="#666666" />
+		</view>
+	</view>
+
+<view class="ones_strong_suit box" wx:if="{{!!taster}}" data-name="introduction" bindtap="alter">
+		<view class="left">个人简介</view>
+		<view class="right">
+			<view wx:if="{{!!introduction}}">{{introduction}}</view>
+			<view wx:if="{{!introduction}}">无</view>
 			<van-icon name="arrow" size="80rpx" color="#666666" />
 		</view>
 	</view>
@@ -37,8 +47,18 @@
 	<view class="head_portrait box" bindtap="chooseImage"  data-name="teamPic">
 		<view class="left">团队简介贴图</view>
 		<view class="right">
-			<image src="{{teamPic}}" catchtap="previewMedia" wx:if="{{!!teamPic}}"></image>
+			<image src="{{teamPic}}" catchtap="previewMedia"  data-img="{{teamPic}}" wx:if="{{!!teamPic}}"></image>
 			<view wx:else>无</view>
+			<van-icon name="arrow" size="80rpx" color="#666666" />
+		</view>
+	</view>
+
+
+	<view class="ones_strong_suit box" wx:if="{{!!taster}}" data-name="teamIntroduction" bindtap="alter">
+		<view class="left">团队简介</view>
+		<view class="right">
+			<view wx:if="{{!!teamIntroduction}}">{{teamIntroduction}}</view>
+			<view wx:if="{{!teamIntroduction}}">无</view>
 			<van-icon name="arrow" size="80rpx" color="#666666" />
 		</view>
 	</view>

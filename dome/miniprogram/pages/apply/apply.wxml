@@ -91,12 +91,12 @@
 </view>
  
 <van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose">
-	<van-picker columns="{{ columns }}" show-toolbar title="请选择" bind:change="onChange" bind:cancel="onCancel" bind:confirm="onConfirm" />
+	<van-picker  columns="{{ columns }}" show-toolbar title="请选择" bind:change="onChange" bind:cancel="onCancel" bind:confirm="onConfirm" />
 </van-popup>
 <tab active_index="1" />
 <van-toast id="van-toast" />
 
-<van-popup show="{{ notice_show }}" round closeable custom-style="height: 60%;width:74vw" bind:close="notice_onClose">
+<van-popup show="{{ notice_show }}" round closeable custom-style="height: 60%;width:74vw;background-color: #f2ebd9;" bind:close="notice_onClose">
    <view class="title">{{notice_title}}</view>
 	 <view class="content">
 	    <rich-text nodes="{{notice_content}}"></rich-text>

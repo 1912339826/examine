@@ -65,6 +65,7 @@ Page({
         introPic,
         teamPic
       })
+      console.log(!!this.data.teamPic)
     })
   },
   go_tasting_tube_shoppingmall() {

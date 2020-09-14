@@ -26,7 +26,7 @@
 				</view>
 				<view class="teams">
 					<!-- <image src="{{introPic}}" wx:if="{{introPic}}"></image> -->
-					<van-image custom-class="show" fit="cover" src="{{introPic}}" />
+					<van-image custom-class="show" fit="cover" wx:if="{{!!introPic}}" src="{{introPic}}" />
 					<view class="content">
 						<view>个人介绍：</view>
 						<view class="pre">{{introduction}}</view>
@@ -36,7 +36,7 @@
 			<van-tab title="团队介绍">
 				<view class="teams">
 					<!-- <image src="{{teamPic}}"  mode='widthFix' wx:if="{{teamPic}}"></image> -->
-					<van-image custom-class="show" fit="cover" src="{{teamPic}}" />
+					<van-image custom-class="show" fit="cover" wx:if="{{!!teamPic}}" src="{{teamPic}}" />
 					<view class="content">
 						<view>团队介绍：</view>
 						<view>{{teamIntroduction}}</view>

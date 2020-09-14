@@ -75,13 +75,18 @@ Page({
   },
   // 提交按钮
   go_be_reviewing() {
+    let reg = /^1(3[0-9]|4[5,7]|5[0,1,2,3,5,6,7,8,9]|6[2,5,6,7]|7[0,1,7,8]|8[0-9]|9[1,8,9])\d{8}$/;
     Toast.clear();
+    this.verify()
     if (!this.data.input_name) {
       Toast.fail("请填写姓名")
       return
     }
     if (!this.data.input_phone) {
       Toast.fail("请填写联系方式")
+      return
+    } else if (!reg.test(this.data.input_phone) || !this.data.input_phone.length == 11) {
+      Toast.fail("请填写正确联系方式")
       return
     }
     if (!this.data.changecity[2].id) {
@@ -119,6 +124,10 @@ Page({
     }, File => {
       console.log(File)
     })
+  },
+  verify() {
+
+
   },
   city() {
     this.setData({

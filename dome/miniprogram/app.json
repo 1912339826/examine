@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/my/my",
-    "pages/apply/apply",
-    
-    "pages/friend_circle/friend_circle",
     "pages/information/information",
+    "pages/apply/apply",
+    "pages/my/my",
+    "pages/friend_circle/friend_circle",
+    
     "pages/store/store",
     
     

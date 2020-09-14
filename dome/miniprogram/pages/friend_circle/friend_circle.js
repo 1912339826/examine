@@ -300,6 +300,7 @@ Page({
     if (event.detail.name == "更换封面") {
       wx.chooseImage({
         count: 1,
+        sizeType: ["compressed"],
         sourceType: ["album"],
         success(res) {
           that.import_info(res.tempFilePaths[0])
@@ -323,7 +324,7 @@ Page({
       url: fun_config.import_info.url,
       success(res) {
         console.log(JSON.parse(res.data).result.url)
-        // that.update_taster(JSON.parse(res.data).result.url)
+        that.update_taster(JSON.parse(res.data).result.url)
       }
     })
   },
@@ -331,7 +332,8 @@ Page({
   update_taster(cover) {
     fun_ref.post(fun_config.update_taster.url, {
       "cover": cover,
-      id: wx.getStorageSync('user').taster.id
+      id: wx.getStorageSync('user').taster.id,
+      pic: wx.getStorageSync('user').avatarPic
     }, res => {
       if (res.data.status == 200) {
         Toast.success(res.data.message);

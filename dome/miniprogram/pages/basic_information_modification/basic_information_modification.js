@@ -13,7 +13,9 @@ Page({
     specialty: "",
     taster: {},
     introPic: "",
-    teamPic: ""
+    teamPic: "",
+    introduction: "",
+    teamIntroduction: ""
   },
 
   /**
@@ -54,21 +56,25 @@ Page({
         head_sculpture: wx.getStorageSync('user').taster.pic,
         name: wx.getStorageSync('user').taster.name,
         introPic: wx.getStorageSync('user').taster.introPic,
-        teamPic: wx.getStorageSync('user').taster.teamPic
+        teamPic: wx.getStorageSync('user').taster.teamPic,
+        introduction: wx.getStorageSync('user').taster.introduction,
+        teamIntroduction: wx.getStorageSync('user').taster.teamIntroduction
       })
     } else {
       this.setData({
         specialty: false,
+        introduction: false,
+        teamIntroduction: false,
         head_sculpture: wx.getStorageSync('user').avatarPic,
         name: wx.getStorageSync('user').name,
       })
     }
   },
   // 预览图片
-  previewMedia() {
+  previewMedia(e) {
     wx.previewMedia({
       sources: [{
-        url: this.data.head_sculpture
+        url: e.currentTarget.dataset.img
       }]
     })
   },
@@ -81,7 +87,7 @@ Page({
       success(res) {
         wx.chooseImage({
           count: 1,
-          sizeType: ['original', 'compressed'],
+          sizeType: ['compressed'],
           sourceType: [arr[res.tapIndex]],
           success(ress) {
             wx.uploadFile({

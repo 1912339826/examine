@@ -14,14 +14,18 @@ Page({
     inquire: {
       name: "昵称",
       specialty: "特长",
-      signature: "签名"
+      signature: "签名",
+      introduction: "个人简介",
+      teamIntroduction: "团队简介"
     },
     type: "",
     maxlength: 25,
     maxlength_obj: {
       name: 15,
       specialty: 20,
-      signature: 25
+      signature: 25,
+      introduction: 50,
+      teamIntroduction: 100
     }
   },
   // 一下进入此页面：
