@@ -97,9 +97,10 @@ Page({
       videoId: this.data.id,
       tasterId: tasterId,
       count: this.data.number,
-      price: this.data.price,
+      price: this.data.total,
       name: this.data.name,
       phone: this.data.phone,
+      address:this.data.address
     }, res => {
       if (res.data.success) {
         this.requestPayment(res.data.result.timeStamp, res.data.result.nonceStr, res.data.result.package, res.data.result.sign)

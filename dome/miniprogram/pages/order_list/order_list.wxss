@@ -45,10 +45,25 @@
   font-size: 30rpx;
   height: 150rpx;
   width: 58%;
+  margin-left: 20rpx;
 }
 
 .price {
   width: 15%;
+}
+
+.count{
+  padding-left: 10rpx;
+  color: #9c9c9c;
+  font-size: 25rpx;
+  text-align: right;
+}
+
+
+.total{
+  text-align: right;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
 
 .handle {

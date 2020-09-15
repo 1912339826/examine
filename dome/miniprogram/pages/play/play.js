@@ -51,11 +51,13 @@ Page({
       forbidClick: true,
     })
     fun_ref.get(fun_config.play_video_vod.url, {
-      videoId: videoId
+      videoId: videoId,
+      type:this.data.type
     }, res => {
       this.setData({
         src: res.data.result
       }, function () {
+        console.log(this.data.src)
         let arr = this.data.src.split("&")
         if (arr[arr.length - 1].split("=")[0] == "end") {
           // 30s视频

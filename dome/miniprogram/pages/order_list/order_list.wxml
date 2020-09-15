@@ -5,17 +5,21 @@
 	<view class="lists">
 		<view class="list" data-cover="{{item.video.cover}}" wx:for="{{lists}}" bindtap="play" data-type="{{item.video.type}}" data-title="{{item.video.title}}" data-price="{{item.video.price}}" data-introduction="{{item.video.introduction}}" data-id="{{item.video.videoId}}">
 			<view class="nav">
-					<view class="day">{{item.timestamp}}</view>
+				<view class="day">{{item.timestamp}}</view>
 				<view class="orderNo">订单号：{{item.orderNo}}</view>
 			</view>
 			<view class="box">
 				<!-- <image mode="cover" src="{{item.video.cover}}"></image> -->
 				<van-image custom-class="show" fit="cover" src="{{item.video.cover}}" />
 				<view class="title">{{item.video.title}}</view>
-				<view class="price">￥{{item.video.price}}</view>
+				<view class="price_count">
+					<view class="price"> ￥{{item.video.price}} </view>
+					<view class="count">x{{item.count}}</view>
+				</view>
 			</view>
+			<view class="total">实付：￥{{item.price}}</view>
 			<view class="handle">
-				<view>查看视频</view>
+				<view>查看商品</view>
 			</view>
 		</view>
 	</view>

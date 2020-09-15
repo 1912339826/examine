@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/information/information",
     "pages/store/store",
     "pages/go_shopping/go_shopping",
-    "pages/information/information",
+    
     "pages/apply/apply",
     "pages/my/my",
     "pages/friend_circle/friend_circle",
