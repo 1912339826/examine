@@ -106,7 +106,7 @@
 }
 
 .content {
-  padding-top: 110rpx;
+  padding-top: 130rpx;
   /* padding-left: 20rpx;
   padding-right: 20rpx; */
   text-align: center;

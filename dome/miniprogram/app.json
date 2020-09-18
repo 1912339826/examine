@@ -2,6 +2,9 @@
   "pages": [
     "pages/information/information",
     "pages/store/store",
+    "pages/tasting_tube/tasting_tube",
+    
+    
     "pages/go_shopping/go_shopping",
     
     "pages/apply/apply",
@@ -11,7 +14,7 @@
     
     
     
-    "pages/tasting_tube/tasting_tube",
+    
     "pages/be_reviewing/be_reviewing",
 
     "pages/publish/publish",

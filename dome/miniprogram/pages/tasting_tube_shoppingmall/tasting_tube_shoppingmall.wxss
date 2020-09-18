@@ -131,6 +131,11 @@
 
 .button_buy {
   margin-top: 20rpx;
+  /* display: flex; */
+  /* justify-content: center; */
+}
+
+.button_box{
   display: flex;
   justify-content: center;
 }

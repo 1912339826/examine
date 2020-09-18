@@ -9,7 +9,7 @@
 	</view>
 	<view class="big_img">
 		<!-- <image src="../../images/information_big_03.jpg" /> -->
-		<swiper autoplay="{{true}}" circular="{{true}}"   wx:if="{{getList_ad_list.length!=0}}">
+		<swiper autoplay="{{true}}" circular="{{true}}" wx:if="{{getList_ad_list.length!=0}}">
 			<swiper-item wx:for="{{getList_ad_list}}" wx:key="id" wx:for-index="index" wx:for-item="item" data-id="{{item.id}}" bindtap="getList_ad_fn">
 				<image src="{{item.pic}}"></image>
 			</swiper-item>
@@ -18,7 +18,7 @@
 
 	<view class="lists">
 		<view class="list" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
-			<view class="box" bindtap="play" data-cover="{{item.cover}}" data-type="{{item.type}}" data-title="{{item.title}}" data-isid="{{item.id}}" data-introduction="{{item.introduction}}" data-price="{{item.price}}" data-id="{{item.videoId}}">
+			<view class="box" bindtap="play" data-cover="{{item.cover}}" data-own="{{item.own}}" data-type="{{item.type}}" data-title="{{item.title}}" data-isid="{{item.id}}" data-introduction="{{item.introduction}}" data-price="{{item.price}}" data-id="{{item.videoId}}">
 				<view class="img">
 					<image class="play_img" src="../../images/play.png"></image>
 					<van-image custom-class="show" fit="cover" src="{{item.cover}}" />
@@ -39,15 +39,19 @@
 				</view>
 			</view>
 			<view class="button_buy" wx:if="{{!is_my}}">
-				<view class="button_"  data-type="{{item.type}}" data-title="{{item.title}}" data-isid="{{item.id}}" data-introduction="{{item.introduction}}" data-price="{{item.price}}" data-id="{{item.videoId}}" wx:if="{{!!taster&&!item.own}}" data-taster="{{true}}" bindtap="purchase">申请</view>
-				<view class="button_" wx:if="{{!!taster&&item.own}}">已申请</view>
-				<view class="button_"   data-type="{{item.type}}"  data-cover="{{item.cover}}"  data-title="{{item.title}}" data-isid="{{item.id}}" data-introduction="{{item.introduction}}" data-price="{{item.price}}" data-id="{{item.videoId}}" wx:if="{{!taster&&!item.own}}" data-taster="{{false}}" bindtap="purchase">购买</view>
-				<view class="button_" wx:if="{{!taster&&item.own}}">已购买</view>
+				<view class="button_box">
+					<!-- <view class="button_" data-type="{{item.type}}" data-title="{{item.title}}" data-own="{{item.own}}" data-isid="{{item.id}}" data-introduction="{{item.introduction}}" data-price="{{item.price}}" data-id="{{item.videoId}}" wx:if="{{!!taster&&!item.own}}" data-taster="{{true}}" bindtap="purchase">申请</view> -->
+					<!-- <view class="button_" wx:if="{{!!taster&&item.own}}">已申请</view> -->
+					<view class="button_" wx:if="{{!!taster}}" bindtap="purchase" data-isApplication="{{item.isApplication}}" data-cover="{{item.cover}}" data-own="{{item.own}}" data-taster="{{true}}" data-type="{{item.type}}" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}">购买/申请</view>
+					<view class="button_" data-type="{{item.type}}" data-cover="{{item.cover}}" data-own="{{item.own}}" data-title="{{item.title}}" data-isid="{{item.id}}" data-introduction="{{item.introduction}}" data-price="{{item.price}}" data-id="{{item.videoId}}" wx:if="{{!taster&&!item.own}}" data-taster="{{false}}" bindtap="purchase">购买</view>
+					<view class="button_" wx:if="{{!taster&&item.own}}">已购买</view>
+				</view>
 			</view>
 		</view>
-
 	</view>
 </view>
 
 <tab active_index="1" />
 <van-toast id="van-toast" />
+
+<van-action-sheet bind:select="select_fun" close-on-click-action="{{true}}" bind:cancel="sheet_cancel" bind:click-overlay="sheet_overlay" z-index="{{9999}}" show="{{ sheet_show }}" actions="{{ sheet_actions }}" cancel-text="取消" />

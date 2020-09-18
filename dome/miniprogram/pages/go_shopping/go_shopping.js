@@ -40,7 +40,7 @@ Page({
       id: id,
       price: Number(price),
       title: title,
-      total: 1 * Number(price),
+      total: (1 * (Number(price) * 100000)) / 100000,
       tasterId
     })
 
@@ -55,7 +55,7 @@ Page({
   onChange(event) {
     this.setData({
       number: event.detail,
-      total: event.detail * Number(this.data.price)
+      total: (event.detail * (Number(this.data.price) * 100000)) / 100000
     })
   },
   /**
@@ -71,12 +71,12 @@ Page({
     })
   },
   shopping() {
-    console.log(this.data.id, this.data.tasterId , this.data.number, this.data.price, this.data.name, this.data.phone, this.data.address)
+    console.log(this.data.id, this.data.tasterId, this.data.number, this.data.price, this.data.name, this.data.phone, this.data.address)
     this.wxPay_pay()
   },
   wxPay_pay() {
     let tasterId;
-    if (this.data.tasterId!="undefined") {
+    if (this.data.tasterId != "undefined") {
       tasterId = this.data.tasterId
     } else {
       tasterId = ""
@@ -100,7 +100,7 @@ Page({
       price: this.data.total,
       name: this.data.name,
       phone: this.data.phone,
-      address:this.data.address
+      address: this.data.address
     }, res => {
       if (res.data.success) {
         this.requestPayment(res.data.result.timeStamp, res.data.result.nonceStr, res.data.result.package, res.data.result.sign)

@@ -4,7 +4,9 @@
 	<view class="recommend_sort">
 		<view class="recommend" style="opacity:0;">推荐</view>
 		<view class="sort" style="opacity:1;" bindtap="category">
-			类别 <van-icon name="arrow-down" color="#ffffff"/></view>
+			类别
+			<van-icon name="arrow-down" color="#ffffff" />
+		</view>
 	</view>
 	<view class="big_img" wx:if="{{getList_ad_list.length!=0}}">
 		<!-- <image src="../../images/information_big_03.jpg" /> -->
@@ -17,7 +19,7 @@
 
 	<view class="lists">
 		<view class="list" data-id="{{item.id}}" wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:for-item="item">
-			<view class="box" bindtap="play" data-cover="{{item.cover}}" data-type="{{item.type}}" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}">
+			<view class="box" bindtap="play" data-cover="{{item.cover}}" data-own="{{item.own}}" data-type="{{item.type}}" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}">
 				<view class="img">
 					<image class="play_img" src="../../images/play.png"></image>
 					<van-image custom-class="show" fit="cover" src="{{item.cover}}" />
@@ -37,10 +39,18 @@
 					</view>
 				</view>
 			</view>
-			<view class="button_buy">
-				<view class="button_" wx:if="{{!!taster&&!item.own}}" data-taster="{{true}}" data-isid="{{item.id}}" bindtap="purchase">申请</view>
-				<view class="button_" wx:if="{{!!taster&&item.own}}">已申请</view>
-				<view class="button_" wx:if="{{!taster&&!item.own}}" data-cover="{{item.cover}}"  data-taster="{{false}}" data-type="{{item.type}}"  data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}" bindtap="purchase">购买</view>
+			<view class="button_buy"  wx:if="{{item.type==1}}">
+			<!-- 普通商品 -->
+				<view class="button_"  data-cover="{{item.cover}}" data-own="{{item.own}}" data-taster="{{false}}" data-type="{{item.type}}" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}" bindtap="purchase">购买</view>
+			</view>
+
+			
+				<view class="button_buy" wx:if="{{item.type==0}}">
+				<!-- 视频商品 -->
+				<!-- <view class="button_" wx:if="{{!!taster&&!item.own}}" data-taster="{{true}}" data-own="{{item.own}}" data-isid="{{item.id}}" bindtap="purchase">申请</view> -->
+				<!-- <view class="button_" wx:if="{{!!taster&&item.own}}">已申请</view> -->
+				<view class="button_" wx:if="{{!!taster}}" bindtap="purchase" data-isApplication="{{item.isApplication}}" data-cover="{{item.cover}}" data-own="{{item.own}}" data-taster="{{true}}" data-type="{{item.type}}" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}">购买/申请</view>
+				<view class="button_" wx:if="{{!taster&&!item.own}}" data-cover="{{item.cover}}" data-own="{{item.own}}" data-taster="{{false}}" data-type="{{item.type}}" data-title="{{item.title}}" data-price="{{item.price}}" data-introduction="{{item.introduction}}" data-isid="{{item.id}}" data-id="{{item.videoId}}" bindtap="purchase">购买</view>
 				<view class="button_" wx:if="{{!taster&&item.own}}">已购买</view>
 			</view>
 		</view>
@@ -49,5 +59,7 @@
 <tab active_index="2" />
 <van-toast id="van-toast" />
 <van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose">
-	<van-picker columns="{{ list_category_list }}" show-toolbar="{{true}}" title="请选择" bind:confirm="confirm" bind:cancel="cancel"/>
+	<van-picker columns="{{ list_category_list }}" show-toolbar="{{true}}" title="请选择" bind:confirm="confirm" bind:cancel="cancel" />
 </van-popup>
+
+<van-action-sheet bind:select="select_fun" close-on-click-action="{{true}}" bind:cancel="sheet_cancel" bind:click-overlay="sheet_overlay" z-index="{{9999}}" show="{{ sheet_show }}" actions="{{ sheet_actions }}" cancel-text="取消" />

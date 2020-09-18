@@ -12,24 +12,33 @@ Page({
     id: "c39b9dc1f16b4bcb886b9fdf9a72d2de",
     name: "罗志祥",
     pic: "https://jason-blog.oss-cn-hangzhou.aliyuncs.com/imgs/4.jpg",
-    lists: [{
-      catId: "1111",
-      categoryName: "新闻",
-      cover: "https://jason-blog.oss-cn-hangzhou.aliyuncs.com/imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200826112538.jpg",
-      id: "03ef9dae06fb479190373e1e0fbf6a26",
-      introduction: "测试",
-      isLikes: null,
-      likes: 0,
-      price: 200,
-      title: "测试",
-      videoId: "f108df1b81604b2ba9e64ba58c4d5332"
-    }],
+    lists: [
+      //   {
+      //   catId: "1111",
+      //   categoryName: "新闻",
+      //   cover: "https://jason-blog.oss-cn-hangzhou.aliyuncs.com/imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200826112538.jpg",
+      //   id: "03ef9dae06fb479190373e1e0fbf6a26",
+      //   introduction: "测试",
+      //   isLikes: null,
+      //   likes: 0,
+      //   price: 200,
+      //   title: "测试",
+      //   videoId: "f108df1b81604b2ba9e64ba58c4d5332"
+      // }
+    ],
     pageNo: 1,
     id: '',
     totalPage: 1,
     taster: false,
     is_my: false,
-    getList_ad_list: []
+    getList_ad_list: [],
+    change_list: {},
+    sheet_show: false,
+    sheet_actions: [{
+      name: '购买'
+    }, {
+      name: '申请'
+    }]
   },
 
   /**
@@ -129,26 +138,79 @@ Page({
   // 播放
   play(e) {
     wx.navigateTo({
-      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&tasterId=" + this.data.id + "&&type=" + e.currentTarget.dataset.type +"&&cover=" + e.currentTarget.dataset.cover,
+      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&tasterId=" + this.data.id + "&&type=" + e.currentTarget.dataset.type + "&&cover=" + e.currentTarget.dataset.cover + "&&own=" + e.currentTarget.dataset.own,
     })
   },
 
   purchase(e) {
+    this.setData({
+      change_list: e.currentTarget.dataset
+    })
     if (e.currentTarget.dataset.taster) {
       // 申请
-      this.bindVideo_taster(e.currentTarget.dataset.isid)
+      // this.bindVideo_taster(e.currentTarget.dataset.isid)
+      // 点击了 购买/申请 按钮
+      this.behavior(e)
     } else {
       // 购买
       if (e.currentTarget.dataset.type == 1) {
         wx.navigateTo({
-          url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&tasterId=" + this.data.id + "&&type=" + e.currentTarget.dataset.type +"&&cover=" + e.currentTarget.dataset.cover,
+          url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&tasterId=" + this.data.id + "&&type=" + e.currentTarget.dataset.type + "&&cover=" + e.currentTarget.dataset.cover + "&&own=" + e.currentTarget.dataset.own,
         })
-      } else {
-        this.wxPay_pay(e.currentTarget.dataset.isid,e.currentTarget.dataset.price)
+      } else if (e.currentTarget.dataset.type == 0) {
+        this.wxPay_pay(e.currentTarget.dataset.isid, e.currentTarget.dataset.price)
       }
-
     }
   },
+  // 点击选
+  behavior(e) {
+    console.log(e.currentTarget.dataset)
+    let sheet_actions = this.data.sheet_actions
+    this.setData({
+      sheet_show: true
+    }, function () {
+      if (e.currentTarget.dataset.own) {
+        sheet_actions[0] = {
+          name: '已购买',
+          disabled: true
+        }
+      }
+      if (e.currentTarget.dataset.isapplication) {
+        sheet_actions[1] = {
+          name: '已申请',
+          disabled: true
+        }
+      } else {
+        sheet_actions[1] = {
+          name: '申请'
+        }
+      }
+      this.setData({
+        sheet_actions: sheet_actions
+      })
+    })
+  },
+
+  select_fun(e) {
+    if (e.detail.name == "购买") {
+      // 视频商品可以在本页面直接进行购买行为
+      this.wxPay_pay(this.data.change_list.isid, this.data.change_list.price)
+    } else if (e.detail.name == "申请") {
+      this.bindVideo_taster(this.data.change_list.isid)
+    }
+    this.sheet_cancel()
+  },
+  // 点击取消
+  sheet_cancel() {
+    this.setData({
+      sheet_show: false
+    })
+  },
+
+  sheet_overlay() {
+    this.sheet_cancel()
+  },
+
   bindVideo_taster(id) {
     fun_ref.post(fun_config.bindVideo_taster.url, {
       videoId: id
@@ -160,12 +222,12 @@ Page({
       }
     })
   },
-  wxPay_pay(id,price) {
+  wxPay_pay(id, price) {
     fun_ref.post(fun_config.wxPay_pay.url, {
       videoId: id,
       tasterId: this.data.id,
-      price:price,
-      count:1
+      price: price,
+      count: 1
     }, res => {
       if (res.data.success) {
         this.requestPayment(res.data.result.timeStamp, res.data.result.nonceStr, res.data.result.package, res.data.result.sign)
@@ -176,6 +238,7 @@ Page({
   },
 
   requestPayment(timeStamp, nonceStr, result_package, paySign) {
+    let that = this
     wx.requestPayment({
       nonceStr: nonceStr,
       package: result_package,
@@ -184,7 +247,15 @@ Page({
       signType: "MD5",
       success: (res) => {
         Toast.success("支付成功！");
-        this.play_video_vod(this.data.videoId)
+        if (that.data.change_list.type == 0) {
+          that.setData({
+            pageNo: 1,
+            lists: [],
+            sheet_show: false
+          }, function () {
+            that.getTasterMall_taster()
+          })
+        }
       },
       fail: (err) => {
         Toast.fail('支付失败！');

@@ -29,7 +29,14 @@ Page({
     list_category_list: [],
     list_category_change: {
       id: ""
-    }
+    },
+    sheet_show: false,
+    sheet_actions: [{
+      name: '购买'
+    }, {
+      name: '申请'
+    }],
+    change_list: {}
   },
 
   /**
@@ -135,7 +142,7 @@ Page({
   play(e) {
     if (wx.getStorageSync('authorization')) {
       wx.navigateTo({
-        url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&type=" + e.currentTarget.dataset.type + "&&cover=" + e.currentTarget.dataset.cover,
+        url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&type=" + e.currentTarget.dataset.type + "&&cover=" + e.currentTarget.dataset.cover + "&&own=" + e.currentTarget.dataset.own,
       })
     } else {
       Toast.fail("未登录")
@@ -148,19 +155,23 @@ Page({
   },
   purchase(e) {
     if (wx.getStorageSync('authorization')) {
+      this.setData({
+        change_list: e.currentTarget.dataset
+      })
       if (e.currentTarget.dataset.taster) {
-        // 申请
-        this.bindVideo_taster(e.currentTarget.dataset.isid)
+        // 点击了 购买/申请 按钮
+        this.behavior(e)
       } else {
         // 购买
         if (e.currentTarget.dataset.type == 1) {
+          // 普通商品需要进入详情页进行下一步操作
           wx.navigateTo({
-            url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&type=" + e.currentTarget.dataset.type + "&&cover=" + e.currentTarget.dataset.cover,
+            url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&id=" + e.currentTarget.dataset.isid + "&&type=" + e.currentTarget.dataset.type + "&&cover=" + e.currentTarget.dataset.cover + "&&own=" + e.currentTarget.dataset.own,
           })
-        } else {
-          this.wxPay_pay(e.currentTarget.dataset.isid,e.currentTarget.dataset.price)
+        } else if (e.currentTarget.dataset.type == 0) {
+          // 视频商品可以在本页面直接进行购买行为
+          this.wxPay_pay(e.currentTarget.dataset.isid, e.currentTarget.dataset.price)
         }
-
       }
     } else {
       Toast.fail("未登录")
@@ -172,6 +183,55 @@ Page({
     }
 
   },
+
+  // 点击选
+  behavior(e) {
+    let sheet_actions = this.data.sheet_actions
+    this.setData({
+      sheet_show: true
+    }, function () {
+      if (e.currentTarget.dataset.own) {
+        sheet_actions[0] = {
+          name: '已购买',
+          disabled: true
+        }
+      }
+      if (e.currentTarget.dataset.isapplication) {
+        sheet_actions[1] = {
+          name: '已申请',
+          disabled: true
+        }
+      } else {
+        sheet_actions[1] = {
+          name: '申请'
+        }
+      }
+      this.setData({
+        sheet_actions: sheet_actions
+      })
+    })
+  },
+
+  select_fun(e) {
+    if (e.detail.name == "购买") {
+      // 视频商品可以在本页面直接进行购买行为
+      this.wxPay_pay(this.data.change_list.isid, this.data.change_list.price)
+    } else if (e.detail.name == "申请") {
+      this.bindVideo_taster(this.data.change_list.isid)
+    }
+    this.sheet_cancel()
+  },
+  // 点击取消
+  sheet_cancel() {
+    this.setData({
+      sheet_show: false
+    })
+  },
+
+  sheet_overlay() {
+    this.sheet_cancel()
+  },
+
 
   bindVideo_taster(id) {
     fun_ref.post(fun_config.bindVideo_taster.url, {
@@ -185,11 +245,11 @@ Page({
     })
   },
 
-  wxPay_pay(id,price) {
+  wxPay_pay(id, price) {
     fun_ref.post(fun_config.wxPay_pay.url, {
       videoId: id,
       tasterId: "",
-      price:price,
+      price: price,
       count: 1
     }, res => {
       if (res.data.success) {
@@ -201,6 +261,7 @@ Page({
   },
 
   requestPayment(timeStamp, nonceStr, result_package, paySign) {
+    let that = this
     wx.requestPayment({
       nonceStr: nonceStr,
       package: result_package,
@@ -210,7 +271,15 @@ Page({
       success: (res) => {
         console.log(res)
         Toast.success("支付成功！");
-        this.play_video_vod(this.data.videoId)
+        if (that.data.change_list.type == 0) {
+          that.setData({
+            pageNo: 1,
+            lists:[],
+            sheet_show:false
+          }, function () {
+            that.myMall(that.data.list_category_change)
+          })
+        }
       },
       fail: (err) => {
         console.log(err)

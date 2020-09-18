@@ -79,7 +79,7 @@ Page({
   },
   play(e) {
     wx.navigateTo({
-      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&type=" + e.currentTarget.dataset.type +"&&cover=" + e.currentTarget.dataset.cover,
+      url: '../play/play?videoId=' + e.currentTarget.dataset.id + "&&title=" + e.currentTarget.dataset.title + "&&introduction=" + e.currentTarget.dataset.introduction + "&&price=" + e.currentTarget.dataset.price + "&&type=" + e.currentTarget.dataset.type +"&&cover=" + e.currentTarget.dataset.cover +"&&own=" + true,
     })
   },
   /**

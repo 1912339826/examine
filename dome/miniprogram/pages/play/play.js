@@ -19,7 +19,8 @@ Page({
     videoId: "",
     id: "",
     type: 0,
-    cover: ""
+    cover: "",
+    own: true
   },
 
   /**
@@ -41,7 +42,8 @@ Page({
       id: options.id,
       tasterId: options.tasterId,
       type: options.type,
-      cover: options.cover
+      cover: options.cover,
+      own: options.own
     })
     this.play_video_vod(options.videoId)
   },
@@ -52,21 +54,21 @@ Page({
     })
     fun_ref.get(fun_config.play_video_vod.url, {
       videoId: videoId,
-      type:this.data.type
+      type: this.data.type
     }, res => {
       this.setData({
         src: res.data.result
       }, function () {
         console.log(this.data.src)
-        let arr = this.data.src.split("&")
-        if (arr[arr.length - 1].split("=")[0] == "end") {
+        console.log(this.data.own=="false")
+        if (this.data.own!="false") {
+          this.setData({
+            owned: true
+          })
+        } else {
           // 30s视频
           this.setData({
             owned: false
-          })
-        } else {
-          this.setData({
-            owned: true
           })
         }
         Toast.clear();
@@ -101,7 +103,7 @@ Page({
   // 普通商品去购买页面
   go_shopping() {
     wx.navigateTo({
-      url: '../go_shopping/go_shopping?cover=' + this.data.cover + "&&title=" + this.data.title + "&&price=" + this.data.price + "&&id=" + this.data.id +"&&tasterId=" + this.data.tasterId,
+      url: '../go_shopping/go_shopping?cover=' + this.data.cover + "&&title=" + this.data.title + "&&price=" + this.data.price + "&&id=" + this.data.id + "&&tasterId=" + this.data.tasterId,
     })
   },
   wxPay_pay() {
@@ -114,8 +116,8 @@ Page({
     fun_ref.post(fun_config.wxPay_pay.url, {
       videoId: this.data.id,
       tasterId: tasterId,
-      price:this.data.price,
-      count:1
+      price: this.data.price,
+      count: 1
     }, res => {
       if (res.data.success) {
         this.requestPayment(res.data.result.timeStamp, res.data.result.nonceStr, res.data.result.package, res.data.result.sign)
