@@ -8,7 +8,7 @@
 		<image src="{{tab[1]}}" />
 		<view>品鉴官</view>
 	</view>
-	<view class="son" data-index="2"  bindtap="change">
+	<view class="son" data-index="2"  bindtap="change" wx:if="{{show}}">
 		<image src="{{tab[2]}}" />
 		<view>商城</view>
 	</view>

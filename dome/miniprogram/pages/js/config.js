@@ -178,4 +178,9 @@ export default {
     type: "GET",
     url: `${BASE_URLA}/notice/getInfo`
   },
+  //  总商城是否显示
+  load_taster:{
+    type: "GET",
+    url: `${BASE_URLA}/taster/load`
+  }
 };

@@ -1,4 +1,7 @@
 // components/tab/tab.js
+const app = getApp();
+const fun_ref = app.ref.default;
+const fun_config = app.config.default;
 Component({
   /**
    * 组件的属性列表
@@ -27,11 +30,13 @@ Component({
       active_no: "../../images/my_active_no.png"
     }],
     tab: ["../../images/information_active_no.png", "../../images/tasting_tube_active_no.png", "../../images/store_active_no.png", "../../images/my_active_no.png"],
-    navigateTo_list: ["../information/information", "../tasting_tube/tasting_tube", "../store/store", "../my/my"]
+    navigateTo_list: ["../information/information", "../tasting_tube/tasting_tube", "../store/store", "../my/my"],
+    show:false
   },
 
   //  在组件实例进入页面节点树时执行
   attached() {
+    this.load_taster()
     let change_list = this.data.tab;
     change_list[this.data.active_index] = this.data.img_list[this.data.active_index].active
     this.setData({
@@ -68,6 +73,21 @@ Component({
         }
 
       }
-    }
+    },
+    load_taster() {
+      fun_ref.get(fun_config.load_taster.url, {}, res => {
+        console.log(res.data.mallOpen=='false')
+        if(res.data.mallOpen=='false'){
+          this.setData({
+            show:false
+          })
+          console.log(this.data.show)
+        }else{
+          this.setData({
+            show:true
+          })
+        }
+      })
+    },
   }
 })

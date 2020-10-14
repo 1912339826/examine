@@ -61,6 +61,14 @@
 					"name": "db guide",
 					"pathName": "pages/databaseGuide/databaseGuide",
 					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "pages/tasting_tube/tasting_tube",
+					"pathName": "pages/tasting_tube/tasting_tube",
+					"query": "",
+					"scene": 1035,
+					"referrerInfo": {}
 				}
 			]
 		}
